@@ -1,1 +1,1 @@
-88888,Test City,TS,Test County,40.0000,-100.0000
+99108,Test Place,WA,Test County,47.9000,-117.9000
