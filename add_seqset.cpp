@@ -18,24 +18,44 @@
 #include "BlockBuffer.h"
 #include "BlockFileBuffer.h"
 #include "BlockIndex.h"
+/**
+ * @file add_seqset.cpp
+ * @brief Adds ZIP code records to the GP 3.0 sequence-set file
+ *        (supports insert without split and insert with split)
+ * @author CSCI 331 Team 2
+ * @date 04/01/2026
+ */
+
+#include <iostream>
+#include <iomanip>
+#include <string>
+#include <vector>
+#include <fstream>
+#include <sstream>
+#include <algorithm>
+
+#include "BlockedFileHeader.h"
+#include "BlockBuffer.h"
+#include "BlockFileBuffer.h"
+#include "BlockIndex.h"
 #include "ZipCodeRecord.h"
 
-// ── File constants ────────────────────────────────────────────────────────────
+/** @brief File constants */
 static const std::string SEQ_FILE = "data/us_postal_codes_seqset.txt";
 static const std::string IDX_FILE = "data/us_postal_codes_block_idx.txt";
 static const std::string INPUT_ADD_FILE = "data/add_records.txt";
 
-// ── Forward declarations ──────────────────────────────────────────────────────
+/** @brief Forward declarations */
 bool loadAddRecords(const std::string& filename, std::vector<ZipCodeRecord>& records);
 bool parseAddLine(const std::string& line, ZipCodeRecord& record);
 bool rebuildBlockIndex(const std::string& seqFilename, const std::string& idxFilename);
 bool addOneRecord(const ZipCodeRecord& record);
 void printRecord(const ZipCodeRecord& record);
 
-// =============================================================================
-// main
-// =============================================================================
-
+/**
+ * @brief Main function that adds ZIP code records to the sequence-set file.
+ * @return 0 on success, 1 on failure.
+ */
 int main()
 {
     std::cout << "=============================================================\n";
@@ -80,10 +100,12 @@ int main()
     return 0;
 }
 
-// =============================================================================
-// loadAddRecords
-// =============================================================================
-
+/**
+ * @brief Loads add records from the input file into a vector of ZipCodeRecord.
+ * @param filename The name of the input file containing records to add.
+ * @param records The vector to store the loaded records.
+ * @return true if loading succeeds, false otherwise.
+ */
 bool loadAddRecords(const std::string& filename, std::vector<ZipCodeRecord>& records)
 {
     std::ifstream in(filename);
@@ -114,10 +136,12 @@ bool loadAddRecords(const std::string& filename, std::vector<ZipCodeRecord>& rec
     return true;
 }
 
-// =============================================================================
-// parseAddLine
-// =============================================================================
-
+/**
+ * @brief Parses a single line from the add records file into a ZipCodeRecord.
+ * @param line The input line to parse.
+ * @param record The ZipCodeRecord to populate.
+ * @return true if parsing succeeds, false otherwise.
+ */
 bool parseAddLine(const std::string& line, ZipCodeRecord& record)
 {
     std::istringstream iss(line);
@@ -147,10 +171,12 @@ bool parseAddLine(const std::string& line, ZipCodeRecord& record)
     return true;
 }
 
-// =============================================================================
-// rebuildBlockIndex
-// =============================================================================
-
+/**
+ * @brief Rebuilds the block index for the sequence-set file.
+ * @param seqFilename The sequence-set file name.
+ * @param idxFilename The index file name.
+ * @return true if rebuild succeeds, false otherwise.
+ */
 bool rebuildBlockIndex(const std::string& seqFilename, const std::string& idxFilename)
 {
     BlockFileBuffer file(seqFilename);
@@ -196,10 +222,11 @@ bool rebuildBlockIndex(const std::string& seqFilename, const std::string& idxFil
     return index.writeIndex();
 }
 
-// =============================================================================
-// addOneRecord
-// =============================================================================
-
+/**
+ * @brief Adds a single ZIP code record to the sequence-set, handling splits if necessary.
+ * @param record The ZipCodeRecord to add.
+ * @return true if addition succeeds, false otherwise.
+ */
 bool addOneRecord(const ZipCodeRecord& record)
 {
     BlockIndex index(IDX_FILE);
@@ -259,7 +286,7 @@ bool addOneRecord(const ZipCodeRecord& record)
         return false;
     }
 
-    // ── Case 1: record fits with no split ─────────────────────────────────
+    // -- Case 1: record fits with no split
     if (target.canFit(record))
     {
         if (!target.insertRecordSorted(record))
@@ -297,7 +324,7 @@ bool addOneRecord(const ZipCodeRecord& record)
         return true;
     }
 
-    // ── Case 2: split required ────────────────────────────────────────────
+    // -- Case 2: split required
     std::cout << "Split required at block RBN " << candidateRBN << "\n";
 
     std::vector<ZipCodeRecord> allRecords = target.getRecords();
@@ -419,10 +446,10 @@ bool addOneRecord(const ZipCodeRecord& record)
     return true;
 }
 
-// =============================================================================
-// printRecord
-// =============================================================================
-
+/**
+ * @brief Prints the details of a ZipCodeRecord to standard output.
+ * @param record The ZipCodeRecord to print.
+ */
 void printRecord(const ZipCodeRecord& record)
 {
     std::cout << "  ZIP Code  : " << std::setw(5) << std::setfill('0')

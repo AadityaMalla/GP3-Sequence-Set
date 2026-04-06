@@ -1,0 +1,38 @@
+\doxysection{LIBuffer.\+h File Reference}
+\hypertarget{_l_i_buffer_8h}{}\label{_l_i_buffer_8h}\index{LIBuffer.h@{LIBuffer.h}}
+
+
+Reads and writes length-\/indicated ZIP code data files.  
+
+
+{\ttfamily \+\#include $<$fstream$>$}\newline
+{\ttfamily \+\#include $<$string$>$}\newline
+{\ttfamily \+\#include $<$cstdint$>$}\newline
+{\ttfamily \+\#include "{}Zip\+Code\+Record.\+h"{}}\newline
+{\ttfamily \+\#include "{}Data\+File\+Header.\+h"{}}\newline
+{\ttfamily \+\#include "{}Header\+Buffer.\+h"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \doxymbox{\hyperlink{class_l_i_buffer}{LIBuffer}}
+\begin{DoxyCompactList}\small\item\em Buffered reader/\+writer for length-\/indicated ZIP code data files. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Reads and writes length-\/indicated ZIP code data files. 
+
+\begin{DoxyAuthor}{Author}
+CSCI 331 Team 2 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+03/\+13/\+2026
+\end{DoxyDate}
+A length-\/indicated (LI) file stores every record — header and data — as a 2-\/byte big-\/endian uint16\+\_\+t length prefix followed by the packed payload bytes.
+
+File layout:\+ \+[2-\/byte len]\+\+[header payload]\+ \texorpdfstring{$<$}{<}-\/ \doxylink{class_header_buffer}{Header\+Buffer} writes/\+reads this \+[2-\/byte len]\+\+[record payload]\+ \texorpdfstring{$<$}{<}-\/ data record 1 \+[2-\/byte len]\+\+[record payload]\+ \texorpdfstring{$<$}{<}-\/ data record 2 ...
+
+Data record payload (packed binary):\+ \+[4-\/byte int zip\+Code]\+ \+[c-\/string place\+Name\textbackslash{}0]\+ \+[c-\/string state\textbackslash{}0]\+ \+[c-\/string county\textbackslash{}0]\+ \+[8-\/byte double latitude]\+ \+[8-\/byte double longitude]\+
+
+\begin{DoxyNote}{Note}
+\doxylink{class_l_i_buffer}{LIBuffer} owns the file streams. \doxylink{class_header_buffer}{Header\+Buffer} and \doxylink{class_data_file_header}{Data\+File\+Header} are used as helpers. 
+\end{DoxyNote}

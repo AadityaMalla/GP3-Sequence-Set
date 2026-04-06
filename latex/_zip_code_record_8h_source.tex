@@ -1,0 +1,61 @@
+\doxysection{Zip\+Code\+Record.\+h}
+\hypertarget{_zip_code_record_8h_source}{}\label{_zip_code_record_8h_source}\doxymbox{\hyperlink{_zip_code_record_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#ifndef\ ZIPCODERECORD\_H}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ ZIPCODERECORD\_H}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <iomanip>}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_zip_code_record_a945cbd69ab4bd148868e31aa2b807cc4}{ZipCodeRecord}}}
+\DoxyCodeLine{00031\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{int}\ zipCode;}
+\DoxyCodeLine{00033\ \ \ \ \ std::string\ placeName;}
+\DoxyCodeLine{00034\ \ \ \ \ std::string\ state;}
+\DoxyCodeLine{00035\ \ \ \ \ std::string\ county;}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{double}\ latitude;}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{double}\ longitude;}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00044\ \ \ \ \ \doxymbox{\hyperlink{struct_zip_code_record_a945cbd69ab4bd148868e31aa2b807cc4}{ZipCodeRecord}}()\ :\ zipCode(0),\ latitude(0.0),\ longitude(0.0)\ \{\}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00051\ \ \ \ \ \doxymbox{\hyperlink{struct_zip_code_record_acad0813711cbde6db1650eadd46ecf6b}{ZipCodeRecord}}(\textcolor{keywordtype}{int}\ zip,\ \textcolor{keyword}{const}\ std::string\ \&place,\ \textcolor{keyword}{const}\ std::string\ \&st,}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&cnty,\ \textcolor{keywordtype}{double}\ lat,\ \textcolor{keywordtype}{double}\ lon)}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ :\ zipCode(zip),\ placeName(place),\ state(st),\ county(cnty),}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ latitude(lat),\ longitude(lon)\ \{\}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \doxymbox{\hyperlink{struct_zip_code_record_a8b09a598d4edcdf9ee4507663dc10916}{getPackedSize}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00063\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ size\ =\ 0;}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ size\ +=\ \textcolor{keyword}{sizeof}(int);\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ zipCode}}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ size\ +=\ placeName.length()\ +\ 1;\ \textcolor{comment}{//\ placeName\ +\ null}}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ size\ +=\ state.length()\ +\ 1;\ \ \ \ \ \textcolor{comment}{//\ state\ +\ null}}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ size\ +=\ county.length()\ +\ 1;\ \ \ \ \textcolor{comment}{//\ county\ +\ null}}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ size\ +=\ \textcolor{keyword}{sizeof}(double);\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ latitude}}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ size\ +=\ \textcolor{keyword}{sizeof}(double);\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ longitude}}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ size;}
+\DoxyCodeLine{00072\ \ \ \ \ \}}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{struct_zip_code_record_a80483bc8f77525376182ca49d3e64b61}{display}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00081\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ std::cout\ <<\ std::setfill(\textcolor{charliteral}{'\ '});}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\ \ ZIP\ Code:\ \ \ "{}}\ <<\ zipCode\ <<\ std::endl;}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\ \ Place:\ \ \ \ \ \ "{}}\ <<\ placeName\ <<\ std::endl;}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\ \ State:\ \ \ \ \ \ "{}}\ <<\ state\ <<\ std::endl;}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\ \ County:\ \ \ \ \ "{}}\ <<\ county\ <<\ std::endl;}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\ \ Latitude:\ \ \ "{}}\ <<\ latitude\ <<\ std::endl;}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\ \ Longitude:\ \ "{}}\ <<\ longitude\ <<\ std::endl;}
+\DoxyCodeLine{00089\ \ \ \ \ \}}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{struct_zip_code_record_aadc350a0b7ea152ed580378a934b7e04}{displayInline}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00098\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ std::cout\ <<\ zipCode\ <<\ \textcolor{stringliteral}{"{},"{}}\ <<\ placeName\ <<\ \textcolor{stringliteral}{"{},"{}}\ <<\ state\ <<\ \textcolor{stringliteral}{"{},"{}}}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ county\ <<\ \textcolor{stringliteral}{"{},"{}}\ <<\ latitude\ <<\ \textcolor{stringliteral}{"{},"{}}\ <<\ longitude;}
+\DoxyCodeLine{00101\ \ \ \ \ \}}
+\DoxyCodeLine{00102\ \};}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ ZIPCODERECORD\_H}}
+
+\end{DoxyCode}

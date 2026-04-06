@@ -1,0 +1,67 @@
+\doxysection{delete\+\_\+seqset.\+cpp File Reference}
+\hypertarget{delete__seqset_8cpp}{}\label{delete__seqset_8cpp}\index{delete\_seqset.cpp@{delete\_seqset.cpp}}
+
+
+Deletes ZIP code records from the GP 3.\+0 sequence-\/set file (supports simple delete, redistribution, and merge).  
+
+
+{\ttfamily \+\#include $<$iostream$>$}\newline
+{\ttfamily \+\#include $<$iomanip$>$}\newline
+{\ttfamily \+\#include $<$string$>$}\newline
+{\ttfamily \+\#include $<$vector$>$}\newline
+{\ttfamily \+\#include $<$fstream$>$}\newline
+{\ttfamily \+\#include $<$sstream$>$}\newline
+{\ttfamily \+\#include $<$cctype$>$}\newline
+{\ttfamily \+\#include $<$cmath$>$}\newline
+{\ttfamily \+\#include "{}Blocked\+File\+Header.\+h"{}}\newline
+{\ttfamily \+\#include "{}Block\+Buffer.\+h"{}}\newline
+{\ttfamily \+\#include "{}Block\+File\+Buffer.\+h"{}}\newline
+{\ttfamily \+\#include "{}Block\+Index.\+h"{}}\newline
+{\ttfamily \+\#include "{}Zip\+Code\+Record.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{delete__seqset_8cpp_a3ad5a1ac8068947cee42e1ac457b2fe7}\label{delete__seqset_8cpp_a3ad5a1ac8068947cee42e1ac457b2fe7} 
+bool {\bfseries load\+Delete\+Zips} (const std::\+string \&filename, std::\+vector$<$ int $>$ \&zips)
+\item 
+\Hypertarget{delete__seqset_8cpp_a649b46841b9a8432b74a67cbda6f1f1f}\label{delete__seqset_8cpp_a649b46841b9a8432b74a67cbda6f1f1f} 
+bool {\bfseries parse\+Delete\+Line} (const std::\+string \&line, int \&zip\+Code)
+\item 
+\Hypertarget{delete__seqset_8cpp_ad48d65d7f8a54b09b663c9c5926f2fd7}\label{delete__seqset_8cpp_ad48d65d7f8a54b09b663c9c5926f2fd7} 
+bool {\bfseries rebuild\+Block\+Index} (const std::\+string \&seq\+Filename, const std::\+string \&idx\+Filename)
+\item 
+\Hypertarget{delete__seqset_8cpp_a467270ec5f0b45435f75dd0720ad4c63}\label{delete__seqset_8cpp_a467270ec5f0b45435f75dd0720ad4c63} 
+bool {\bfseries delete\+One\+Zip} (int zip\+Code)
+\item 
+\Hypertarget{delete__seqset_8cpp_aae29dd4d842190663a9a6213cdb0d28d}\label{delete__seqset_8cpp_aae29dd4d842190663a9a6213cdb0d28d} 
+size\+\_\+t {\bfseries compute\+Max\+Records\+Per\+Block} (int block\+Size)
+\item 
+\Hypertarget{delete__seqset_8cpp_a6f7e1061e324684c95585e253e6d0cfd}\label{delete__seqset_8cpp_a6f7e1061e324684c95585e253e6d0cfd} 
+size\+\_\+t {\bfseries compute\+Min\+Records\+Required} (int block\+Size, double min\+Capacity)
+\item 
+\Hypertarget{delete__seqset_8cpp_a0a5fcd99c229a7c8d10473cd7a14cb3b}\label{delete__seqset_8cpp_a0a5fcd99c229a7c8d10473cd7a14cb3b} 
+bool {\bfseries redistribute\+From\+Left} (\doxymbox{\hyperlink{class_block_file_buffer}{Block\+File\+Buffer}} \&file, const \doxymbox{\hyperlink{class_blocked_file_header}{Blocked\+File\+Header}} \&header, int left\+RBN, \doxymbox{\hyperlink{class_block_buffer}{Block\+Buffer}} \&left, int target\+RBN, \doxymbox{\hyperlink{class_block_buffer}{Block\+Buffer}} \&target)
+\item 
+\Hypertarget{delete__seqset_8cpp_a784fdb8a63bb6ccb96a05fc306e4785d}\label{delete__seqset_8cpp_a784fdb8a63bb6ccb96a05fc306e4785d} 
+bool {\bfseries redistribute\+From\+Right} (\doxymbox{\hyperlink{class_block_file_buffer}{Block\+File\+Buffer}} \&file, const \doxymbox{\hyperlink{class_blocked_file_header}{Blocked\+File\+Header}} \&header, int right\+RBN, \doxymbox{\hyperlink{class_block_buffer}{Block\+Buffer}} \&right, int target\+RBN, \doxymbox{\hyperlink{class_block_buffer}{Block\+Buffer}} \&target)
+\item 
+\Hypertarget{delete__seqset_8cpp_a000df666e828f1c44590dfda69777d8d}\label{delete__seqset_8cpp_a000df666e828f1c44590dfda69777d8d} 
+bool {\bfseries merge\+With\+Left} (\doxymbox{\hyperlink{class_block_file_buffer}{Block\+File\+Buffer}} \&file, \doxymbox{\hyperlink{class_blocked_file_header}{Blocked\+File\+Header}} \&header, int left\+RBN, \doxymbox{\hyperlink{class_block_buffer}{Block\+Buffer}} \&left, int target\+RBN, \doxymbox{\hyperlink{class_block_buffer}{Block\+Buffer}} \&target)
+\item 
+\Hypertarget{delete__seqset_8cpp_aaf76683f409cca35a3ccbf1c7d69f653}\label{delete__seqset_8cpp_aaf76683f409cca35a3ccbf1c7d69f653} 
+bool {\bfseries merge\+With\+Right} (\doxymbox{\hyperlink{class_block_file_buffer}{Block\+File\+Buffer}} \&file, \doxymbox{\hyperlink{class_blocked_file_header}{Blocked\+File\+Header}} \&header, int target\+RBN, \doxymbox{\hyperlink{class_block_buffer}{Block\+Buffer}} \&target, int right\+RBN, \doxymbox{\hyperlink{class_block_buffer}{Block\+Buffer}} \&right)
+\item 
+\Hypertarget{delete__seqset_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{delete__seqset_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+int {\bfseries main} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Deletes ZIP code records from the GP 3.\+0 sequence-\/set file (supports simple delete, redistribution, and merge). 
+
+\begin{DoxyAuthor}{Author}
+CSCI 331 Team 2 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+04/\+01/\+2026 
+\end{DoxyDate}

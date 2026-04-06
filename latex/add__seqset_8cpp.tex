@@ -1,0 +1,158 @@
+\doxysection{add\+\_\+seqset.\+cpp File Reference}
+\hypertarget{add__seqset_8cpp}{}\label{add__seqset_8cpp}\index{add\_seqset.cpp@{add\_seqset.cpp}}
+
+
+Adds ZIP code records to the GP 3.\+0 sequence-\/set file (supports insert without split and insert with split).  
+
+
+{\ttfamily \+\#include $<$iostream$>$}\newline
+{\ttfamily \+\#include $<$iomanip$>$}\newline
+{\ttfamily \+\#include $<$string$>$}\newline
+{\ttfamily \+\#include $<$vector$>$}\newline
+{\ttfamily \+\#include $<$fstream$>$}\newline
+{\ttfamily \+\#include $<$sstream$>$}\newline
+{\ttfamily \+\#include $<$algorithm$>$}\newline
+{\ttfamily \+\#include "{}Blocked\+File\+Header.\+h"{}}\newline
+{\ttfamily \+\#include "{}Block\+Buffer.\+h"{}}\newline
+{\ttfamily \+\#include "{}Block\+File\+Buffer.\+h"{}}\newline
+{\ttfamily \+\#include "{}Block\+Index.\+h"{}}\newline
+{\ttfamily \+\#include "{}Zip\+Code\+Record.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \doxymbox{\hyperlink{add__seqset_8cpp_a00c7a953104982a03584cbaff1c7f3c6}{load\+Add\+Records}} (const std::\+string \&filename, std::\+vector$<$ \doxymbox{\hyperlink{struct_zip_code_record}{Zip\+Code\+Record}} $>$ \&records)
+\begin{DoxyCompactList}\small\item\em Forward declarations. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{add__seqset_8cpp_a6b68a624812fa9947d7ea7103b2b8735}{parse\+Add\+Line}} (const std::\+string \&line, \doxymbox{\hyperlink{struct_zip_code_record}{Zip\+Code\+Record}} \&record)
+\begin{DoxyCompactList}\small\item\em Parses a single line from the add records file into a \doxylink{struct_zip_code_record}{Zip\+Code\+Record}. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{add__seqset_8cpp_ad48d65d7f8a54b09b663c9c5926f2fd7}{rebuild\+Block\+Index}} (const std::\+string \&seq\+Filename, const std::\+string \&idx\+Filename)
+\begin{DoxyCompactList}\small\item\em Rebuilds the block index for the sequence-\/set file. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{add__seqset_8cpp_a26f6e34001336d31b8d835feedf37e4e}{add\+One\+Record}} (const \doxymbox{\hyperlink{struct_zip_code_record}{Zip\+Code\+Record}} \&record)
+\begin{DoxyCompactList}\small\item\em Adds a single ZIP code record to the sequence-\/set, handling splits if necessary. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{add__seqset_8cpp_a40ed44cd4d43a996bc49dde52683d763}{print\+Record}} (const \doxymbox{\hyperlink{struct_zip_code_record}{Zip\+Code\+Record}} \&record)
+\begin{DoxyCompactList}\small\item\em Prints the details of a \doxylink{struct_zip_code_record}{Zip\+Code\+Record} to standard output. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{add__seqset_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\begin{DoxyCompactList}\small\item\em Main function that adds ZIP code records to the sequence-\/set file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Adds ZIP code records to the GP 3.\+0 sequence-\/set file (supports insert without split and insert with split). 
+
+\begin{DoxyAuthor}{Author}
+CSCI 331 Team 2 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+04/\+01/\+2026 
+\end{DoxyDate}
+
+
+\label{doc-func-members}
+\Hypertarget{add__seqset_8cpp_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{add__seqset_8cpp_a26f6e34001336d31b8d835feedf37e4e}\index{add\_seqset.cpp@{add\_seqset.cpp}!addOneRecord@{addOneRecord}}
+\index{addOneRecord@{addOneRecord}!add\_seqset.cpp@{add\_seqset.cpp}}
+\doxysubsubsection{\texorpdfstring{addOneRecord()}{addOneRecord()}}
+{\footnotesize\ttfamily \label{add__seqset_8cpp_a26f6e34001336d31b8d835feedf37e4e} 
+bool add\+One\+Record (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_zip_code_record}{Zip\+Code\+Record}} \&}]{record}{}\end{DoxyParamCaption})}
+
+
+
+Adds a single ZIP code record to the sequence-\/set, handling splits if necessary. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em record} & The \doxylink{struct_zip_code_record}{Zip\+Code\+Record} to add. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if addition succeeds, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{add__seqset_8cpp_a00c7a953104982a03584cbaff1c7f3c6}\index{add\_seqset.cpp@{add\_seqset.cpp}!loadAddRecords@{loadAddRecords}}
+\index{loadAddRecords@{loadAddRecords}!add\_seqset.cpp@{add\_seqset.cpp}}
+\doxysubsubsection{\texorpdfstring{loadAddRecords()}{loadAddRecords()}}
+{\footnotesize\ttfamily \label{add__seqset_8cpp_a00c7a953104982a03584cbaff1c7f3c6} 
+bool load\+Add\+Records (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{filename}{, }\item[{std::\+vector$<$ \doxymbox{\hyperlink{struct_zip_code_record}{Zip\+Code\+Record}} $>$ \&}]{records}{}\end{DoxyParamCaption})}
+
+
+
+Forward declarations. 
+
+Loads add records from the input file into a vector of \doxylink{struct_zip_code_record}{Zip\+Code\+Record}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & The name of the input file containing records to add. \\
+\hline
+{\em records} & The vector to store the loaded records. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if loading succeeds, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{add__seqset_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\index{add\_seqset.cpp@{add\_seqset.cpp}!main@{main}}
+\index{main@{main}!add\_seqset.cpp@{add\_seqset.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{add__seqset_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+int main (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Main function that adds ZIP code records to the sequence-\/set file. 
+
+\begin{DoxyReturn}{Returns}
+0 on success, 1 on failure. 
+\end{DoxyReturn}
+\Hypertarget{add__seqset_8cpp_a6b68a624812fa9947d7ea7103b2b8735}\index{add\_seqset.cpp@{add\_seqset.cpp}!parseAddLine@{parseAddLine}}
+\index{parseAddLine@{parseAddLine}!add\_seqset.cpp@{add\_seqset.cpp}}
+\doxysubsubsection{\texorpdfstring{parseAddLine()}{parseAddLine()}}
+{\footnotesize\ttfamily \label{add__seqset_8cpp_a6b68a624812fa9947d7ea7103b2b8735} 
+bool parse\+Add\+Line (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{line}{, }\item[{\doxymbox{\hyperlink{struct_zip_code_record}{Zip\+Code\+Record}} \&}]{record}{}\end{DoxyParamCaption})}
+
+
+
+Parses a single line from the add records file into a \doxylink{struct_zip_code_record}{Zip\+Code\+Record}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em line} & The input line to parse. \\
+\hline
+{\em record} & The \doxylink{struct_zip_code_record}{Zip\+Code\+Record} to populate. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if parsing succeeds, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{add__seqset_8cpp_a40ed44cd4d43a996bc49dde52683d763}\index{add\_seqset.cpp@{add\_seqset.cpp}!printRecord@{printRecord}}
+\index{printRecord@{printRecord}!add\_seqset.cpp@{add\_seqset.cpp}}
+\doxysubsubsection{\texorpdfstring{printRecord()}{printRecord()}}
+{\footnotesize\ttfamily \label{add__seqset_8cpp_a40ed44cd4d43a996bc49dde52683d763} 
+void print\+Record (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_zip_code_record}{Zip\+Code\+Record}} \&}]{record}{}\end{DoxyParamCaption})}
+
+
+
+Prints the details of a \doxylink{struct_zip_code_record}{Zip\+Code\+Record} to standard output. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em record} & The \doxylink{struct_zip_code_record}{Zip\+Code\+Record} to print. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{add__seqset_8cpp_ad48d65d7f8a54b09b663c9c5926f2fd7}\index{add\_seqset.cpp@{add\_seqset.cpp}!rebuildBlockIndex@{rebuildBlockIndex}}
+\index{rebuildBlockIndex@{rebuildBlockIndex}!add\_seqset.cpp@{add\_seqset.cpp}}
+\doxysubsubsection{\texorpdfstring{rebuildBlockIndex()}{rebuildBlockIndex()}}
+{\footnotesize\ttfamily \label{add__seqset_8cpp_ad48d65d7f8a54b09b663c9c5926f2fd7} 
+bool rebuild\+Block\+Index (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{seq\+Filename}{, }\item[{const std::\+string \&}]{idx\+Filename}{}\end{DoxyParamCaption})}
+
+
+
+Rebuilds the block index for the sequence-\/set file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em seq\+Filename} & The sequence-\/set file name. \\
+\hline
+{\em idx\+Filename} & The index file name. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if rebuild succeeds, false otherwise. 
+\end{DoxyReturn}

@@ -17,11 +17,11 @@
 #include "BlockIndex.h"
 #include "ZipCodeRecord.h"
 
-// ── File constants ────────────────────────────────────────────────────────────
+// -- File constants ------------------------------------------------------------
 static const std::string INPUT_SEQ_FILE = "data/us_postal_codes_seqset.txt";
 static const std::string INPUT_IDX_FILE = "data/us_postal_codes_block_idx.txt";
 
-// ── Forward declarations ──────────────────────────────────────────────────────
+// -- Forward declarations ------------------------------------------------------
 std::vector<int> parseZipArgs(int argc, char* argv[]);
 bool searchOneZip(const std::string& seqFilename,
                   const BlockIndex& index,

@@ -1,0 +1,27 @@
+var files_dup =
+[
+    [ "add_seqset.cpp", "add__seqset_8cpp.html", "add__seqset_8cpp" ],
+    [ "BlockBuffer.cpp", "_block_buffer_8cpp.html", null ],
+    [ "BlockBuffer.h", "_block_buffer_8h.html", "_block_buffer_8h" ],
+    [ "BlockedFileHeader.cpp", "_blocked_file_header_8cpp.html", null ],
+    [ "BlockedFileHeader.h", "_blocked_file_header_8h.html", "_blocked_file_header_8h" ],
+    [ "BlockFileBuffer.cpp", "_block_file_buffer_8cpp.html", null ],
+    [ "BlockFileBuffer.h", "_block_file_buffer_8h.html", "_block_file_buffer_8h" ],
+    [ "BlockIndex.cpp", "_block_index_8cpp.html", null ],
+    [ "BlockIndex.h", "_block_index_8h.html", "_block_index_8h" ],
+    [ "build_block_index.cpp", "build__block__index_8cpp.html", null ],
+    [ "build_seqset.cpp", "build__seqset_8cpp.html", null ],
+    [ "DataFileHeader.cpp", "_data_file_header_8cpp.html", null ],
+    [ "DataFileHeader.h", "_data_file_header_8h.html", "_data_file_header_8h" ],
+    [ "delete_seqset.cpp", "delete__seqset_8cpp.html", null ],
+    [ "dump_seqset.cpp", "dump__seqset_8cpp.html", null ],
+    [ "HeaderBuffer.cpp", "_header_buffer_8cpp.html", null ],
+    [ "HeaderBuffer.h", "_header_buffer_8h.html", "_header_buffer_8h" ],
+    [ "LIBuffer.cpp", "_l_i_buffer_8cpp.html", null ],
+    [ "LIBuffer.h", "_l_i_buffer_8h.html", "_l_i_buffer_8h" ],
+    [ "RecordBuffer.cpp", "_record_buffer_8cpp.html", null ],
+    [ "RecordBuffer.h", "_record_buffer_8h.html", "_record_buffer_8h" ],
+    [ "search_seqset.cpp", "search__seqset_8cpp.html", null ],
+    [ "ZipCodeBuffer.cpp", "_zip_code_buffer_8cpp.html", null ],
+    [ "ZipCodeRecord.h", "_zip_code_record_8h.html", "_zip_code_record_8h" ]
+];

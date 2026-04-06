@@ -18,7 +18,7 @@
 #include <cstring>
 #include <cstdint>
 
-// ── Constructor / Destructor ──────────────────────────────────────────────────
+// -- Constructor / Destructor --------------------------------------------------
 
 /**
  * @brief Construct an LIBuffer for the given filename.
@@ -44,7 +44,7 @@ LIBuffer::~LIBuffer()
     close();
 }
 
-// ── File lifecycle ────────────────────────────────────────────────────────────
+// -- File lifecycle ------------------------------------------------------------
 
 /**
  * @brief Open the file for sequential reading.
@@ -99,7 +99,7 @@ void LIBuffer::close()
     writeOpen = false;
 }
 
-// ── Private helpers ───────────────────────────────────────────────────────────
+// -- Private helpers -----------------------------------------------------------
 
 /**
  * @brief Calculate packed byte size of a ZipCodeRecord.
@@ -217,7 +217,7 @@ bool LIBuffer::writeLength(uint16_t length)
     return outStream.good();
 }
 
-// ── Read interface ────────────────────────────────────────────────────────────
+// -- Read interface ------------------------------------------------------------
 
 /**
  * @brief Read and unpack the header record.
@@ -312,7 +312,7 @@ bool LIBuffer::readRecordAt(std::streamoff offset, ZipCodeRecord& record)
     return true;
 }
 
-// ── Write interface ───────────────────────────────────────────────────────────
+// -- Write interface -----------------------------------------------------------
 
 /**
  * @brief Write the header record as the first LI record.
@@ -375,7 +375,7 @@ bool LIBuffer::writeRecord(const ZipCodeRecord& record)
     return true;
 }
 
-// ── Accessors ─────────────────────────────────────────────────────────────────
+// -- Accessors -----------------------------------------------------------------
 
 /**
  * @brief Return the current byte offset of the read stream.

@@ -1,0 +1,61 @@
+\doxysection{Block\+File\+Buffer.\+h}
+\hypertarget{_block_file_buffer_8h_source}{}\label{_block_file_buffer_8h_source}\doxymbox{\hyperlink{_block_file_buffer_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#ifndef\ BLOCKFILEBUFFER\_H}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#define\ BLOCKFILEBUFFER\_H}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#include\ <streambuf>}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_blocked_file_header_8h}{BlockedFileHeader.h}}"{}}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_block_buffer_8h}{BlockBuffer.h}}"{}}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00042\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_block_file_buffer_a69bb4b0cb188ff279b4cace9a2a1ff55}{BlockFileBuffer}}}
+\DoxyCodeLine{00043\ \{}
+\DoxyCodeLine{00044\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keyword}{explicit}\ \doxymbox{\hyperlink{class_block_file_buffer_a69bb4b0cb188ff279b4cace9a2a1ff55}{BlockFileBuffer}}(\textcolor{keyword}{const}\ std::string\&\ filename);}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00054\ \ \ \ \ \doxymbox{\hyperlink{class_block_file_buffer_a39903398df404de0c5bdf2334fcd3684}{\string~BlockFileBuffer}}();}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_block_file_buffer_a658edcf764d9d833082ceac323ced903}{openForRead}}();}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_block_file_buffer_a24e1f1a6ddf758a6f1b063f386dd68a3}{openForWrite}}();}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_block_file_buffer_acaf014073a2afbb156c94496e4f2d63d}{openForUpdate}}();}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_block_file_buffer_a1562ff679c71bb78b202e3bf1421f448}{close}}();}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_block_file_buffer_a332a5ffd10d9d4e06cd94dfcdea8acda}{writeHeader}}(\doxymbox{\hyperlink{class_blocked_file_header}{BlockedFileHeader}}\&\ header);}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_block_file_buffer_a03124c9915e115d1ad1c8f740fbaabbb}{readHeader}}(\doxymbox{\hyperlink{class_blocked_file_header}{BlockedFileHeader}}\&\ header);}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_block_file_buffer_a964b7eccdba05a0c599aca610076a337}{writeBlock}}(\textcolor{keywordtype}{int}\ rbn,\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_block_buffer}{BlockBuffer}}\&\ block);}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_block_file_buffer_a674b41de1e9f66942deb72e40b25f1aa}{readBlock}}(\textcolor{keywordtype}{int}\ rbn,\ \doxymbox{\hyperlink{class_block_buffer}{BlockBuffer}}\&\ block);}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00121\ \ \ \ \ std::streamoff\ \doxymbox{\hyperlink{class_block_file_buffer_ae6bad1b2219be9c17c499c9d629cdc66}{getBlockOffset}}(\textcolor{keywordtype}{int}\ rbn,\ \textcolor{keywordtype}{int}\ blockSize)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00127\ \ \ \ \ std::string\ \doxymbox{\hyperlink{class_block_file_buffer_a14a19c1a2ce45d7b8444407607b86afb}{getFilename}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00133\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_block_file_buffer_ac514ade5e0ee88ec31a02282f7e20b4c}{isReadOpen}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_block_file_buffer_a9ef0be417bf5f1323967eb9e9c11fd13}{isWriteOpen}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00141\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00142\ \ \ \ \ std::string\ filename;\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00143\ \ \ \ \ std::ifstream\ inStream;\ \ \ \ \ \ }
+\DoxyCodeLine{00144\ \ \ \ \ std::fstream\ ioStream;\ \ \ \ \ \ \ }
+\DoxyCodeLine{00145\ \ \ \ \ \textcolor{keywordtype}{bool}\ readOpen;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00146\ \ \ \ \ \textcolor{keywordtype}{bool}\ writeOpen;\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00147\ \ \ \ \ std::streamoff\ headerEndPos;\ }
+\DoxyCodeLine{00148\ }
+\DoxyCodeLine{00155\ \ \ \ \ \textcolor{keywordtype}{bool}\ readLength(std::istream\&\ in,\ uint16\_t\&\ length);}
+\DoxyCodeLine{00156\ }
+\DoxyCodeLine{00163\ \ \ \ \ \textcolor{keywordtype}{bool}\ writeLength(std::ostream\&\ out,\ uint16\_t\ length);}
+\DoxyCodeLine{00164\ \};}
+\DoxyCodeLine{00165\ }
+\DoxyCodeLine{00166\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ BLOCKFILEBUFFER\_H}}
+
+\end{DoxyCode}

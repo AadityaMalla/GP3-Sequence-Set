@@ -1,0 +1,49 @@
+\doxysection{build\+\_\+seqset.\+cpp File Reference}
+\hypertarget{build__seqset_8cpp}{}\label{build__seqset_8cpp}\index{build\_seqset.cpp@{build\_seqset.cpp}}
+
+
+Builds the GP 3.\+0 blocked sequence-\/set file from a GP 2.\+0 LI file.  
+
+
+{\ttfamily \+\#include $<$iostream$>$}\newline
+{\ttfamily \+\#include $<$fstream$>$}\newline
+{\ttfamily \+\#include $<$string$>$}\newline
+{\ttfamily \+\#include $<$vector$>$}\newline
+{\ttfamily \+\#include $<$cstdint$>$}\newline
+{\ttfamily \+\#include "{}Zip\+Code\+Record.\+h"{}}\newline
+{\ttfamily \+\#include "{}Record\+Buffer.\+h"{}}\newline
+{\ttfamily \+\#include "{}Blocked\+File\+Header.\+h"{}}\newline
+{\ttfamily \+\#include "{}Block\+Buffer.\+h"{}}\newline
+{\ttfamily \+\#include "{}Block\+File\+Buffer.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{build__seqset_8cpp_a37ec935307b74f3513635b0f7e68d303}\label{build__seqset_8cpp_a37ec935307b74f3513635b0f7e68d303} 
+\doxymbox{\hyperlink{class_blocked_file_header}{Blocked\+File\+Header}} {\bfseries build\+Blocked\+Header} ()
+\item 
+\Hypertarget{build__seqset_8cpp_a84e510414739a58ab25f8ed001b5ac2c}\label{build__seqset_8cpp_a84e510414739a58ab25f8ed001b5ac2c} 
+bool {\bfseries build\+Sequence\+Set} (const std::\+string \&input\+LI, const std::\+string \&output\+Seq, int block\+Size)
+\item 
+\Hypertarget{build__seqset_8cpp_ac7b47cc53c020468238343d5ff7949ac}\label{build__seqset_8cpp_ac7b47cc53c020468238343d5ff7949ac} 
+bool {\bfseries read\+Next\+LIRecord} (std::\+ifstream \&in, \doxymbox{\hyperlink{class_record_buffer}{Record\+Buffer}} \&record\+Buffer, \doxymbox{\hyperlink{struct_zip_code_record}{Zip\+Code\+Record}} \&record)
+\item 
+\Hypertarget{build__seqset_8cpp_ab51184ec48b85da274d1eaeaece55a11}\label{build__seqset_8cpp_ab51184ec48b85da274d1eaeaece55a11} 
+bool {\bfseries skip\+LIHeader} (std::\+ifstream \&in)
+\item 
+\Hypertarget{build__seqset_8cpp_af9c80855a60939eec6452591c25a6f47}\label{build__seqset_8cpp_af9c80855a60939eec6452591c25a6f47} 
+uint16\+\_\+t {\bfseries read\+Big\+Endian\+Length} (std::\+istream \&in)
+\item 
+\Hypertarget{build__seqset_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{build__seqset_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+int {\bfseries main} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Builds the GP 3.\+0 blocked sequence-\/set file from a GP 2.\+0 LI file. 
+
+\begin{DoxyAuthor}{Author}
+CSCI 331 Team 2 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+04/\+01/\+2026 
+\end{DoxyDate}

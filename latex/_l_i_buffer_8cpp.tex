@@ -1,0 +1,27 @@
+\doxysection{LIBuffer.\+cpp File Reference}
+\hypertarget{_l_i_buffer_8cpp}{}\label{_l_i_buffer_8cpp}\index{LIBuffer.cpp@{LIBuffer.cpp}}
+
+
+Implementation of \doxylink{class_l_i_buffer}{LIBuffer} class.  
+
+
+{\ttfamily \+\#include "{}LIBuffer.\+h"{}}\newline
+{\ttfamily \+\#include $<$iostream$>$}\newline
+{\ttfamily \+\#include $<$sstream$>$}\newline
+{\ttfamily \+\#include $<$iomanip$>$}\newline
+{\ttfamily \+\#include $<$vector$>$}\newline
+{\ttfamily \+\#include $<$string$>$}\newline
+{\ttfamily \+\#include $<$cstring$>$}\newline
+{\ttfamily \+\#include $<$cstdint$>$}\newline
+
+
+\doxysubsection{Detailed Description}
+Implementation of \doxylink{class_l_i_buffer}{LIBuffer} class. 
+
+\begin{DoxyAuthor}{Author}
+CSCI 331 Team 2 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+03/\+13/\+2026
+\end{DoxyDate}
+Every record uses a 2-\/byte big-\/endian uint16\+\_\+t length prefix. Data records are packed as raw binary (ints, doubles, c-\/strings). The header record is delegated to \doxylink{class_header_buffer}{Header\+Buffer}. 

@@ -1,0 +1,41 @@
+\doxysection{Blocked\+File\+Header.\+h File Reference}
+\hypertarget{_blocked_file_header_8h}{}\label{_blocked_file_header_8h}\index{BlockedFileHeader.h@{BlockedFileHeader.h}}
+
+
+Header structure for the GP 3.\+0 blocked sequence-\/set ZIP code file.  
+
+
+{\ttfamily \+\#include $<$string$>$}\newline
+{\ttfamily \+\#include $<$vector$>$}\newline
+{\ttfamily \+\#include $<$iostream$>$}\newline
+{\ttfamily \+\#include $<$iomanip$>$}\newline
+{\ttfamily \+\#include $<$cstring$>$}\newline
+{\ttfamily \+\#include "{}Data\+File\+Header.\+h"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \doxymbox{\hyperlink{class_blocked_file_header}{Blocked\+File\+Header}}
+\begin{DoxyCompactList}\small\item\em Stores metadata for a blocked sequence-\/set file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header structure for the GP 3.\+0 blocked sequence-\/set ZIP code file. 
+
+\begin{DoxyAuthor}{Author}
+CSCI 331 Team 2 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+04/\+01/\+2026
+\end{DoxyDate}
+This class stores file-\/level metadata for the blocked sequence-\/set file. It extends the ideas from the GP 2.\+0 header and adds blocked-\/file fields:\+
+\begin{DoxyItemize}
+\item block size
+\item minimum block capacity
+\item active list head
+\item avail list head
+\item block count
+\item stale flag
+\item index file metadata
+\end{DoxyItemize}
+
+The header is stored as the FIRST length-\/indicated record in the file, just like in Project 2.\+0. 

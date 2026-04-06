@@ -24,9 +24,9 @@
 #include <iostream>
 #include <cstdint>
 
-// ─────────────────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------------------
 // writeHeader
-// ─────────────────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------------------
 
 /**
  * @brief Serialise header and write it as the first LI record.
@@ -44,7 +44,7 @@ bool HeaderBuffer::writeHeader(std::ofstream& out, DataFileHeader& header)
         return false;
     }
 
-    // ── Step 1: calculate packed size and update headerSize field ──────────
+    // -- Step 1: calculate packed size and update headerSize field ----------
     size_t payloadLen = header.getPackedSize();
     header.headerSize = static_cast<int>(payloadLen);   // store for reference
 
@@ -55,17 +55,17 @@ bool HeaderBuffer::writeHeader(std::ofstream& out, DataFileHeader& header)
         return false;
     }
 
-    // ── Step 2: pack into a buffer ─────────────────────────────────────────
+    // -- Step 2: pack into a buffer -----------------------------------------
     char* buffer = new char[payloadLen];
     header.pack(buffer);
 
-    // ── Step 3: write 2-byte big-endian length prefix ─────────────────────
+    // -- Step 3: write 2-byte big-endian length prefix ---------------------
     const uint8_t hi = static_cast<uint8_t>((payloadLen >> 8) & 0xFF);
     const uint8_t lo = static_cast<uint8_t>(payloadLen & 0xFF);
     out.put(static_cast<char>(hi));
     out.put(static_cast<char>(lo));
 
-    // ── Step 4: write payload ─────────────────────────────────────────────
+    // -- Step 4: write payload ---------------------------------------------
     out.write(buffer, static_cast<std::streamsize>(payloadLen));
     delete[] buffer;
 
@@ -78,9 +78,9 @@ bool HeaderBuffer::writeHeader(std::ofstream& out, DataFileHeader& header)
     return true;
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------------------
 // readHeader
-// ─────────────────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------------------
 
 /**
  * @brief Read first LI record and unpack it into a DataFileHeader.
@@ -98,7 +98,7 @@ bool HeaderBuffer::readHeader(std::ifstream& in, DataFileHeader& header)
         return false;
     }
 
-    // ── Step 1: read 2-byte big-endian length prefix ──────────────────────
+    // -- Step 1: read 2-byte big-endian length prefix ----------------------
     uint8_t hi = 0, lo = 0;
     in.get(reinterpret_cast<char&>(hi));
     in.get(reinterpret_cast<char&>(lo));
@@ -111,7 +111,7 @@ bool HeaderBuffer::readHeader(std::ifstream& in, DataFileHeader& header)
 
     const uint16_t payloadLen = static_cast<uint16_t>((hi << 8) | lo);
 
-    // ── Step 2: read payload bytes ────────────────────────────────────────
+    // -- Step 2: read payload bytes ----------------------------------------
     char* buffer = new char[payloadLen];
     in.read(buffer, payloadLen);
 
@@ -122,7 +122,7 @@ bool HeaderBuffer::readHeader(std::ifstream& in, DataFileHeader& header)
         return false;
     }
 
-    // ── Step 3: unpack into header ────────────────────────────────────────
+    // -- Step 3: unpack into header ----------------------------------------
     header.unpack(buffer);
     delete[] buffer;
 

@@ -1,0 +1,395 @@
+\doxysection{Block\+Buffer Class Reference}
+\hypertarget{class_block_buffer}{}\label{class_block_buffer}\index{BlockBuffer@{BlockBuffer}}
+
+
+In-\/memory representation of one physical block.  
+
+
+
+
+{\ttfamily \+\#include $<$Block\+Buffer.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_block_buffer_a3e6a328b8d3f5712da1e0f2912a31ab3}{Block\+Buffer}} (int block\+Size=512)
+\begin{DoxyCompactList}\small\item\em Construct a block with the given fixed block size. \end{DoxyCompactList}\item 
+\Hypertarget{class_block_buffer_a92110343f0f3b405e3f8950f1825f50e}\label{class_block_buffer_a92110343f0f3b405e3f8950f1825f50e} 
+void {\bfseries clear\+To\+Empty\+Active} ()
+\begin{DoxyCompactList}\small\item\em Reset this block to an empty active block. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_block_buffer_ad0623751ff02968a6ab911692e5bf070}{clear\+To\+Avail}} (int next\+Avail\+RBN=-\/1)
+\begin{DoxyCompactList}\small\item\em Reset this block to an avail block. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_block_buffer_af160bd7d7ae05927d16fbf379a4ac5b9}{is\+Avail\+Block}} () const
+\begin{DoxyCompactList}\small\item\em Return true if this block is an avail block. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_block_buffer_a08cb2ab7bbc4211e8e714afe58138b03}{is\+Active\+Block}} () const
+\begin{DoxyCompactList}\small\item\em Return true if this block is an active block. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{class_block_buffer_a52124e97eb3b72fe5ab5fed8c0a4052e}{get\+Block\+Size}} () const
+\begin{DoxyCompactList}\small\item\em Return the fixed physical block size. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{class_block_buffer_a67909ab42a499b88923047fddfca09f1}{get\+Record\+Count}} () const
+\begin{DoxyCompactList}\small\item\em Return the number of records stored in this block. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_block_buffer_af7934e9cd77827d38c1a93ed881b3144}{set\+Prev\+RBN}} (int rbn)
+\begin{DoxyCompactList}\small\item\em Set previous active-\/block RBN. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_block_buffer_af75dce80599ec9edddd61c4e042204a6}{set\+Next\+RBN}} (int rbn)
+\begin{DoxyCompactList}\small\item\em Set next active-\/block RBN. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{class_block_buffer_afe674265768016a54c89726d3eb1bee4}{get\+Prev\+RBN}} () const
+\begin{DoxyCompactList}\small\item\em Get previous active-\/block RBN. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{class_block_buffer_af863212369bf1ed9eacc4bea0e50ae3e}{get\+Next\+RBN}} () const
+\begin{DoxyCompactList}\small\item\em Get next active-\/block RBN. \end{DoxyCompactList}\item 
+size\+\_\+t \doxymbox{\hyperlink{class_block_buffer_a4ea217957a8df61443afdc756485be2c}{get\+Used\+Bytes}} () const
+\begin{DoxyCompactList}\small\item\em Return number of bytes used inside this block. \end{DoxyCompactList}\item 
+size\+\_\+t \doxymbox{\hyperlink{class_block_buffer_adf75d143d98f933253a737d95bd2934f}{get\+Free\+Bytes}} () const
+\begin{DoxyCompactList}\small\item\em Return number of bytes still free in this block. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_block_buffer_a91414d0f597f6f23f5e4e76707cfd8b7}{can\+Fit}} (const \doxymbox{\hyperlink{struct_zip_code_record}{Zip\+Code\+Record}} \&record) const
+\begin{DoxyCompactList}\small\item\em Return true if a record can fit into the block. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_block_buffer_a958a2c9a117133a1cdfdb243fff990b9}{insert\+Record\+Sorted}} (const \doxymbox{\hyperlink{struct_zip_code_record}{Zip\+Code\+Record}} \&record)
+\begin{DoxyCompactList}\small\item\em Insert a record in ZIP-\/sorted order. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_block_buffer_a48439fde5a4113865468380c3f207941}{remove\+Record\+By\+Zip}} (int zip\+Code)
+\begin{DoxyCompactList}\small\item\em Remove a record by ZIP code. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_block_buffer_a92d4461d151006b7f16417ddabae392c}{find\+Record}} (int zip\+Code, \doxymbox{\hyperlink{struct_zip_code_record}{Zip\+Code\+Record}} \&record) const
+\begin{DoxyCompactList}\small\item\em Search for a record by ZIP code. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{class_block_buffer_abf854a9d1f8c66495f5c6794b88521d2}{get\+Highest\+Key}} () const
+\begin{DoxyCompactList}\small\item\em Return the highest ZIP key in the block. \end{DoxyCompactList}\item 
+const std::\+vector$<$ \doxymbox{\hyperlink{struct_zip_code_record}{Zip\+Code\+Record}} $>$ \& \doxymbox{\hyperlink{class_block_buffer_aa703a504b009ad419cba1318a75ef741}{get\+Records}} () const
+\begin{DoxyCompactList}\small\item\em Return all records in this block. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_block_buffer_aea04b2fe2cbd4086f5bfce94e11268af}{pack}} (char \texorpdfstring{$\ast$}{*}buffer) const
+\begin{DoxyCompactList}\small\item\em Pack the full block image into a raw byte buffer. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_block_buffer_a26a70fd3df34bc13fea1fd736e15631d}{unpack}} (const char \texorpdfstring{$\ast$}{*}buffer)
+\begin{DoxyCompactList}\small\item\em Unpack a full block image from a raw byte buffer. \end{DoxyCompactList}\item 
+\Hypertarget{class_block_buffer_af1c6f357a1b6b6beea92480363fd0c5a}\label{class_block_buffer_af1c6f357a1b6b6beea92480363fd0c5a} 
+void {\bfseries display} () const
+\begin{DoxyCompactList}\small\item\em Print block contents for debugging. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+In-\/memory representation of one physical block. 
+
+Responsibilities:\+
+\begin{DoxyItemize}
+\item store active-\/block metadata
+\item store avail-\/block metadata
+\item keep records sorted by ZIP code
+\item pack/\+unpack the full fixed-\/size block image
+\item calculate used/\+free bytes
+\end{DoxyItemize}
+
+NOT responsible for:\+
+\begin{DoxyItemize}
+\item file I/\+O
+\item global sequence-\/set management
+\item index creation 
+\end{DoxyItemize}
+
+\label{doc-constructors}
+\Hypertarget{class_block_buffer_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_block_buffer_a3e6a328b8d3f5712da1e0f2912a31ab3}\index{BlockBuffer@{BlockBuffer}!BlockBuffer@{BlockBuffer}}
+\index{BlockBuffer@{BlockBuffer}!BlockBuffer@{BlockBuffer}}
+\doxysubsubsection{\texorpdfstring{BlockBuffer()}{BlockBuffer()}}
+{\footnotesize\ttfamily \label{class_block_buffer_a3e6a328b8d3f5712da1e0f2912a31ab3} 
+Block\+Buffer::\+\+Block\+Buffer (\begin{DoxyParamCaption}\item[{int}]{block\+Size}{ = {\ttfamily 512}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Construct a block with the given fixed block size. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em block\+Size} & Number of bytes in the physical block. \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{class_block_buffer_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_block_buffer_a91414d0f597f6f23f5e4e76707cfd8b7}\index{BlockBuffer@{BlockBuffer}!canFit@{canFit}}
+\index{canFit@{canFit}!BlockBuffer@{BlockBuffer}}
+\doxysubsubsection{\texorpdfstring{canFit()}{canFit()}}
+{\footnotesize\ttfamily \label{class_block_buffer_a91414d0f597f6f23f5e4e76707cfd8b7} 
+bool Block\+Buffer::\+can\+Fit (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_zip_code_record}{Zip\+Code\+Record}} \&}]{record}{}\end{DoxyParamCaption}) const}
+
+
+
+Return true if a record can fit into the block. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em record} & Record to test. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if there is enough free space. 
+\end{DoxyReturn}
+\Hypertarget{class_block_buffer_ad0623751ff02968a6ab911692e5bf070}\index{BlockBuffer@{BlockBuffer}!clearToAvail@{clearToAvail}}
+\index{clearToAvail@{clearToAvail}!BlockBuffer@{BlockBuffer}}
+\doxysubsubsection{\texorpdfstring{clearToAvail()}{clearToAvail()}}
+{\footnotesize\ttfamily \label{class_block_buffer_ad0623751ff02968a6ab911692e5bf070} 
+void Block\+Buffer::\+clear\+To\+Avail (\begin{DoxyParamCaption}\item[{int}]{next\+Avail\+RBN}{ = {\ttfamily -\/1}}\end{DoxyParamCaption})}
+
+
+
+Reset this block to an avail block. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em next\+Avail\+RBN} & Link to next avail block; -\/1 if none. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_block_buffer_a92d4461d151006b7f16417ddabae392c}\index{BlockBuffer@{BlockBuffer}!findRecord@{findRecord}}
+\index{findRecord@{findRecord}!BlockBuffer@{BlockBuffer}}
+\doxysubsubsection{\texorpdfstring{findRecord()}{findRecord()}}
+{\footnotesize\ttfamily \label{class_block_buffer_a92d4461d151006b7f16417ddabae392c} 
+bool Block\+Buffer::\+find\+Record (\begin{DoxyParamCaption}\item[{int}]{zip\+Code}{, }\item[{\doxymbox{\hyperlink{struct_zip_code_record}{Zip\+Code\+Record}} \&}]{record}{}\end{DoxyParamCaption}) const}
+
+
+
+Search for a record by ZIP code. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em zip\+Code} & ZIP code to find. \\
+\hline
+{\em record} & Output record if found. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if found; false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_block_buffer_a52124e97eb3b72fe5ab5fed8c0a4052e}\index{BlockBuffer@{BlockBuffer}!getBlockSize@{getBlockSize}}
+\index{getBlockSize@{getBlockSize}!BlockBuffer@{BlockBuffer}}
+\doxysubsubsection{\texorpdfstring{getBlockSize()}{getBlockSize()}}
+{\footnotesize\ttfamily \label{class_block_buffer_a52124e97eb3b72fe5ab5fed8c0a4052e} 
+int Block\+Buffer::\+get\+Block\+Size (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return the fixed physical block size. 
+
+\begin{DoxyReturn}{Returns}
+Block size in bytes. 
+\end{DoxyReturn}
+\Hypertarget{class_block_buffer_adf75d143d98f933253a737d95bd2934f}\index{BlockBuffer@{BlockBuffer}!getFreeBytes@{getFreeBytes}}
+\index{getFreeBytes@{getFreeBytes}!BlockBuffer@{BlockBuffer}}
+\doxysubsubsection{\texorpdfstring{getFreeBytes()}{getFreeBytes()}}
+{\footnotesize\ttfamily \label{class_block_buffer_adf75d143d98f933253a737d95bd2934f} 
+size\+\_\+t Block\+Buffer::\+get\+Free\+Bytes (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return number of bytes still free in this block. 
+
+\begin{DoxyReturn}{Returns}
+Free byte count. 
+\end{DoxyReturn}
+\Hypertarget{class_block_buffer_abf854a9d1f8c66495f5c6794b88521d2}\index{BlockBuffer@{BlockBuffer}!getHighestKey@{getHighestKey}}
+\index{getHighestKey@{getHighestKey}!BlockBuffer@{BlockBuffer}}
+\doxysubsubsection{\texorpdfstring{getHighestKey()}{getHighestKey()}}
+{\footnotesize\ttfamily \label{class_block_buffer_abf854a9d1f8c66495f5c6794b88521d2} 
+int Block\+Buffer::\+get\+Highest\+Key (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return the highest ZIP key in the block. 
+
+\begin{DoxyReturn}{Returns}
+Highest ZIP code, or -\/1 if no active records. 
+\end{DoxyReturn}
+\Hypertarget{class_block_buffer_af863212369bf1ed9eacc4bea0e50ae3e}\index{BlockBuffer@{BlockBuffer}!getNextRBN@{getNextRBN}}
+\index{getNextRBN@{getNextRBN}!BlockBuffer@{BlockBuffer}}
+\doxysubsubsection{\texorpdfstring{getNextRBN()}{getNextRBN()}}
+{\footnotesize\ttfamily \label{class_block_buffer_af863212369bf1ed9eacc4bea0e50ae3e} 
+int Block\+Buffer::\+get\+Next\+RBN (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Get next active-\/block RBN. 
+
+\begin{DoxyReturn}{Returns}
+Next RBN. 
+\end{DoxyReturn}
+\Hypertarget{class_block_buffer_afe674265768016a54c89726d3eb1bee4}\index{BlockBuffer@{BlockBuffer}!getPrevRBN@{getPrevRBN}}
+\index{getPrevRBN@{getPrevRBN}!BlockBuffer@{BlockBuffer}}
+\doxysubsubsection{\texorpdfstring{getPrevRBN()}{getPrevRBN()}}
+{\footnotesize\ttfamily \label{class_block_buffer_afe674265768016a54c89726d3eb1bee4} 
+int Block\+Buffer::\+get\+Prev\+RBN (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Get previous active-\/block RBN. 
+
+\begin{DoxyReturn}{Returns}
+Previous RBN. 
+\end{DoxyReturn}
+\Hypertarget{class_block_buffer_a67909ab42a499b88923047fddfca09f1}\index{BlockBuffer@{BlockBuffer}!getRecordCount@{getRecordCount}}
+\index{getRecordCount@{getRecordCount}!BlockBuffer@{BlockBuffer}}
+\doxysubsubsection{\texorpdfstring{getRecordCount()}{getRecordCount()}}
+{\footnotesize\ttfamily \label{class_block_buffer_a67909ab42a499b88923047fddfca09f1} 
+int Block\+Buffer::\+get\+Record\+Count (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return the number of records stored in this block. 
+
+\begin{DoxyReturn}{Returns}
+Number of active records. 
+\end{DoxyReturn}
+\Hypertarget{class_block_buffer_aa703a504b009ad419cba1318a75ef741}\index{BlockBuffer@{BlockBuffer}!getRecords@{getRecords}}
+\index{getRecords@{getRecords}!BlockBuffer@{BlockBuffer}}
+\doxysubsubsection{\texorpdfstring{getRecords()}{getRecords()}}
+{\footnotesize\ttfamily \label{class_block_buffer_aa703a504b009ad419cba1318a75ef741} 
+const std::\+vector$<$ \doxymbox{\hyperlink{struct_zip_code_record}{Zip\+Code\+Record}} $>$ \& Block\+Buffer::\+get\+Records (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return all records in this block. 
+
+\begin{DoxyReturn}{Returns}
+Const reference to sorted record vector. 
+\end{DoxyReturn}
+\Hypertarget{class_block_buffer_a4ea217957a8df61443afdc756485be2c}\index{BlockBuffer@{BlockBuffer}!getUsedBytes@{getUsedBytes}}
+\index{getUsedBytes@{getUsedBytes}!BlockBuffer@{BlockBuffer}}
+\doxysubsubsection{\texorpdfstring{getUsedBytes()}{getUsedBytes()}}
+{\footnotesize\ttfamily \label{class_block_buffer_a4ea217957a8df61443afdc756485be2c} 
+size\+\_\+t Block\+Buffer::\+get\+Used\+Bytes (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return number of bytes used inside this block. 
+
+\begin{DoxyReturn}{Returns}
+Used byte count. 
+\end{DoxyReturn}
+\Hypertarget{class_block_buffer_a958a2c9a117133a1cdfdb243fff990b9}\index{BlockBuffer@{BlockBuffer}!insertRecordSorted@{insertRecordSorted}}
+\index{insertRecordSorted@{insertRecordSorted}!BlockBuffer@{BlockBuffer}}
+\doxysubsubsection{\texorpdfstring{insertRecordSorted()}{insertRecordSorted()}}
+{\footnotesize\ttfamily \label{class_block_buffer_a958a2c9a117133a1cdfdb243fff990b9} 
+bool Block\+Buffer::\+insert\+Record\+Sorted (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_zip_code_record}{Zip\+Code\+Record}} \&}]{record}{}\end{DoxyParamCaption})}
+
+
+
+Insert a record in ZIP-\/sorted order. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em record} & Record to insert. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if inserted; false if duplicate ZIP or insufficient space. 
+\end{DoxyReturn}
+\Hypertarget{class_block_buffer_a08cb2ab7bbc4211e8e714afe58138b03}\index{BlockBuffer@{BlockBuffer}!isActiveBlock@{isActiveBlock}}
+\index{isActiveBlock@{isActiveBlock}!BlockBuffer@{BlockBuffer}}
+\doxysubsubsection{\texorpdfstring{isActiveBlock()}{isActiveBlock()}}
+{\footnotesize\ttfamily \label{class_block_buffer_a08cb2ab7bbc4211e8e714afe58138b03} 
+bool Block\+Buffer::\+is\+Active\+Block (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return true if this block is an active block. 
+
+\begin{DoxyReturn}{Returns}
+true if record\+Count \texorpdfstring{$>$}{>} 0. 
+\end{DoxyReturn}
+\Hypertarget{class_block_buffer_af160bd7d7ae05927d16fbf379a4ac5b9}\index{BlockBuffer@{BlockBuffer}!isAvailBlock@{isAvailBlock}}
+\index{isAvailBlock@{isAvailBlock}!BlockBuffer@{BlockBuffer}}
+\doxysubsubsection{\texorpdfstring{isAvailBlock()}{isAvailBlock()}}
+{\footnotesize\ttfamily \label{class_block_buffer_af160bd7d7ae05927d16fbf379a4ac5b9} 
+bool Block\+Buffer::\+is\+Avail\+Block (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return true if this block is an avail block. 
+
+\begin{DoxyReturn}{Returns}
+true if record\+Count == 0. 
+\end{DoxyReturn}
+\Hypertarget{class_block_buffer_aea04b2fe2cbd4086f5bfce94e11268af}\index{BlockBuffer@{BlockBuffer}!pack@{pack}}
+\index{pack@{pack}!BlockBuffer@{BlockBuffer}}
+\doxysubsubsection{\texorpdfstring{pack()}{pack()}}
+{\footnotesize\ttfamily \label{class_block_buffer_aea04b2fe2cbd4086f5bfce94e11268af} 
+bool Block\+Buffer::\+pack (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{buffer}{}\end{DoxyParamCaption}) const}
+
+
+
+Pack the full block image into a raw byte buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & Caller-\/allocated buffer of exactly block\+Size bytes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success; false if packed data exceeds block size. 
+\end{DoxyReturn}
+\Hypertarget{class_block_buffer_a48439fde5a4113865468380c3f207941}\index{BlockBuffer@{BlockBuffer}!removeRecordByZip@{removeRecordByZip}}
+\index{removeRecordByZip@{removeRecordByZip}!BlockBuffer@{BlockBuffer}}
+\doxysubsubsection{\texorpdfstring{removeRecordByZip()}{removeRecordByZip()}}
+{\footnotesize\ttfamily \label{class_block_buffer_a48439fde5a4113865468380c3f207941} 
+bool Block\+Buffer::\+remove\+Record\+By\+Zip (\begin{DoxyParamCaption}\item[{int}]{zip\+Code}{}\end{DoxyParamCaption})}
+
+
+
+Remove a record by ZIP code. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em zip\+Code} & ZIP code to remove. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if removed; false if not found. 
+\end{DoxyReturn}
+\Hypertarget{class_block_buffer_af75dce80599ec9edddd61c4e042204a6}\index{BlockBuffer@{BlockBuffer}!setNextRBN@{setNextRBN}}
+\index{setNextRBN@{setNextRBN}!BlockBuffer@{BlockBuffer}}
+\doxysubsubsection{\texorpdfstring{setNextRBN()}{setNextRBN()}}
+{\footnotesize\ttfamily \label{class_block_buffer_af75dce80599ec9edddd61c4e042204a6} 
+void Block\+Buffer::\+set\+Next\+RBN (\begin{DoxyParamCaption}\item[{int}]{rbn}{}\end{DoxyParamCaption})}
+
+
+
+Set next active-\/block RBN. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rbn} & Next active block number. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_block_buffer_af7934e9cd77827d38c1a93ed881b3144}\index{BlockBuffer@{BlockBuffer}!setPrevRBN@{setPrevRBN}}
+\index{setPrevRBN@{setPrevRBN}!BlockBuffer@{BlockBuffer}}
+\doxysubsubsection{\texorpdfstring{setPrevRBN()}{setPrevRBN()}}
+{\footnotesize\ttfamily \label{class_block_buffer_af7934e9cd77827d38c1a93ed881b3144} 
+void Block\+Buffer::\+set\+Prev\+RBN (\begin{DoxyParamCaption}\item[{int}]{rbn}{}\end{DoxyParamCaption})}
+
+
+
+Set previous active-\/block RBN. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rbn} & Previous active block number. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_block_buffer_a26a70fd3df34bc13fea1fd736e15631d}\index{BlockBuffer@{BlockBuffer}!unpack@{unpack}}
+\index{unpack@{unpack}!BlockBuffer@{BlockBuffer}}
+\doxysubsubsection{\texorpdfstring{unpack()}{unpack()}}
+{\footnotesize\ttfamily \label{class_block_buffer_a26a70fd3df34bc13fea1fd736e15631d} 
+bool Block\+Buffer::\+unpack (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{buffer}{}\end{DoxyParamCaption})}
+
+
+
+Unpack a full block image from a raw byte buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & Input buffer of exactly block\+Size bytes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success; false on malformed input. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{_block_buffer_8h}{Block\+Buffer.\+h}}\item 
+\doxymbox{\hyperlink{_block_buffer_8cpp}{Block\+Buffer.\+cpp}}\end{DoxyCompactItemize}

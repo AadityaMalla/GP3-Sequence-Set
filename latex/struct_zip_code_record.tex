@@ -1,0 +1,170 @@
+\doxysection{Zip\+Code\+Record Struct Reference}
+\hypertarget{struct_zip_code_record}{}\label{struct_zip_code_record}\index{ZipCodeRecord@{ZipCodeRecord}}
+
+
+Structure to hold information for a single ZIP code This structure contains all fields from the US Postal Code database:\+  
+
+
+
+
+{\ttfamily \+\#include $<$Zip\+Code\+Record.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{struct_zip_code_record_a945cbd69ab4bd148868e31aa2b807cc4}{Zip\+Code\+Record}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{struct_zip_code_record_acad0813711cbde6db1650eadd46ecf6b}{Zip\+Code\+Record}} (int zip, const std::\+string \&place, const std::\+string \&st, const std::\+string \&cnty, double lat, double lon)
+\begin{DoxyCompactList}\small\item\em Parameterized constructor. \end{DoxyCompactList}\item 
+size\+\_\+t \doxymbox{\hyperlink{struct_zip_code_record_a8b09a598d4edcdf9ee4507663dc10916}{get\+Packed\+Size}} () const
+\begin{DoxyCompactList}\small\item\em Calculate the packed size of this record. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{struct_zip_code_record_a80483bc8f77525376182ca49d3e64b61}{display}} () const
+\begin{DoxyCompactList}\small\item\em Display record information. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{struct_zip_code_record_aadc350a0b7ea152ed580378a934b7e04}{display\+Inline}} () const
+\begin{DoxyCompactList}\small\item\em Display record in a single line. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{struct_zip_code_record_a2f84c7640278f702a9ae47350e5f05d7}\label{struct_zip_code_record_a2f84c7640278f702a9ae47350e5f05d7} 
+int {\bfseries zip\+Code}
+\item 
+\Hypertarget{struct_zip_code_record_a3990aec69ba79de839575d3669047e59}\label{struct_zip_code_record_a3990aec69ba79de839575d3669047e59} 
+std::\+string {\bfseries place\+Name}
+\item 
+\Hypertarget{struct_zip_code_record_a831a44c6a908084952075b912f293963}\label{struct_zip_code_record_a831a44c6a908084952075b912f293963} 
+std::\+string {\bfseries state}
+\item 
+\Hypertarget{struct_zip_code_record_a5f38f658c9f850fd6efd7d5c7c660d2d}\label{struct_zip_code_record_a5f38f658c9f850fd6efd7d5c7c660d2d} 
+std::\+string {\bfseries county}
+\item 
+\Hypertarget{struct_zip_code_record_a69f7ed91c7dc4c496deb5450a556f2f5}\label{struct_zip_code_record_a69f7ed91c7dc4c496deb5450a556f2f5} 
+double {\bfseries latitude}
+\item 
+\Hypertarget{struct_zip_code_record_a627c754e94e5629ec977067edb056de1}\label{struct_zip_code_record_a627c754e94e5629ec977067edb056de1} 
+double {\bfseries longitude}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Structure to hold information for a single ZIP code This structure contains all fields from the US Postal Code database:\+ 
+
+
+\begin{DoxyItemize}
+\item ZIP code (5-\/digit postal code)
+\item Place name (city/\+town name)
+\item State (2-\/character state abbreviation)
+\item County name
+\item Geographic coordinates (latitude and longitude) Longitude values are negative for locations west of the Prime Meridian, and latitude values are positive for locations north of the Equator. \begin{DoxyPrecond}{Precondition}
+All fields must be properly initialized before use 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Instances of \doxylink{struct_zip_code_record}{Zip\+Code\+Record} can be used to store and retrieve ZIP code information 
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+This structure serves as the fundamental data unit for managing and processing ZIP code information in our application. 
+\end{DoxyNote}
+
+\end{DoxyItemize}
+
+\label{doc-constructors}
+\Hypertarget{struct_zip_code_record_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{struct_zip_code_record_a945cbd69ab4bd148868e31aa2b807cc4}\index{ZipCodeRecord@{ZipCodeRecord}!ZipCodeRecord@{ZipCodeRecord}}
+\index{ZipCodeRecord@{ZipCodeRecord}!ZipCodeRecord@{ZipCodeRecord}}
+\doxysubsubsection{\texorpdfstring{ZipCodeRecord()}{ZipCodeRecord()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{struct_zip_code_record_a945cbd69ab4bd148868e31aa2b807cc4} 
+Zip\+Code\+Record::\+\+Zip\+Code\+Record (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Default constructor. 
+
+\begin{DoxyPrecond}{Precondition}
+None 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+All fields are initialized to default values 
+\end{DoxyPostcond}
+\Hypertarget{struct_zip_code_record_acad0813711cbde6db1650eadd46ecf6b}\index{ZipCodeRecord@{ZipCodeRecord}!ZipCodeRecord@{ZipCodeRecord}}
+\index{ZipCodeRecord@{ZipCodeRecord}!ZipCodeRecord@{ZipCodeRecord}}
+\doxysubsubsection{\texorpdfstring{ZipCodeRecord()}{ZipCodeRecord()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{struct_zip_code_record_acad0813711cbde6db1650eadd46ecf6b} 
+Zip\+Code\+Record::\+\+Zip\+Code\+Record (\begin{DoxyParamCaption}\item[{int}]{zip}{, }\item[{const std::\+string \&}]{place}{, }\item[{const std::\+string \&}]{st}{, }\item[{const std::\+string \&}]{cnty}{, }\item[{double}]{lat}{, }\item[{double}]{lon}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Parameterized constructor. 
+
+\begin{DoxyPrecond}{Precondition}
+None 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+All fields are initialized to the provided values 
+\end{DoxyPostcond}
+
+
+\label{doc-func-members}
+\Hypertarget{struct_zip_code_record_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{struct_zip_code_record_a80483bc8f77525376182ca49d3e64b61}\index{ZipCodeRecord@{ZipCodeRecord}!display@{display}}
+\index{display@{display}!ZipCodeRecord@{ZipCodeRecord}}
+\doxysubsubsection{\texorpdfstring{display()}{display()}}
+{\footnotesize\ttfamily \label{struct_zip_code_record_a80483bc8f77525376182ca49d3e64b61} 
+void Zip\+Code\+Record::\+display (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Display record information. 
+
+\begin{DoxyPrecond}{Precondition}
+None 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Record information is printed to the console in a readable format 
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+This method is useful for debugging and verifying the contents of a \doxylink{struct_zip_code_record}{Zip\+Code\+Record} instance. 
+\end{DoxyNote}
+\Hypertarget{struct_zip_code_record_aadc350a0b7ea152ed580378a934b7e04}\index{ZipCodeRecord@{ZipCodeRecord}!displayInline@{displayInline}}
+\index{displayInline@{displayInline}!ZipCodeRecord@{ZipCodeRecord}}
+\doxysubsubsection{\texorpdfstring{displayInline()}{displayInline()}}
+{\footnotesize\ttfamily \label{struct_zip_code_record_aadc350a0b7ea152ed580378a934b7e04} 
+void Zip\+Code\+Record::\+display\+Inline (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Display record in a single line. 
+
+\begin{DoxyPrecond}{Precondition}
+None 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Record information is printed to the console in a single line format 
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+This method is useful for displaying multiple records in a compact format, such as in a list or table. 
+\end{DoxyNote}
+\Hypertarget{struct_zip_code_record_a8b09a598d4edcdf9ee4507663dc10916}\index{ZipCodeRecord@{ZipCodeRecord}!getPackedSize@{getPackedSize}}
+\index{getPackedSize@{getPackedSize}!ZipCodeRecord@{ZipCodeRecord}}
+\doxysubsubsection{\texorpdfstring{getPackedSize()}{getPackedSize()}}
+{\footnotesize\ttfamily \label{struct_zip_code_record_a8b09a598d4edcdf9ee4507663dc10916} 
+size\+\_\+t Zip\+Code\+Record::\+get\+Packed\+Size (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Calculate the packed size of this record. 
+
+\begin{DoxyPrecond}{Precondition}
+None 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Returns the size in bytes when this record is packed for length-\/indicated format 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+Size in bytes when packed for length-\/indicated format 
+\end{DoxyReturn}
+
+
+The documentation for this struct was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{_zip_code_record_8h}{Zip\+Code\+Record.\+h}}\end{DoxyCompactItemize}

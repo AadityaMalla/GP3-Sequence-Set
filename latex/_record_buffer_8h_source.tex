@@ -1,0 +1,40 @@
+\doxysection{Record\+Buffer.\+h}
+\hypertarget{_record_buffer_8h_source}{}\label{_record_buffer_8h_source}\doxymbox{\hyperlink{_record_buffer_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#ifndef\ RECORDBUFFER\_H}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#define\ RECORDBUFFER\_H}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ <cstddef>}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_zip_code_record_8h}{ZipCodeRecord.h}}"{}}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00046\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_record_buffer_a64cfa530f15f196b94fc98d9f59a463c}{RecordBuffer}}}
+\DoxyCodeLine{00047\ \{}
+\DoxyCodeLine{00048\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00052\ \ \ \ \ \doxymbox{\hyperlink{class_record_buffer_a64cfa530f15f196b94fc98d9f59a463c}{RecordBuffer}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00057\ \ \ \ \ \doxymbox{\hyperlink{class_record_buffer_a891739ff4e5c80995ca43d48d3c906e4}{\string~RecordBuffer}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00064\ \ \ \ \ std::string\ \doxymbox{\hyperlink{class_record_buffer_ae187f2fc9c74924e2d2a698f2df77b92}{buildPayload}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_zip_code_record}{ZipCodeRecord}}\&\ record)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \doxymbox{\hyperlink{class_record_buffer_a35c286c2b3f40a2235ade426d89a8608}{getPackedSize}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_zip_code_record}{ZipCodeRecord}}\&\ record)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \doxymbox{\hyperlink{class_record_buffer_ac262baa3cff7965ab60c2bf1f8a5484d}{pack}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_zip_code_record}{ZipCodeRecord}}\&\ record,\ \textcolor{keywordtype}{char}*\ buffer)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \doxymbox{\hyperlink{class_record_buffer_a5e19a17913fafac71bb8a864b5299b72}{unpack}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ buffer,\ \doxymbox{\hyperlink{struct_zip_code_record}{ZipCodeRecord}}\&\ record)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00101\ \ \ \ \ uint16\_t\ \doxymbox{\hyperlink{class_record_buffer_adad44aa88564eb4aadb5ebdb82a1e954}{readLength}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ buffer)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_record_buffer_a47f0d06705ae2bc9737242c8d975bee9}{writeLength}}(uint16\_t\ length,\ \textcolor{keywordtype}{char}*\ buffer)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keywordtype}{bool}\ parsePayload(\textcolor{keyword}{const}\ std::string\&\ payload,\ \doxymbox{\hyperlink{struct_zip_code_record}{ZipCodeRecord}}\&\ record)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00118\ \};}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ RECORDBUFFER\_H}}
+
+\end{DoxyCode}

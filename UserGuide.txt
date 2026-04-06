@@ -26,7 +26,6 @@ Command: ./add_seqset
 delete_seqset
 Deletes records from the sequence-set file (supports redistribution).
 Command: ./delete_seqset
+
 Notes: - The system maintains sorted order of ZIP codes. - Block index is rebuilt after insert/delete
 operations. - Splitting is supported during insertion. - Redistribution is supported during deletion. Merge logic is partially implemented.
-
-

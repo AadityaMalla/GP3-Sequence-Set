@@ -1,0 +1,184 @@
+\doxysection{Record\+Buffer Class Reference}
+\hypertarget{class_record_buffer}{}\label{class_record_buffer}\index{RecordBuffer@{RecordBuffer}}
+
+
+Converts \doxylink{struct_zip_code_record}{Zip\+Code\+Record} objects to/\+from raw bytes for block storage.  
+
+
+
+
+{\ttfamily \+\#include $<$Record\+Buffer.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_record_buffer_a64cfa530f15f196b94fc98d9f59a463c}\label{class_record_buffer_a64cfa530f15f196b94fc98d9f59a463c} 
+{\bfseries Record\+Buffer} ()=default
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\Hypertarget{class_record_buffer_a891739ff4e5c80995ca43d48d3c906e4}\label{class_record_buffer_a891739ff4e5c80995ca43d48d3c906e4} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Record\+Buffer} ()=default
+\begin{DoxyCompactList}\small\item\em Default destructor. \end{DoxyCompactList}\item 
+std::\+string \doxymbox{\hyperlink{class_record_buffer_ae187f2fc9c74924e2d2a698f2df77b92}{build\+Payload}} (const \doxymbox{\hyperlink{struct_zip_code_record}{Zip\+Code\+Record}} \&record) const
+\begin{DoxyCompactList}\small\item\em Build the ASCII payload for a record. \end{DoxyCompactList}\item 
+size\+\_\+t \doxymbox{\hyperlink{class_record_buffer_a35c286c2b3f40a2235ade426d89a8608}{get\+Packed\+Size}} (const \doxymbox{\hyperlink{struct_zip_code_record}{Zip\+Code\+Record}} \&record) const
+\begin{DoxyCompactList}\small\item\em Return the number of bytes needed to store this record, including the 2-\/byte length prefix. \end{DoxyCompactList}\item 
+size\+\_\+t \doxymbox{\hyperlink{class_record_buffer_ac262baa3cff7965ab60c2bf1f8a5484d}{pack}} (const \doxymbox{\hyperlink{struct_zip_code_record}{Zip\+Code\+Record}} \&record, char \texorpdfstring{$\ast$}{*}buffer) const
+\begin{DoxyCompactList}\small\item\em Pack a record into a raw byte buffer. \end{DoxyCompactList}\item 
+size\+\_\+t \doxymbox{\hyperlink{class_record_buffer_a5e19a17913fafac71bb8a864b5299b72}{unpack}} (const char \texorpdfstring{$\ast$}{*}buffer, \doxymbox{\hyperlink{struct_zip_code_record}{Zip\+Code\+Record}} \&record) const
+\begin{DoxyCompactList}\small\item\em Unpack a record from a raw byte buffer. \end{DoxyCompactList}\item 
+uint16\+\_\+t \doxymbox{\hyperlink{class_record_buffer_adad44aa88564eb4aadb5ebdb82a1e954}{read\+Length}} (const char \texorpdfstring{$\ast$}{*}buffer) const
+\begin{DoxyCompactList}\small\item\em Read only the payload length from a packed record. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_record_buffer_a47f0d06705ae2bc9737242c8d975bee9}{write\+Length}} (uint16\+\_\+t length, char \texorpdfstring{$\ast$}{*}buffer) const
+\begin{DoxyCompactList}\small\item\em Write a 2-\/byte big-\/endian length prefix. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Converts \doxylink{struct_zip_code_record}{Zip\+Code\+Record} objects to/\+from raw bytes for block storage. 
+
+Responsibilities:\+
+\begin{DoxyItemize}
+\item compute packed size of one record
+\item pack one record into a caller-\/provided buffer
+\item unpack one record from a raw buffer
+\item encode/\+decode the 2-\/byte big-\/endian length prefix
+\end{DoxyItemize}
+
+NOT responsible for:\+
+\begin{DoxyItemize}
+\item file I/\+O
+\item whole-\/block management
+\item indexing 
+\end{DoxyItemize}
+
+\label{doc-func-members}
+\Hypertarget{class_record_buffer_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_record_buffer_ae187f2fc9c74924e2d2a698f2df77b92}\index{RecordBuffer@{RecordBuffer}!buildPayload@{buildPayload}}
+\index{buildPayload@{buildPayload}!RecordBuffer@{RecordBuffer}}
+\doxysubsubsection{\texorpdfstring{buildPayload()}{buildPayload()}}
+{\footnotesize\ttfamily \label{class_record_buffer_ae187f2fc9c74924e2d2a698f2df77b92} 
+std::\+string Record\+Buffer::\+build\+Payload (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_zip_code_record}{Zip\+Code\+Record}} \&}]{record}{}\end{DoxyParamCaption}) const}
+
+
+
+Build the ASCII payload for a record. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em record} & Input ZIP code record. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Comma-\/separated ASCII payload string. 
+\end{DoxyReturn}
+\Hypertarget{class_record_buffer_a35c286c2b3f40a2235ade426d89a8608}\index{RecordBuffer@{RecordBuffer}!getPackedSize@{getPackedSize}}
+\index{getPackedSize@{getPackedSize}!RecordBuffer@{RecordBuffer}}
+\doxysubsubsection{\texorpdfstring{getPackedSize()}{getPackedSize()}}
+{\footnotesize\ttfamily \label{class_record_buffer_a35c286c2b3f40a2235ade426d89a8608} 
+size\+\_\+t Record\+Buffer::\+get\+Packed\+Size (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_zip_code_record}{Zip\+Code\+Record}} \&}]{record}{}\end{DoxyParamCaption}) const}
+
+
+
+Return the number of bytes needed to store this record, including the 2-\/byte length prefix. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em record} & Input ZIP code record. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Total packed byte count. 
+\end{DoxyReturn}
+\Hypertarget{class_record_buffer_ac262baa3cff7965ab60c2bf1f8a5484d}\index{RecordBuffer@{RecordBuffer}!pack@{pack}}
+\index{pack@{pack}!RecordBuffer@{RecordBuffer}}
+\doxysubsubsection{\texorpdfstring{pack()}{pack()}}
+{\footnotesize\ttfamily \label{class_record_buffer_ac262baa3cff7965ab60c2bf1f8a5484d} 
+size\+\_\+t Record\+Buffer::\+pack (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_zip_code_record}{Zip\+Code\+Record}} \&}]{record}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{buffer}{}\end{DoxyParamCaption}) const}
+
+
+
+Pack a record into a raw byte buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em record} & Input ZIP code record. \\
+\hline
+{\em buffer} & Caller-\/allocated output buffer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of bytes written.
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+buffer must have at least get\+Packed\+Size(record) bytes. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+buffer contains \+[2-\/byte len]\+\+[ASCII payload]\+. 
+\end{DoxyPostcond}
+\Hypertarget{class_record_buffer_adad44aa88564eb4aadb5ebdb82a1e954}\index{RecordBuffer@{RecordBuffer}!readLength@{readLength}}
+\index{readLength@{readLength}!RecordBuffer@{RecordBuffer}}
+\doxysubsubsection{\texorpdfstring{readLength()}{readLength()}}
+{\footnotesize\ttfamily \label{class_record_buffer_adad44aa88564eb4aadb5ebdb82a1e954} 
+uint16\+\_\+t Record\+Buffer::\+read\+Length (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{buffer}{}\end{DoxyParamCaption}) const}
+
+
+
+Read only the payload length from a packed record. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & Input raw bytes beginning at a length prefix. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Payload length in bytes. 
+\end{DoxyReturn}
+\Hypertarget{class_record_buffer_a5e19a17913fafac71bb8a864b5299b72}\index{RecordBuffer@{RecordBuffer}!unpack@{unpack}}
+\index{unpack@{unpack}!RecordBuffer@{RecordBuffer}}
+\doxysubsubsection{\texorpdfstring{unpack()}{unpack()}}
+{\footnotesize\ttfamily \label{class_record_buffer_a5e19a17913fafac71bb8a864b5299b72} 
+size\+\_\+t Record\+Buffer::\+unpack (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{buffer}{, }\item[{\doxymbox{\hyperlink{struct_zip_code_record}{Zip\+Code\+Record}} \&}]{record}{}\end{DoxyParamCaption}) const}
+
+
+
+Unpack a record from a raw byte buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & Input raw bytes beginning at a length prefix. \\
+\hline
+{\em record} & Output record. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of bytes consumed, or 0 on error.
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+buffer points to a valid packed record. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+record populated if return value \texorpdfstring{$>$}{>} 0. 
+\end{DoxyPostcond}
+\Hypertarget{class_record_buffer_a47f0d06705ae2bc9737242c8d975bee9}\index{RecordBuffer@{RecordBuffer}!writeLength@{writeLength}}
+\index{writeLength@{writeLength}!RecordBuffer@{RecordBuffer}}
+\doxysubsubsection{\texorpdfstring{writeLength()}{writeLength()}}
+{\footnotesize\ttfamily \label{class_record_buffer_a47f0d06705ae2bc9737242c8d975bee9} 
+void Record\+Buffer::\+write\+Length (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{length}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{buffer}{}\end{DoxyParamCaption}) const}
+
+
+
+Write a 2-\/byte big-\/endian length prefix. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em length} & Payload length. \\
+\hline
+{\em buffer} & Output buffer with space for at least 2 bytes. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{_record_buffer_8h}{Record\+Buffer.\+h}}\item 
+\doxymbox{\hyperlink{_record_buffer_8cpp}{Record\+Buffer.\+cpp}}\end{DoxyCompactItemize}

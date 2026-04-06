@@ -65,7 +65,7 @@
 class LIBuffer
 {
 public:
-    // ── Construction / Destruction ────────────────────────────────────────
+    // -- Construction / Destruction ----------------------------------------
 
     /**
      * @brief Construct an LIBuffer associated with a filename.
@@ -82,7 +82,7 @@ public:
      */
     ~LIBuffer();
 
-    // ── File lifecycle ────────────────────────────────────────────────────
+    // -- File lifecycle ----------------------------------------------------
 
     /**
      * @brief Open the file for sequential reading.
@@ -108,7 +108,7 @@ public:
      */
     void close();
 
-    // ── Read interface ────────────────────────────────────────────────────
+    // -- Read interface ----------------------------------------------------
 
     /**
      * @brief Read and unpack the header record from the file.
@@ -139,7 +139,7 @@ public:
      */
     bool readRecordAt(std::streamoff offset, ZipCodeRecord& record);
 
-    // ── Write interface ───────────────────────────────────────────────────
+    // -- Write interface ---------------------------------------------------
 
     /**
      * @brief Write the header record as the first LI record in the file.
@@ -159,7 +159,7 @@ public:
      */
     bool writeRecord(const ZipCodeRecord& record);
 
-    // ── Accessors ─────────────────────────────────────────────────────────
+    // -- Accessors ---------------------------------------------------------
 
     /**
      * @brief Return the byte offset of the current read position.
@@ -186,7 +186,7 @@ public:
     std::string getFilename() const;
 
 private:
-    // ── Private helpers ───────────────────────────────────────────────────
+    // -- Private helpers ---------------------------------------------------
 
     /**
      * @brief Pack a ZipCodeRecord into a raw byte buffer.
@@ -235,7 +235,7 @@ private:
      */
     bool writeLength(uint16_t length);
 
-    // ── Member variables ──────────────────────────────────────────────────
+    // -- Member variables --------------------------------------------------
 
     std::string   filename;      /**< Path to the .li data file              */
     std::ifstream inStream;      /**< Stream used for reading                */

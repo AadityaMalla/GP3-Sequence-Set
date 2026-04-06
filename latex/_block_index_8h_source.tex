@@ -1,0 +1,60 @@
+\doxysection{Block\+Index.\+h}
+\hypertarget{_block_index_8h_source}{}\label{_block_index_8h_source}\doxymbox{\hyperlink{_block_index_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#ifndef\ BLOCKINDEX\_H}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ BLOCKINDEX\_H}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <cstddef>}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{struct\ }BlockIndexEntry}
+\DoxyCodeLine{00028\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ int32\_t\ \doxymbox{\hyperlink{struct_block_index_entry_a0a1db9e0587e4fe0dbc9166d0586b964}{maxKey}};\ \ \ }
+\DoxyCodeLine{00030\ \ \ \ \ int32\_t\ \doxymbox{\hyperlink{struct_block_index_entry_a42720ea3611cbb8da3375380d96aada8}{rbn}};\ \ \ \ \ \ }
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ BlockIndexEntry()\ :\ \doxymbox{\hyperlink{struct_block_index_entry_a0a1db9e0587e4fe0dbc9166d0586b964}{maxKey}}(0),\ \doxymbox{\hyperlink{struct_block_index_entry_a42720ea3611cbb8da3375380d96aada8}{rbn}}(-\/1)\ \{\}}
+\DoxyCodeLine{00033\ \ \ \ \ \doxymbox{\hyperlink{struct_block_index_entry}{BlockIndexEntry}}(\textcolor{keywordtype}{int}\ key,\ \textcolor{keywordtype}{int}\ blockNum)\ :\ \doxymbox{\hyperlink{struct_block_index_entry_a0a1db9e0587e4fe0dbc9166d0586b964}{maxKey}}(key),\ \doxymbox{\hyperlink{struct_block_index_entry_a42720ea3611cbb8da3375380d96aada8}{rbn}}(blockNum)\ \{\}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{bool}\ operator<(\textcolor{keyword}{const}\ BlockIndexEntry\&\ other)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00036\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{struct_block_index_entry_a0a1db9e0587e4fe0dbc9166d0586b964}{maxKey}}\ <\ other.\doxymbox{\hyperlink{struct_block_index_entry_a0a1db9e0587e4fe0dbc9166d0586b964}{maxKey}};}
+\DoxyCodeLine{00038\ \ \ \ \ \}}
+\DoxyCodeLine{00039\ \};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00052\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_block_index_ae6a14c2628c50e41031d30f0c0709d97}{BlockIndex}}}
+\DoxyCodeLine{00053\ \{}
+\DoxyCodeLine{00054\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keyword}{explicit}\ \doxymbox{\hyperlink{class_block_index_ae6a14c2628c50e41031d30f0c0709d97}{BlockIndex}}(\textcolor{keyword}{const}\ std::string\&\ indexFilename);}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_block_index_ac4c1ae8828398e39aaa5465d6e548332}{clear}}();}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_block_index_aa489b1c4ee31eb351d3ba8c6f1318647}{addEntry}}(\textcolor{keywordtype}{int}\ maxKey,\ \textcolor{keywordtype}{int}\ rbn);}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_block_index_a62c9a0b7bee17589b61ce670e5747bc3}{sortEntries}}();}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_block_index_a35ab62902270da048fbdc029308ae866}{writeIndex}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_block_index_a2e5de2df65d70aeb8ccc01251768db0a}{loadIndex}}();}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_block_index_a0a5732dbc93fdd6aba028c5946fe4917}{findCandidateBlock}}(\textcolor{keywordtype}{int}\ zipCode,\ \textcolor{keywordtype}{int}\&\ rbn)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \doxymbox{\hyperlink{class_block_index_aa27bcfd471dae0feaad3bc559a4a019f}{size}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00112\ \ \ \ \ std::string\ \doxymbox{\hyperlink{class_block_index_a1bc432a3f49dc86350b5caf98efb1d75}{getFilename}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{keyword}{const}\ std::vector<BlockIndexEntry>\&\ \doxymbox{\hyperlink{class_block_index_a767cac76a48969c86b8fbfb326910bf8}{getEntries}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_block_index_a770398e335c930dda26664002e7d7f22}{display}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00126\ \ \ \ \ std::string\ indexFilename;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00127\ \ \ \ \ std::vector<BlockIndexEntry>\ entries;\ \ \ \ }
+\DoxyCodeLine{00128\ \};}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ BLOCKINDEX\_H}}
+
+\end{DoxyCode}

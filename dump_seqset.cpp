@@ -12,7 +12,7 @@
 
 static const std::string INPUT_SEQ_FILE = "data/us_postal_codes_seqset.txt";
 
-// ─────────────────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------------------
 
 void dumpPhysical(BlockFileBuffer& file,
                   const BlockedFileHeader& header)
@@ -36,7 +36,7 @@ void dumpPhysical(BlockFileBuffer& file,
     }
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------------------
 
 void dumpLogical(BlockFileBuffer& file,
                  const BlockedFileHeader& header)
@@ -64,7 +64,7 @@ void dumpLogical(BlockFileBuffer& file,
     }
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------------------
 
 int main()
 {

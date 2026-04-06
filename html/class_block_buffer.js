@@ -1,0 +1,25 @@
+var class_block_buffer =
+[
+    [ "BlockBuffer", "class_block_buffer.html#a3e6a328b8d3f5712da1e0f2912a31ab3", null ],
+    [ "canFit", "class_block_buffer.html#a91414d0f597f6f23f5e4e76707cfd8b7", null ],
+    [ "clearToAvail", "class_block_buffer.html#ad0623751ff02968a6ab911692e5bf070", null ],
+    [ "clearToEmptyActive", "class_block_buffer.html#a92110343f0f3b405e3f8950f1825f50e", null ],
+    [ "display", "class_block_buffer.html#af1c6f357a1b6b6beea92480363fd0c5a", null ],
+    [ "findRecord", "class_block_buffer.html#a92d4461d151006b7f16417ddabae392c", null ],
+    [ "getBlockSize", "class_block_buffer.html#a52124e97eb3b72fe5ab5fed8c0a4052e", null ],
+    [ "getFreeBytes", "class_block_buffer.html#adf75d143d98f933253a737d95bd2934f", null ],
+    [ "getHighestKey", "class_block_buffer.html#abf854a9d1f8c66495f5c6794b88521d2", null ],
+    [ "getNextRBN", "class_block_buffer.html#af863212369bf1ed9eacc4bea0e50ae3e", null ],
+    [ "getPrevRBN", "class_block_buffer.html#afe674265768016a54c89726d3eb1bee4", null ],
+    [ "getRecordCount", "class_block_buffer.html#a67909ab42a499b88923047fddfca09f1", null ],
+    [ "getRecords", "class_block_buffer.html#aa703a504b009ad419cba1318a75ef741", null ],
+    [ "getUsedBytes", "class_block_buffer.html#a4ea217957a8df61443afdc756485be2c", null ],
+    [ "insertRecordSorted", "class_block_buffer.html#a958a2c9a117133a1cdfdb243fff990b9", null ],
+    [ "isActiveBlock", "class_block_buffer.html#a08cb2ab7bbc4211e8e714afe58138b03", null ],
+    [ "isAvailBlock", "class_block_buffer.html#af160bd7d7ae05927d16fbf379a4ac5b9", null ],
+    [ "pack", "class_block_buffer.html#aea04b2fe2cbd4086f5bfce94e11268af", null ],
+    [ "removeRecordByZip", "class_block_buffer.html#a48439fde5a4113865468380c3f207941", null ],
+    [ "setNextRBN", "class_block_buffer.html#af75dce80599ec9edddd61c4e042204a6", null ],
+    [ "setPrevRBN", "class_block_buffer.html#af7934e9cd77827d38c1a93ed881b3144", null ],
+    [ "unpack", "class_block_buffer.html#a26a70fd3df34bc13fea1fd736e15631d", null ]
+];

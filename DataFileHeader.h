@@ -76,7 +76,7 @@ struct FieldDescriptor
 class DataFileHeader
 {
 public:
-    // ── Metadata fields ──────────────────────────────────────────────────────
+    // -- Metadata fields ------------------------------------------------------
 
     std::string fileStructureType;    /**< e.g. "ZIPCODE_V2"                   */
     int         version;              /**< Schema version number               */
@@ -92,7 +92,7 @@ public:
 
     std::vector<FieldDescriptor> fields; /**< One entry per data-record field  */
 
-    // ── Constructors ─────────────────────────────────────────────────────────
+    // -- Constructors ---------------------------------------------------------
 
     /**
      * @brief Default constructor — initialises all fields to safe defaults.
@@ -111,7 +111,7 @@ public:
      */
     DataFileHeader(const std::string& structType, int ver);
 
-    // ── Field management ─────────────────────────────────────────────────────
+    // -- Field management -----------------------------------------------------
 
     /**
      * @brief Append a field descriptor and update fieldCount.
@@ -126,7 +126,7 @@ public:
                   const std::string& typeSchema,
                   bool isPrimaryKey = false);
 
-    // ── Serialisation ─────────────────────────────────────────────────────────
+    // -- Serialisation ---------------------------------------------------------
 
     /**
      * @brief Calculate the number of bytes needed to pack this header.
@@ -154,7 +154,7 @@ public:
      */
     size_t unpack(const char* buffer);
 
-    // ── Display ───────────────────────────────────────────────────────────────
+    // -- Display ---------------------------------------------------------------
 
     /**
      * @brief Print all header fields to std::cout in a formatted layout.

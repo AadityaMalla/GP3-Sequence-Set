@@ -8,7 +8,7 @@ int main()
 {
     const std::string filename = "test_seqset.dat";
 
-    // ── Step 1: Create header ─────────────────────────────────────────────
+    // -- Step 1: Create header ---------------------------------------------
     BlockedFileHeader header;
     header.blockSize = 256;
     header.minBlockCapacity = 0.50;
@@ -25,7 +25,7 @@ int main()
     header.addField("latitude", "double");
     header.addField("longitude", "double");
 
-    // ── Step 2: Create two blocks ─────────────────────────────────────────
+    // -- Step 2: Create two blocks -----------------------------------------
     BlockBuffer block0(256);
     block0.setPrevRBN(-1);
     block0.setNextRBN(1);
@@ -42,7 +42,7 @@ int main()
     block1.insertRecordSorted(
         ZipCodeRecord(90210, "Beverly Hills", "CA", "Los Angeles", 34.0901, -118.4065));
 
-    // ── Step 3: Write file ────────────────────────────────────────────────
+    // -- Step 3: Write file ------------------------------------------------
     BlockFileBuffer file(filename);
 
     if (!file.openForWrite())
@@ -71,7 +71,7 @@ int main()
 
     file.close();
 
-    // ── Step 4: Read file back ────────────────────────────────────────────
+    // -- Step 4: Read file back --------------------------------------------
     if (!file.openForRead())
     {
         std::cout << "Failed: openForRead\n";
@@ -102,7 +102,7 @@ int main()
 
     file.close();
 
-    // ── Step 5: Display results ───────────────────────────────────────────
+    // -- Step 5: Display results -------------------------------------------
     std::cout << "\nRESTORED HEADER\n";
     restoredHeader.display();
 

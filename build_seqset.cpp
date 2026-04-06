@@ -17,12 +17,12 @@
 #include "BlockBuffer.h"
 #include "BlockFileBuffer.h"
 
-// ── File constants ────────────────────────────────────────────────────────────
+// -- File constants ------------------------------------------------------------
 static const std::string INPUT_LI_FILE   = "data/us_postal_codes_li.txt";
 static const std::string OUTPUT_SEQ_FILE = "data/us_postal_codes_seqset.txt";
 static const std::string OUTPUT_IDX_FILE = "data/us_postal_codes_block_idx.txt";
 
-// ── Forward declarations ──────────────────────────────────────────────────────
+// -- Forward declarations ------------------------------------------------------
 BlockedFileHeader buildBlockedHeader();
 bool buildSequenceSet(const std::string& inputLI,
                       const std::string& outputSeq,
@@ -188,7 +188,7 @@ bool buildSequenceSet(const std::string& inputLI,
                       const std::string& outputSeq,
                       int blockSize)
 {
-    // ── Step 1: Open LI input file directly ────────────────────────────────
+    // -- Step 1: Open LI input file directly --------------------------------
     std::ifstream li(inputLI, std::ios::binary);
     if (!li.is_open())
     {
@@ -204,7 +204,7 @@ bool buildSequenceSet(const std::string& inputLI,
 
     std::cout << "\nInput LI file opened and header skipped successfully.\n";
 
-    // ── Step 2: Open blocked output file ───────────────────────────────────
+    // -- Step 2: Open blocked output file -----------------------------------
     BlockFileBuffer out(outputSeq);
     if (!out.openForWrite())
     {
@@ -214,7 +214,7 @@ bool buildSequenceSet(const std::string& inputLI,
         return false;
     }
 
-    // ── Step 3: Prepare blocked header ─────────────────────────────────────
+    // -- Step 3: Prepare blocked header -------------------------------------
     BlockedFileHeader blockedHeader = buildBlockedHeader();
     blockedHeader.blockSize = blockSize;
 
@@ -226,7 +226,7 @@ bool buildSequenceSet(const std::string& inputLI,
         return false;
     }
 
-    // ── Step 4: Read LI records and build blocks ───────────────────────────
+    // -- Step 4: Read LI records and build blocks ---------------------------
     RecordBuffer recordBuffer;
     ZipCodeRecord rec;
 
@@ -286,7 +286,7 @@ bool buildSequenceSet(const std::string& inputLI,
         ++totalRecs;
     }
 
-    // ── Step 5: Write final block if needed ────────────────────────────────
+    // -- Step 5: Write final block if needed --------------------------------
     if (currentBlock.getRecordCount() > 0)
     {
         if (!out.writeBlock(currentRBN, currentBlock))
@@ -306,7 +306,7 @@ bool buildSequenceSet(const std::string& inputLI,
                   << currentBlock.getHighestKey() << "\n";
     }
 
-    // ── Step 6: Rewrite blocks with correct active-list links ──────────────
+    // -- Step 6: Rewrite blocks with correct active-list links --------------
     for (int rbn = 0; rbn < totalBlocks; ++rbn)
     {
         BlockBuffer blk(blockSize);
@@ -333,7 +333,7 @@ bool buildSequenceSet(const std::string& inputLI,
         }
     }
 
-    // ── Step 7: Finalize blocked header ────────────────────────────────────
+    // -- Step 7: Finalize blocked header ------------------------------------
     blockedHeader.recordCount    = totalRecs;
     blockedHeader.blockCount     = totalBlocks;
     blockedHeader.activeListHead = hasAnyBlocks ? 0 : -1;

@@ -1,0 +1,29 @@
+\doxysection{Header\+Buffer.\+h File Reference}
+\hypertarget{_header_buffer_8h}{}\label{_header_buffer_8h}\index{HeaderBuffer.h@{HeaderBuffer.h}}
+
+
+Reads and writes the \doxylink{class_data_file_header}{Data\+File\+Header} as the first length-\/indicated record of a .li binary data file.  
+
+
+{\ttfamily \+\#include $<$fstream$>$}\newline
+{\ttfamily \+\#include $<$string$>$}\newline
+{\ttfamily \+\#include "{}Data\+File\+Header.\+h"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \doxymbox{\hyperlink{class_header_buffer}{Header\+Buffer}}
+\begin{DoxyCompactList}\small\item\em Writes and reads a \doxylink{class_data_file_header}{Data\+File\+Header} as the first record of a .li file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Reads and writes the \doxylink{class_data_file_header}{Data\+File\+Header} as the first length-\/indicated record of a .li binary data file. 
+
+\begin{DoxyAuthor}{Author}
+CSCI 331 Team 2 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+03/\+13/\+2026
+\end{DoxyDate}
+\doxylink{class_header_buffer}{Header\+Buffer} is responsible for ALL file I/\+O involving the header. It uses \doxylink{class_data_file_header_a25f34a7c9eaf4125de88818664c04123}{Data\+File\+Header::\+pack()} and \doxylink{class_data_file_header_aa490a0d7ef821d0837a3abe72726fc3f}{Data\+File\+Header::\+unpack()} for serialisation, and writes/\+reads using a 2-\/byte big-\/endian length prefix — exactly the same format as every other record in the file.
+
+Write layout at byte 0 of the .li file:\+ \+[uint8\+\_\+t hi]\+\+[uint8\+\_\+t lo]\+ \texorpdfstring{$<$}{<}-\/ 2-\/byte big-\/endian payload length \+[payload bytes ...]\+ \texorpdfstring{$<$}{<}-\/ \doxylink{class_data_file_header_a25f34a7c9eaf4125de88818664c04123}{Data\+File\+Header::\+pack()} output 

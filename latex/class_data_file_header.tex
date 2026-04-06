@@ -1,0 +1,321 @@
+\doxysection{Data\+File\+Header Class Reference}
+\hypertarget{class_data_file_header}{}\label{class_data_file_header}\index{DataFileHeader@{DataFileHeader}}
+
+
+Holds metadata about a length-\/indicated ZIP code data file.  
+
+
+
+
+{\ttfamily \+\#include $<$Data\+File\+Header.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_data_file_header_a67423339b668dcaf1068ff50607404ed}{Data\+File\+Header}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor — initialises all fields to safe defaults. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_data_file_header_a024319f1cacfd87d2090e58bc6cee7c7}{Data\+File\+Header}} (const std::\+string \&struct\+Type, int ver)
+\begin{DoxyCompactList}\small\item\em Parameterised constructor. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_data_file_header_aa186403a07393355585ce78c28feeacc}{add\+Field}} (const std::\+string \&name, const std::\+string \&type\+Schema, bool is\+Primary\+Key=false)
+\begin{DoxyCompactList}\small\item\em Append a field descriptor and update field\+Count. \end{DoxyCompactList}\item 
+size\+\_\+t \doxymbox{\hyperlink{class_data_file_header_a4ce02ebd3893446b7f68d24fa64e3d97}{get\+Packed\+Size}} () const
+\begin{DoxyCompactList}\small\item\em Calculate the number of bytes needed to pack this header. \end{DoxyCompactList}\item 
+size\+\_\+t \doxymbox{\hyperlink{class_data_file_header_a25f34a7c9eaf4125de88818664c04123}{pack}} (char \texorpdfstring{$\ast$}{*}buffer) const
+\begin{DoxyCompactList}\small\item\em Serialise this header into a raw byte buffer. \end{DoxyCompactList}\item 
+size\+\_\+t \doxymbox{\hyperlink{class_data_file_header_aa490a0d7ef821d0837a3abe72726fc3f}{unpack}} (const char \texorpdfstring{$\ast$}{*}buffer)
+\begin{DoxyCompactList}\small\item\em Deserialise this header from a raw byte buffer. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_data_file_header_a55a68f48ea28dc980d8a4fa0389bdc38}{display}} () const
+\begin{DoxyCompactList}\small\item\em Print all header fields to std::\+cout in a formatted layout. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std::\+string \doxymbox{\hyperlink{class_data_file_header_a8ff3998ec6ce798a33fd5601a505fd46}{file\+Structure\+Type}}
+\item 
+int \doxymbox{\hyperlink{class_data_file_header_ac88dbb855259b9dabf9cf82a216aafd6}{version}}
+\item 
+int \doxymbox{\hyperlink{class_data_file_header_a9f02d5c31f863e4f6c054538dfec571e}{header\+Size}}
+\item 
+int \doxymbox{\hyperlink{class_data_file_header_a1761be1ab6080bb23dcba8e1c122d59c}{record\+Size\+Integer\+Bytes}}
+\item 
+std::\+string \doxymbox{\hyperlink{class_data_file_header_a06e7397ba63f076a8aea321ab2d3d3bd}{size\+Format\+Type}}
+\item 
+int \doxymbox{\hyperlink{class_data_file_header_aae7b625cb8c95345d70c9b2771cb4fd1}{size\+Of\+Sizes}}
+\item 
+bool \doxymbox{\hyperlink{class_data_file_header_a22544c28d0112885b1b1fe54926a2e3e}{size\+Inclusion\+Flag}}
+\item 
+std::\+string \doxymbox{\hyperlink{class_data_file_header_ac8759cff825b9bf801db3e82ba0a4a93}{primary\+Key\+Index\+File\+Name}}
+\item 
+int \doxymbox{\hyperlink{class_data_file_header_a0a97f46f4739e4562870f89b7f7236c9}{record\+Count}}
+\item 
+int \doxymbox{\hyperlink{class_data_file_header_a0b87ac0f03ebf1dd9fb14ff7f1f180c6}{field\+Count}}
+\item 
+int \doxymbox{\hyperlink{class_data_file_header_a1836a27bf4b8fb790152cd7fd43552ce}{primary\+Key\+Field\+Index}}
+\item 
+std::\+vector$<$ \doxymbox{\hyperlink{struct_field_descriptor}{Field\+Descriptor}} $>$ \doxymbox{\hyperlink{class_data_file_header_a015db78f184ff5ab5287b79f46668a7f}{fields}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Holds metadata about a length-\/indicated ZIP code data file. 
+
+Responsibilities:\+
+\begin{DoxyItemize}
+\item Store file-\/level metadata (type, version, record count, etc.)
+\item Describe each field via a \doxylink{struct_field_descriptor}{Field\+Descriptor} vector
+\item Pack itself into a raw byte buffer (used by \doxylink{class_header_buffer}{Header\+Buffer} to write)
+\item Unpack itself from a raw byte buffer (used by \doxylink{class_header_buffer}{Header\+Buffer} to read)
+\item Display its contents for debugging
+\end{DoxyItemize}
+
+NOT responsible for:\+
+\begin{DoxyItemize}
+\item Opening or closing files (\doxylink{class_header_buffer}{Header\+Buffer} does that)
+\item Writing or reading from streams (\doxylink{class_header_buffer}{Header\+Buffer} does that)
+\end{DoxyItemize}
+
+\begin{DoxyPrecond}{Precondition}
+All string fields must not require binary-\/safe escaping (no embedded nulls). 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+An initialised \doxylink{class_data_file_header}{Data\+File\+Header} can be packed into a buffer and written by \doxylink{class_header_buffer}{Header\+Buffer} as the first record of a .li file. 
+\end{DoxyPostcond}
+
+
+\label{doc-constructors}
+\Hypertarget{class_data_file_header_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_data_file_header_a67423339b668dcaf1068ff50607404ed}\index{DataFileHeader@{DataFileHeader}!DataFileHeader@{DataFileHeader}}
+\index{DataFileHeader@{DataFileHeader}!DataFileHeader@{DataFileHeader}}
+\doxysubsubsection{\texorpdfstring{DataFileHeader()}{DataFileHeader()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_data_file_header_a67423339b668dcaf1068ff50607404ed} 
+Data\+File\+Header::\+\+Data\+File\+Header (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Default constructor — initialises all fields to safe defaults. 
+
+\begin{DoxyPrecond}{Precondition}
+None. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+file\+Structure\+Type == "{}\+ZIPCODE\+\_\+\+V2"{}, version == 2, record\+Count == 0, field\+Count == 0, primary\+Key\+Field\+Index == -\/1. 
+\end{DoxyPostcond}
+\Hypertarget{class_data_file_header_a024319f1cacfd87d2090e58bc6cee7c7}\index{DataFileHeader@{DataFileHeader}!DataFileHeader@{DataFileHeader}}
+\index{DataFileHeader@{DataFileHeader}!DataFileHeader@{DataFileHeader}}
+\doxysubsubsection{\texorpdfstring{DataFileHeader()}{DataFileHeader()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_data_file_header_a024319f1cacfd87d2090e58bc6cee7c7} 
+Data\+File\+Header::\+\+Data\+File\+Header (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{struct\+Type}{, }\item[{int}]{ver}{}\end{DoxyParamCaption})}
+
+
+
+Parameterised constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em struct\+Type} & File structure type string. \\
+\hline
+{\em ver} & Version number. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+struct\+Type is non-\/empty; ver \texorpdfstring{$>$}{>} 0. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Supplied values set; other fields take safe defaults. 
+\end{DoxyPostcond}
+
+
+\label{doc-func-members}
+\Hypertarget{class_data_file_header_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_data_file_header_aa186403a07393355585ce78c28feeacc}\index{DataFileHeader@{DataFileHeader}!addField@{addField}}
+\index{addField@{addField}!DataFileHeader@{DataFileHeader}}
+\doxysubsubsection{\texorpdfstring{addField()}{addField()}}
+{\footnotesize\ttfamily \label{class_data_file_header_aa186403a07393355585ce78c28feeacc} 
+void Data\+File\+Header::\+add\+Field (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{name}{, }\item[{const std::\+string \&}]{type\+Schema}{, }\item[{bool}]{is\+Primary\+Key}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+
+
+Append a field descriptor and update field\+Count. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Field name. \\
+\hline
+{\em type\+Schema} & Type string. \\
+\hline
+{\em is\+Primary\+Key} & True if this field is the primary key. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+name and type\+Schema are non-\/empty. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Field appended to fields; field\+Count incremented; primary\+Key\+Field\+Index updated if is\+Primary\+Key is true. 
+\end{DoxyPostcond}
+\Hypertarget{class_data_file_header_a55a68f48ea28dc980d8a4fa0389bdc38}\index{DataFileHeader@{DataFileHeader}!display@{display}}
+\index{display@{display}!DataFileHeader@{DataFileHeader}}
+\doxysubsubsection{\texorpdfstring{display()}{display()}}
+{\footnotesize\ttfamily \label{class_data_file_header_a55a68f48ea28dc980d8a4fa0389bdc38} 
+void Data\+File\+Header::\+display (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Print all header fields to std::\+cout in a formatted layout. 
+
+\begin{DoxyPrecond}{Precondition}
+None. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Contents printed to standard output; no state change. 
+\end{DoxyPostcond}
+\Hypertarget{class_data_file_header_a4ce02ebd3893446b7f68d24fa64e3d97}\index{DataFileHeader@{DataFileHeader}!getPackedSize@{getPackedSize}}
+\index{getPackedSize@{getPackedSize}!DataFileHeader@{DataFileHeader}}
+\doxysubsubsection{\texorpdfstring{getPackedSize()}{getPackedSize()}}
+{\footnotesize\ttfamily \label{class_data_file_header_a4ce02ebd3893446b7f68d24fa64e3d97} 
+size\+\_\+t Data\+File\+Header::\+get\+Packed\+Size (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Calculate the number of bytes needed to pack this header. 
+
+\begin{DoxyPrecond}{Precondition}
+None. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+No state change. 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+Required buffer size in bytes. 
+\end{DoxyReturn}
+\Hypertarget{class_data_file_header_a25f34a7c9eaf4125de88818664c04123}\index{DataFileHeader@{DataFileHeader}!pack@{pack}}
+\index{pack@{pack}!DataFileHeader@{DataFileHeader}}
+\doxysubsubsection{\texorpdfstring{pack()}{pack()}}
+{\footnotesize\ttfamily \label{class_data_file_header_a25f34a7c9eaf4125de88818664c04123} 
+size\+\_\+t Data\+File\+Header::\+pack (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{buffer}{}\end{DoxyParamCaption}) const}
+
+
+
+Serialise this header into a raw byte buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & Caller-\/allocated buffer of at least \doxylink{class_data_file_header_a4ce02ebd3893446b7f68d24fa64e3d97}{get\+Packed\+Size()} bytes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+buffer points to valid memory of at least \doxylink{class_data_file_header_a4ce02ebd3893446b7f68d24fa64e3d97}{get\+Packed\+Size()} bytes. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Header data written to buffer in binary format. 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+Number of bytes written. 
+\end{DoxyReturn}
+\Hypertarget{class_data_file_header_aa490a0d7ef821d0837a3abe72726fc3f}\index{DataFileHeader@{DataFileHeader}!unpack@{unpack}}
+\index{unpack@{unpack}!DataFileHeader@{DataFileHeader}}
+\doxysubsubsection{\texorpdfstring{unpack()}{unpack()}}
+{\footnotesize\ttfamily \label{class_data_file_header_aa490a0d7ef821d0837a3abe72726fc3f} 
+size\+\_\+t Data\+File\+Header::\+unpack (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{buffer}{}\end{DoxyParamCaption})}
+
+
+
+Deserialise this header from a raw byte buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & Buffer containing a previously packed header. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+buffer contains valid packed header data (produced by \doxylink{class_data_file_header_a25f34a7c9eaf4125de88818664c04123}{pack()}). 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+All fields populated from buffer; fields vector rebuilt. 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+Number of bytes consumed. 
+\end{DoxyReturn}
+
+
+\label{doc-variable-members}
+\Hypertarget{class_data_file_header_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_data_file_header_a0b87ac0f03ebf1dd9fb14ff7f1f180c6}\index{DataFileHeader@{DataFileHeader}!fieldCount@{fieldCount}}
+\index{fieldCount@{fieldCount}!DataFileHeader@{DataFileHeader}}
+\doxysubsubsection{\texorpdfstring{fieldCount}{fieldCount}}
+{\footnotesize\ttfamily \label{class_data_file_header_a0b87ac0f03ebf1dd9fb14ff7f1f180c6} 
+int Data\+File\+Header::\+field\+Count}
+
+Number of fields per data record \Hypertarget{class_data_file_header_a015db78f184ff5ab5287b79f46668a7f}\index{DataFileHeader@{DataFileHeader}!fields@{fields}}
+\index{fields@{fields}!DataFileHeader@{DataFileHeader}}
+\doxysubsubsection{\texorpdfstring{fields}{fields}}
+{\footnotesize\ttfamily \label{class_data_file_header_a015db78f184ff5ab5287b79f46668a7f} 
+std::\+vector$<$\doxymbox{\hyperlink{struct_field_descriptor}{Field\+Descriptor}}$>$ Data\+File\+Header::\+fields}
+
+One entry per data-\/record field \Hypertarget{class_data_file_header_a8ff3998ec6ce798a33fd5601a505fd46}\index{DataFileHeader@{DataFileHeader}!fileStructureType@{fileStructureType}}
+\index{fileStructureType@{fileStructureType}!DataFileHeader@{DataFileHeader}}
+\doxysubsubsection{\texorpdfstring{fileStructureType}{fileStructureType}}
+{\footnotesize\ttfamily \label{class_data_file_header_a8ff3998ec6ce798a33fd5601a505fd46} 
+std::\+string Data\+File\+Header::\+file\+Structure\+Type}
+
+e.\+g. "{}\+ZIPCODE\+\_\+\+V2"{} \Hypertarget{class_data_file_header_a9f02d5c31f863e4f6c054538dfec571e}\index{DataFileHeader@{DataFileHeader}!headerSize@{headerSize}}
+\index{headerSize@{headerSize}!DataFileHeader@{DataFileHeader}}
+\doxysubsubsection{\texorpdfstring{headerSize}{headerSize}}
+{\footnotesize\ttfamily \label{class_data_file_header_a9f02d5c31f863e4f6c054538dfec571e} 
+int Data\+File\+Header::\+header\+Size}
+
+Size of the packed header in bytes \Hypertarget{class_data_file_header_a1836a27bf4b8fb790152cd7fd43552ce}\index{DataFileHeader@{DataFileHeader}!primaryKeyFieldIndex@{primaryKeyFieldIndex}}
+\index{primaryKeyFieldIndex@{primaryKeyFieldIndex}!DataFileHeader@{DataFileHeader}}
+\doxysubsubsection{\texorpdfstring{primaryKeyFieldIndex}{primaryKeyFieldIndex}}
+{\footnotesize\ttfamily \label{class_data_file_header_a1836a27bf4b8fb790152cd7fd43552ce} 
+int Data\+File\+Header::\+primary\+Key\+Field\+Index}
+
+Index into fields\+[]\+ of the PK (-\/1 if none) \Hypertarget{class_data_file_header_ac8759cff825b9bf801db3e82ba0a4a93}\index{DataFileHeader@{DataFileHeader}!primaryKeyIndexFileName@{primaryKeyIndexFileName}}
+\index{primaryKeyIndexFileName@{primaryKeyIndexFileName}!DataFileHeader@{DataFileHeader}}
+\doxysubsubsection{\texorpdfstring{primaryKeyIndexFileName}{primaryKeyIndexFileName}}
+{\footnotesize\ttfamily \label{class_data_file_header_ac8759cff825b9bf801db3e82ba0a4a93} 
+std::\+string Data\+File\+Header::\+primary\+Key\+Index\+File\+Name}
+
+Name of the associated .idx file \Hypertarget{class_data_file_header_a0a97f46f4739e4562870f89b7f7236c9}\index{DataFileHeader@{DataFileHeader}!recordCount@{recordCount}}
+\index{recordCount@{recordCount}!DataFileHeader@{DataFileHeader}}
+\doxysubsubsection{\texorpdfstring{recordCount}{recordCount}}
+{\footnotesize\ttfamily \label{class_data_file_header_a0a97f46f4739e4562870f89b7f7236c9} 
+int Data\+File\+Header::\+record\+Count}
+
+Number of data records in the file \Hypertarget{class_data_file_header_a1761be1ab6080bb23dcba8e1c122d59c}\index{DataFileHeader@{DataFileHeader}!recordSizeIntegerBytes@{recordSizeIntegerBytes}}
+\index{recordSizeIntegerBytes@{recordSizeIntegerBytes}!DataFileHeader@{DataFileHeader}}
+\doxysubsubsection{\texorpdfstring{recordSizeIntegerBytes}{recordSizeIntegerBytes}}
+{\footnotesize\ttfamily \label{class_data_file_header_a1761be1ab6080bb23dcba8e1c122d59c} 
+int Data\+File\+Header::\+record\+Size\+Integer\+Bytes}
+
+Bytes used for the record-\/length prefix (2) \Hypertarget{class_data_file_header_a06e7397ba63f076a8aea321ab2d3d3bd}\index{DataFileHeader@{DataFileHeader}!sizeFormatType@{sizeFormatType}}
+\index{sizeFormatType@{sizeFormatType}!DataFileHeader@{DataFileHeader}}
+\doxysubsubsection{\texorpdfstring{sizeFormatType}{sizeFormatType}}
+{\footnotesize\ttfamily \label{class_data_file_header_a06e7397ba63f076a8aea321ab2d3d3bd} 
+std::\+string Data\+File\+Header::\+size\+Format\+Type}
+
+e.\+g. "{}binary"{} \Hypertarget{class_data_file_header_a22544c28d0112885b1b1fe54926a2e3e}\index{DataFileHeader@{DataFileHeader}!sizeInclusionFlag@{sizeInclusionFlag}}
+\index{sizeInclusionFlag@{sizeInclusionFlag}!DataFileHeader@{DataFileHeader}}
+\doxysubsubsection{\texorpdfstring{sizeInclusionFlag}{sizeInclusionFlag}}
+{\footnotesize\ttfamily \label{class_data_file_header_a22544c28d0112885b1b1fe54926a2e3e} 
+bool Data\+File\+Header::\+size\+Inclusion\+Flag}
+
+True if size prefix includes itself \Hypertarget{class_data_file_header_aae7b625cb8c95345d70c9b2771cb4fd1}\index{DataFileHeader@{DataFileHeader}!sizeOfSizes@{sizeOfSizes}}
+\index{sizeOfSizes@{sizeOfSizes}!DataFileHeader@{DataFileHeader}}
+\doxysubsubsection{\texorpdfstring{sizeOfSizes}{sizeOfSizes}}
+{\footnotesize\ttfamily \label{class_data_file_header_aae7b625cb8c95345d70c9b2771cb4fd1} 
+int Data\+File\+Header::\+size\+Of\+Sizes}
+
+Bytes per size field \Hypertarget{class_data_file_header_ac88dbb855259b9dabf9cf82a216aafd6}\index{DataFileHeader@{DataFileHeader}!version@{version}}
+\index{version@{version}!DataFileHeader@{DataFileHeader}}
+\doxysubsubsection{\texorpdfstring{version}{version}}
+{\footnotesize\ttfamily \label{class_data_file_header_ac88dbb855259b9dabf9cf82a216aafd6} 
+int Data\+File\+Header::\+version}
+
+Schema version number 
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{_data_file_header_8h}{Data\+File\+Header.\+h}}\item 
+\doxymbox{\hyperlink{_data_file_header_8cpp}{Data\+File\+Header.\+cpp}}\end{DoxyCompactItemize}

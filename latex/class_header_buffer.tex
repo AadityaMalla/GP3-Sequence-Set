@@ -1,0 +1,181 @@
+\doxysection{Header\+Buffer Class Reference}
+\hypertarget{class_header_buffer}{}\label{class_header_buffer}\index{HeaderBuffer@{HeaderBuffer}}
+
+
+Writes and reads a \doxylink{class_data_file_header}{Data\+File\+Header} as the first record of a .li file.  
+
+
+
+
+{\ttfamily \+\#include $<$Header\+Buffer.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_header_buffer_aea30195d2095bf240303b2d878816f2a}{Header\+Buffer}} ()=default
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_header_buffer_afde734e0c6ab1660fe12fc413eb9ffd6}{\texorpdfstring{$\sim$}{\string~}\+Header\+Buffer}} ()=default
+\begin{DoxyCompactList}\small\item\em Default destructor. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_header_buffer_ab3b88e0504865d9ec587056f07ea9c09}{write\+Header}} (std::\+ofstream \&out, \doxymbox{\hyperlink{class_data_file_header}{Data\+File\+Header}} \&header)
+\begin{DoxyCompactList}\small\item\em Pack a \doxylink{class_data_file_header}{Data\+File\+Header} and write it as the first length-\/indicated record of a binary output stream. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_header_buffer_a2e36ff2de2b91057f336b48be41a2753}{read\+Header}} (std::\+ifstream \&in, \doxymbox{\hyperlink{class_data_file_header}{Data\+File\+Header}} \&header)
+\begin{DoxyCompactList}\small\item\em Read the first length-\/indicated record and unpack it into a \doxylink{class_data_file_header}{Data\+File\+Header}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Writes and reads a \doxylink{class_data_file_header}{Data\+File\+Header} as the first record of a .li file. 
+
+Responsibilities:\+
+\begin{DoxyItemize}
+\item \doxylink{class_header_buffer_ab3b88e0504865d9ec587056f07ea9c09}{write\+Header()} -- packs the header and writes it with a 2-\/byte length prefix to byte 0 of an open output stream
+\item \doxylink{class_header_buffer_a2e36ff2de2b91057f336b48be41a2753}{read\+Header()} -- reads the 2-\/byte length, reads the payload, and calls \doxylink{class_data_file_header_aa490a0d7ef821d0837a3abe72726fc3f}{Data\+File\+Header::\+unpack()} to restore all fields
+\end{DoxyItemize}
+
+NOT responsible for:\+
+\begin{DoxyItemize}
+\item Opening or closing files (caller does that)
+\item Storing the \doxylink{class_data_file_header}{Data\+File\+Header} (caller owns it)
+\end{DoxyItemize}
+
+\begin{DoxyPrecond}{Precondition}
+Streams passed to read/\+write methods must already be open in binary mode and positioned at byte 0. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Stream position advances past the header record after each call. 
+\end{DoxyPostcond}
+
+
+\label{doc-constructors}
+\Hypertarget{class_header_buffer_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_header_buffer_aea30195d2095bf240303b2d878816f2a}\index{HeaderBuffer@{HeaderBuffer}!HeaderBuffer@{HeaderBuffer}}
+\index{HeaderBuffer@{HeaderBuffer}!HeaderBuffer@{HeaderBuffer}}
+\doxysubsubsection{\texorpdfstring{HeaderBuffer()}{HeaderBuffer()}}
+{\footnotesize\ttfamily \label{class_header_buffer_aea30195d2095bf240303b2d878816f2a} 
+Header\+Buffer::\+\+Header\+Buffer (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+Default constructor. 
+
+\begin{DoxyPrecond}{Precondition}
+None. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+A \doxylink{class_header_buffer}{Header\+Buffer} instance is ready to use; no file is associated. 
+\end{DoxyPostcond}
+\Hypertarget{class_header_buffer_afde734e0c6ab1660fe12fc413eb9ffd6}\index{HeaderBuffer@{HeaderBuffer}!````~HeaderBuffer@{\texorpdfstring{$\sim$}{\string~}HeaderBuffer}}
+\index{````~HeaderBuffer@{\texorpdfstring{$\sim$}{\string~}HeaderBuffer}!HeaderBuffer@{HeaderBuffer}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}HeaderBuffer()}{\string~HeaderBuffer()}}
+{\footnotesize\ttfamily \label{class_header_buffer_afde734e0c6ab1660fe12fc413eb9ffd6} 
+Header\+Buffer::\+\texorpdfstring{$\sim$}{\string~}\+Header\+Buffer (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+Default destructor. 
+
+\begin{DoxyPrecond}{Precondition}
+None. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+No resources to release. 
+\end{DoxyPostcond}
+
+
+\label{doc-func-members}
+\Hypertarget{class_header_buffer_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_header_buffer_a2e36ff2de2b91057f336b48be41a2753}\index{HeaderBuffer@{HeaderBuffer}!readHeader@{readHeader}}
+\index{readHeader@{readHeader}!HeaderBuffer@{HeaderBuffer}}
+\doxysubsubsection{\texorpdfstring{readHeader()}{readHeader()}}
+{\footnotesize\ttfamily \label{class_header_buffer_a2e36ff2de2b91057f336b48be41a2753} 
+bool Header\+Buffer::\+read\+Header (\begin{DoxyParamCaption}\item[{std::\+ifstream \&}]{in}{, }\item[{\doxymbox{\hyperlink{class_data_file_header}{Data\+File\+Header}} \&}]{header}{}\end{DoxyParamCaption})}
+
+
+
+Read the first length-\/indicated record and unpack it into a \doxylink{class_data_file_header}{Data\+File\+Header}. 
+
+Read first LI record and unpack it into a \doxylink{class_data_file_header}{Data\+File\+Header}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em in} & Open std::\+ifstream in binary mode, positioned at byte 0. \\
+\hline
+{\em header} & \doxylink{class_data_file_header}{Data\+File\+Header} reference to populate. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success; false on I/\+O or unpack error.
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+in is open in std::\+ios::\+binary mode at position 0. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+header is fully populated; stream advances past header record.
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em in} & Open binary ifstream at byte 0. \\
+\hline
+{\em header} & Reference to populate. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success; false on any error. 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+in is open in binary mode at position 0. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+header is fully populated; stream advances past header record. 
+\end{DoxyPostcond}
+\Hypertarget{class_header_buffer_ab3b88e0504865d9ec587056f07ea9c09}\index{HeaderBuffer@{HeaderBuffer}!writeHeader@{writeHeader}}
+\index{writeHeader@{writeHeader}!HeaderBuffer@{HeaderBuffer}}
+\doxysubsubsection{\texorpdfstring{writeHeader()}{writeHeader()}}
+{\footnotesize\ttfamily \label{class_header_buffer_ab3b88e0504865d9ec587056f07ea9c09} 
+bool Header\+Buffer::\+write\+Header (\begin{DoxyParamCaption}\item[{std::\+ofstream \&}]{out}{, }\item[{\doxymbox{\hyperlink{class_data_file_header}{Data\+File\+Header}} \&}]{header}{}\end{DoxyParamCaption})}
+
+
+
+Pack a \doxylink{class_data_file_header}{Data\+File\+Header} and write it as the first length-\/indicated record of a binary output stream. 
+
+Serialise header and write it as the first LI record.
+
+
+\begin{DoxyParams}{Parameters}
+{\em out} & Open std::\+ofstream in binary mode, positioned at byte 0. \\
+\hline
+{\em header} & The \doxylink{class_data_file_header}{Data\+File\+Header} to serialise and write. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success; false on I/\+O error.
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+out is open in std::\+ios::\+binary mode at position 0. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Header record written; stream advances past it.
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em out} & Open binary ofstream at byte 0. \\
+\hline
+{\em header} & Header to write. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success; false on any error. 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+out is open in binary mode at position 0. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Header occupies first (2 + payload\+Len) bytes; stream advances. 
+\end{DoxyPostcond}
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{_header_buffer_8h}{Header\+Buffer.\+h}}\item 
+\doxymbox{\hyperlink{_header_buffer_8cpp}{Header\+Buffer.\+cpp}}\end{DoxyCompactItemize}

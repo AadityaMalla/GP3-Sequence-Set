@@ -1,0 +1,51 @@
+\doxysection{Block\+Buffer.\+h File Reference}
+\hypertarget{_block_buffer_8h}{}\label{_block_buffer_8h}\index{BlockBuffer.h@{BlockBuffer.h}}
+
+
+Represents one fixed-\/size block in the blocked sequence-\/set file.  
+
+
+{\ttfamily \+\#include $<$vector$>$}\newline
+{\ttfamily \+\#include $<$string$>$}\newline
+{\ttfamily \+\#include $<$cstddef$>$}\newline
+{\ttfamily \+\#include $<$cstdint$>$}\newline
+{\ttfamily \+\#include "{}Zip\+Code\+Record.\+h"{}}\newline
+{\ttfamily \+\#include "{}Record\+Buffer.\+h"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \doxymbox{\hyperlink{class_block_buffer}{Block\+Buffer}}
+\begin{DoxyCompactList}\small\item\em In-\/memory representation of one physical block. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents one fixed-\/size block in the blocked sequence-\/set file. 
+
+\begin{DoxyAuthor}{Author}
+CSCI 331 Team 2 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+04/\+01/\+2026
+\end{DoxyDate}
+A block stores:\+
+\begin{DoxyItemize}
+\item a block header
+\item zero or more variable-\/length ZIP code records
+\end{DoxyItemize}
+
+Active block layout:\+ \+[int32 record\+Count]\+ \+[int32 prev\+RBN]\+ \+[int32 next\+RBN]\+ \+[record bytes...]\+ \+[unused space padded with blanks]\+
+
+Avail block layout:\+ \+[int32 record\+Count == 0]\+ \+[int32 next\+Avail\+RBN]\+ \+[remaining bytes padded with blanks]\+
+
+For active blocks:\+
+\begin{DoxyItemize}
+\item record\+Count \texorpdfstring{$>$}{>} 0
+\item records are stored sorted by ZIP code
+\end{DoxyItemize}
+
+For avail blocks:\+
+\begin{DoxyItemize}
+\item record\+Count == 0
+\item prev\+RBN is not used
+\item next\+RBN is interpreted as next\+Avail\+RBN 
+\end{DoxyItemize}

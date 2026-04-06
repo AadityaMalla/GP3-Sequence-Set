@@ -1,0 +1,46 @@
+\doxysection{Block\+File\+Buffer.\+h File Reference}
+\hypertarget{_block_file_buffer_8h}{}\label{_block_file_buffer_8h}\index{BlockFileBuffer.h@{BlockFileBuffer.h}}
+
+
+File I/\+O layer for blocked sequence-\/set files.  
+
+
+{\ttfamily \+\#include $<$fstream$>$}\newline
+{\ttfamily \+\#include $<$string$>$}\newline
+{\ttfamily \+\#include $<$streambuf$>$}\newline
+{\ttfamily \+\#include "{}Blocked\+File\+Header.\+h"{}}\newline
+{\ttfamily \+\#include "{}Block\+Buffer.\+h"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \doxymbox{\hyperlink{class_block_file_buffer}{Block\+File\+Buffer}}
+\begin{DoxyCompactList}\small\item\em Provides physical file access for blocked sequence-\/set files. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+File I/\+O layer for blocked sequence-\/set files. 
+
+\begin{DoxyAuthor}{Author}
+CSCI 331 Team 2 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+04/\+01/\+2026
+\end{DoxyDate}
+This class manages the physical blocked file on disk.
+
+File layout:\+ \+[2-\/byte header length]\+\+[header payload]\+ \+[block 0 bytes]\+ \+[block 1 bytes]\+ \+[block 2 bytes]\+ ...
+
+Responsibilities:\+
+\begin{DoxyItemize}
+\item open/\+close the file
+\item write/\+read the blocked file header
+\item write/\+read one fixed-\/size block by RBN
+\item compute byte offsets for blocks
+\end{DoxyItemize}
+
+NOT responsible for:\+
+\begin{DoxyItemize}
+\item sequence-\/set logic
+\item block splitting/\+merging
+\item indexing 
+\end{DoxyItemize}

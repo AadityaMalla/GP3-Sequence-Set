@@ -1,0 +1,74 @@
+\doxysection{Data\+File\+Header.\+h}
+\hypertarget{_data_file_header_8h_source}{}\label{_data_file_header_8h_source}\doxymbox{\hyperlink{_data_file_header_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#ifndef\ DATAFILEHEADER\_H}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ DATAFILEHEADER\_H}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <iomanip>}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <cstring>}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_field_descriptor_a255f449da9b1f433ea1b69ca0f6e29c1}{FieldDescriptor}}}
+\DoxyCodeLine{00032\ \{}
+\DoxyCodeLine{00033\ \ \ \ \ std::string\ \doxymbox{\hyperlink{struct_field_descriptor_a2a32cf13a4446a86419934ea3a405133}{name}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00034\ \ \ \ \ std::string\ \doxymbox{\hyperlink{struct_field_descriptor_af585606177343018da6883e616d7e03f}{typeSchema}};\ \ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_field_descriptor_acf6eb857a5afcd3f84547d461c2760c0}{isPrimaryKey}};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00042\ \ \ \ \ \doxymbox{\hyperlink{struct_field_descriptor_a255f449da9b1f433ea1b69ca0f6e29c1}{FieldDescriptor}}()\ :\ \doxymbox{\hyperlink{struct_field_descriptor_acf6eb857a5afcd3f84547d461c2760c0}{isPrimaryKey}}(false)\ \{\}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00052\ \ \ \ \ \doxymbox{\hyperlink{struct_field_descriptor_ad2ce81bb40e4770a7ec186cd31e0c429}{FieldDescriptor}}(\textcolor{keyword}{const}\ std::string\&\ n,\ \textcolor{keyword}{const}\ std::string\&\ t,\ \textcolor{keywordtype}{bool}\ pk)}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ :\ \doxymbox{\hyperlink{struct_field_descriptor_a2a32cf13a4446a86419934ea3a405133}{name}}(n),\ \doxymbox{\hyperlink{struct_field_descriptor_af585606177343018da6883e616d7e03f}{typeSchema}}(t),\ \doxymbox{\hyperlink{struct_field_descriptor_acf6eb857a5afcd3f84547d461c2760c0}{isPrimaryKey}}(pk)\ \{\}}
+\DoxyCodeLine{00054\ \};}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00076\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_data_file_header_a67423339b668dcaf1068ff50607404ed}{DataFileHeader}}}
+\DoxyCodeLine{00077\ \{}
+\DoxyCodeLine{00078\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{comment}{//\ --\ Metadata\ fields\ ------------------------------------------------------}}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ std::string\ \doxymbox{\hyperlink{class_data_file_header_a8ff3998ec6ce798a33fd5601a505fd46}{fileStructureType}};\ \ \ \ }
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_data_file_header_ac88dbb855259b9dabf9cf82a216aafd6}{version}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_data_file_header_a9f02d5c31f863e4f6c054538dfec571e}{headerSize}};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_data_file_header_a1761be1ab6080bb23dcba8e1c122d59c}{recordSizeIntegerBytes}};\ }
+\DoxyCodeLine{00085\ \ \ \ \ std::string\ \doxymbox{\hyperlink{class_data_file_header_a06e7397ba63f076a8aea321ab2d3d3bd}{sizeFormatType}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_data_file_header_aae7b625cb8c95345d70c9b2771cb4fd1}{sizeOfSizes}};\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_data_file_header_a22544c28d0112885b1b1fe54926a2e3e}{sizeInclusionFlag}};\ \ \ \ }
+\DoxyCodeLine{00088\ \ \ \ \ std::string\ \doxymbox{\hyperlink{class_data_file_header_ac8759cff825b9bf801db3e82ba0a4a93}{primaryKeyIndexFileName}};\ }
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_data_file_header_a0a97f46f4739e4562870f89b7f7236c9}{recordCount}};\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_data_file_header_a0b87ac0f03ebf1dd9fb14ff7f1f180c6}{fieldCount}};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_data_file_header_a1836a27bf4b8fb790152cd7fd43552ce}{primaryKeyFieldIndex}};\ }
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \ \ \ \ std::vector<FieldDescriptor>\ \doxymbox{\hyperlink{class_data_file_header_a015db78f184ff5ab5287b79f46668a7f}{fields}};\ }
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{comment}{//\ --\ Constructors\ ---------------------------------------------------------}}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00103\ \ \ \ \ \doxymbox{\hyperlink{class_data_file_header_a67423339b668dcaf1068ff50607404ed}{DataFileHeader}}();}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00112\ \ \ \ \ \doxymbox{\hyperlink{class_data_file_header_a67423339b668dcaf1068ff50607404ed}{DataFileHeader}}(\textcolor{keyword}{const}\ std::string\&\ structType,\ \textcolor{keywordtype}{int}\ ver);}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{comment}{//\ --\ Field\ management\ -----------------------------------------------------}}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_data_file_header_aa186403a07393355585ce78c28feeacc}{addField}}(\textcolor{keyword}{const}\ std::string\&\ name,}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ typeSchema,}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ isPrimaryKey\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ \ \ \ \ \textcolor{comment}{//\ --\ Serialisation\ ---------------------------------------------------------}}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00137\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \doxymbox{\hyperlink{class_data_file_header_a4ce02ebd3893446b7f68d24fa64e3d97}{getPackedSize}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00146\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \doxymbox{\hyperlink{class_data_file_header_a25f34a7c9eaf4125de88818664c04123}{pack}}(\textcolor{keywordtype}{char}*\ buffer)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00155\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \doxymbox{\hyperlink{class_data_file_header_aa490a0d7ef821d0837a3abe72726fc3f}{unpack}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ buffer);}
+\DoxyCodeLine{00156\ }
+\DoxyCodeLine{00157\ \ \ \ \ \textcolor{comment}{//\ --\ Display\ ---------------------------------------------------------------}}
+\DoxyCodeLine{00158\ }
+\DoxyCodeLine{00164\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_data_file_header_a55a68f48ea28dc980d8a4fa0389bdc38}{display}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00165\ \};}
+\DoxyCodeLine{00166\ }
+\DoxyCodeLine{00167\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ DATAFILEHEADER\_H}}
+
+\end{DoxyCode}

@@ -1,0 +1,37 @@
+\doxysection{Header\+Buffer.\+cpp File Reference}
+\hypertarget{_header_buffer_8cpp}{}\label{_header_buffer_8cpp}\index{HeaderBuffer.cpp@{HeaderBuffer.cpp}}
+
+
+Implementation of \doxylink{class_header_buffer}{Header\+Buffer} class.  
+
+
+{\ttfamily \+\#include "{}Header\+Buffer.\+h"{}}\newline
+{\ttfamily \+\#include $<$iostream$>$}\newline
+{\ttfamily \+\#include $<$cstdint$>$}\newline
+
+
+\doxysubsection{Detailed Description}
+Implementation of \doxylink{class_header_buffer}{Header\+Buffer} class. 
+
+\begin{DoxyAuthor}{Author}
+CSCI 331 Team 2 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+03/\+13/\+2026
+\end{DoxyDate}
+All records in the .li file use a 2-\/byte big-\/endian uint16\+\_\+t length prefix. The header record is no different — it is simply the first one in the file.
+
+Write sequence:\+
+\begin{DoxyEnumerate}
+\item Call \doxylink{class_data_file_header_a4ce02ebd3893446b7f68d24fa64e3d97}{Data\+File\+Header::\+get\+Packed\+Size()} to find payload length
+\item Allocate a buffer and call \doxylink{class_data_file_header_a25f34a7c9eaf4125de88818664c04123}{Data\+File\+Header::\+pack()}
+\item Write 2-\/byte big-\/endian length prefix
+\item Write payload bytes
+\end{DoxyEnumerate}
+
+Read sequence:\+
+\begin{DoxyEnumerate}
+\item Read 2 bytes -\/\texorpdfstring{$>$}{>} decode big-\/endian length
+\item Allocate buffer of that size, read payload bytes
+\item Call \doxylink{class_data_file_header_aa490a0d7ef821d0837a3abe72726fc3f}{Data\+File\+Header::\+unpack()} 
+\end{DoxyEnumerate}

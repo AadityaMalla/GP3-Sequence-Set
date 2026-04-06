@@ -1,0 +1,78 @@
+\doxysection{Block\+Buffer.\+h}
+\hypertarget{_block_buffer_8h_source}{}\label{_block_buffer_8h_source}\doxymbox{\hyperlink{_block_buffer_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#ifndef\ BLOCKBUFFER\_H}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#define\ BLOCKBUFFER\_H}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#include\ <cstddef>}}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_zip_code_record_8h}{ZipCodeRecord.h}}"{}}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_record_buffer_8h}{RecordBuffer.h}}"{}}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00061\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_block_buffer_a3e6a328b8d3f5712da1e0f2912a31ab3}{BlockBuffer}}}
+\DoxyCodeLine{00062\ \{}
+\DoxyCodeLine{00063\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keyword}{explicit}\ \doxymbox{\hyperlink{class_block_buffer_a3e6a328b8d3f5712da1e0f2912a31ab3}{BlockBuffer}}(\textcolor{keywordtype}{int}\ blockSize\ =\ 512);}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_block_buffer_a92110343f0f3b405e3f8950f1825f50e}{clearToEmptyActive}}();}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_block_buffer_ad0623751ff02968a6ab911692e5bf070}{clearToAvail}}(\textcolor{keywordtype}{int}\ nextAvailRBN\ =\ -\/1);}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_block_buffer_af160bd7d7ae05927d16fbf379a4ac5b9}{isAvailBlock}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_block_buffer_a08cb2ab7bbc4211e8e714afe58138b03}{isActiveBlock}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{class_block_buffer_a52124e97eb3b72fe5ab5fed8c0a4052e}{getBlockSize}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{class_block_buffer_a67909ab42a499b88923047fddfca09f1}{getRecordCount}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_block_buffer_af7934e9cd77827d38c1a93ed881b3144}{setPrevRBN}}(\textcolor{keywordtype}{int}\ rbn);}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_block_buffer_af75dce80599ec9edddd61c4e042204a6}{setNextRBN}}(\textcolor{keywordtype}{int}\ rbn);}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{class_block_buffer_afe674265768016a54c89726d3eb1bee4}{getPrevRBN}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00127\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{class_block_buffer_af863212369bf1ed9eacc4bea0e50ae3e}{getNextRBN}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00133\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \doxymbox{\hyperlink{class_block_buffer_a4ea217957a8df61443afdc756485be2c}{getUsedBytes}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \doxymbox{\hyperlink{class_block_buffer_adf75d143d98f933253a737d95bd2934f}{getFreeBytes}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00146\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_block_buffer_a91414d0f597f6f23f5e4e76707cfd8b7}{canFit}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_zip_code_record}{ZipCodeRecord}}\&\ record)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00153\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_block_buffer_a958a2c9a117133a1cdfdb243fff990b9}{insertRecordSorted}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_zip_code_record}{ZipCodeRecord}}\&\ record);}
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00160\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_block_buffer_a48439fde5a4113865468380c3f207941}{removeRecordByZip}}(\textcolor{keywordtype}{int}\ zipCode);}
+\DoxyCodeLine{00161\ }
+\DoxyCodeLine{00168\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_block_buffer_a92d4461d151006b7f16417ddabae392c}{findRecord}}(\textcolor{keywordtype}{int}\ zipCode,\ \doxymbox{\hyperlink{struct_zip_code_record}{ZipCodeRecord}}\&\ record)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00174\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{class_block_buffer_abf854a9d1f8c66495f5c6794b88521d2}{getHighestKey}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00180\ \ \ \ \ \textcolor{keyword}{const}\ std::vector<ZipCodeRecord>\&\ \doxymbox{\hyperlink{class_block_buffer_aa703a504b009ad419cba1318a75ef741}{getRecords}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00181\ }
+\DoxyCodeLine{00187\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_block_buffer_aea04b2fe2cbd4086f5bfce94e11268af}{pack}}(\textcolor{keywordtype}{char}*\ buffer)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00188\ }
+\DoxyCodeLine{00194\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_block_buffer_a26a70fd3df34bc13fea1fd736e15631d}{unpack}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ buffer);}
+\DoxyCodeLine{00195\ }
+\DoxyCodeLine{00199\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_block_buffer_af1c6f357a1b6b6beea92480363fd0c5a}{display}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00200\ }
+\DoxyCodeLine{00201\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00202\ \ \ \ \ \textcolor{keywordtype}{int}\ blockSize;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00203\ \ \ \ \ \textcolor{keywordtype}{int}\ recordCount;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00204\ \ \ \ \ \textcolor{keywordtype}{int}\ prevRBN;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00205\ \ \ \ \ \textcolor{keywordtype}{int}\ nextRBN;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00206\ \ \ \ \ std::vector<ZipCodeRecord>\ records;\ \ \ }
+\DoxyCodeLine{00207\ \ \ \ \ \doxymbox{\hyperlink{class_record_buffer}{RecordBuffer}}\ recordBuffer;\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00208\ }
+\DoxyCodeLine{00213\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ getBlockHeaderSize()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00214\ }
+\DoxyCodeLine{00218\ \ \ \ \ \textcolor{keywordtype}{void}\ sortRecords();}
+\DoxyCodeLine{00219\ \};}
+\DoxyCodeLine{00220\ }
+\DoxyCodeLine{00221\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ BLOCKBUFFER\_H}}
+
+\end{DoxyCode}

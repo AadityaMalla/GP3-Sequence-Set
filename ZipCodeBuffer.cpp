@@ -23,7 +23,7 @@
 #include <algorithm>
 #include <cctype>
 
-// ── Constructor / Destructor ──────────────────────────────────────────────────
+// -- Constructor / Destructor --------------------------------------------------
 
 /**
  * @brief Constructor — initialises all state; does not open file.
@@ -51,7 +51,7 @@ ZipCodeBuffer::~ZipCodeBuffer()
     close();
 }
 
-// ── File lifecycle ────────────────────────────────────────────────────────────
+// -- File lifecycle ------------------------------------------------------------
 
 /**
  * @brief Open the CSV file and parse the header row to build the column map.
@@ -162,7 +162,7 @@ void ZipCodeBuffer::close()
     fileIsOpen = false;
 }
 
-// ── Private helpers ───────────────────────────────────────────────────────────
+// -- Private helpers -----------------------------------------------------------
 
 /**
  * @brief Normalise a string to lowercase with no leading/trailing whitespace.
@@ -375,7 +375,7 @@ std::string ZipCodeBuffer::trim(const std::string& str) const
     return str.substr(first, last - first + 1);
 }
 
-// ── Read interface ────────────────────────────────────────────────────────────
+// -- Read interface ------------------------------------------------------------
 
 /**
  * @brief Read the next data record from the CSV file.
@@ -412,7 +412,7 @@ bool ZipCodeBuffer::getNextRecord(ZipCodeRecord& record)
     return false;
 }
 
-// ── Accessors ─────────────────────────────────────────────────────────────────
+// -- Accessors -----------------------------------------------------------------
 
 /** @return true if file is open. */
 bool ZipCodeBuffer::isOpen()         const { return fileIsOpen; }

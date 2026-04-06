@@ -1,0 +1,511 @@
+\doxysection{LIBuffer Class Reference}
+\hypertarget{class_l_i_buffer}{}\label{class_l_i_buffer}\index{LIBuffer@{LIBuffer}}
+
+
+Buffered reader/\+writer for length-\/indicated ZIP code data files.  
+
+
+
+
+{\ttfamily \+\#include $<$LIBuffer.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_l_i_buffer_ab5e7ebf6aa35aa4bca475c499957cffd}{LIBuffer}} (const std::\+string \&filename)
+\begin{DoxyCompactList}\small\item\em Construct an \doxylink{class_l_i_buffer}{LIBuffer} associated with a filename. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_l_i_buffer_a2a72da0f71584ff7728a918e2f0885f9}{\texorpdfstring{$\sim$}{\string~}\+LIBuffer}} ()
+\begin{DoxyCompactList}\small\item\em Destructor — closes any open streams. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_l_i_buffer_ab9f4bb893ade34f3185fd4d3cfc7811d}{open\+For\+Read}} ()
+\begin{DoxyCompactList}\small\item\em Open the file for sequential reading. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_l_i_buffer_a48a62d766d11477b89a122ddcb9943af}{open\+For\+Write}} ()
+\begin{DoxyCompactList}\small\item\em Open (or create) the file for sequential writing. Truncates any existing content. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_l_i_buffer_a373a0893ed41caa5b1a28578ba3867bd}{close}} ()
+\begin{DoxyCompactList}\small\item\em Close any open read or write streams. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_l_i_buffer_a69f811c19569cc8d43e01ffdcca5a1c2}{read\+Header}} (\doxymbox{\hyperlink{class_data_file_header}{Data\+File\+Header}} \&header)
+\begin{DoxyCompactList}\small\item\em Read and unpack the header record from the file. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_l_i_buffer_a93532b6a5950efe26da3addd17793e15}{get\+Next\+Record}} (\doxymbox{\hyperlink{struct_zip_code_record}{Zip\+Code\+Record}} \&record)
+\begin{DoxyCompactList}\small\item\em Read and unpack the next data record. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_l_i_buffer_a95c9eaffc3c9f0bc401cf6bfeb693035}{read\+Record\+At}} (std::\+streamoff offset, \doxymbox{\hyperlink{struct_zip_code_record}{Zip\+Code\+Record}} \&record)
+\begin{DoxyCompactList}\small\item\em Seek to a byte offset and read exactly one data record. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_l_i_buffer_a4d5ddcbcceebf412f6e50a875b8b5160}{write\+Header}} (\doxymbox{\hyperlink{class_data_file_header}{Data\+File\+Header}} \&header)
+\begin{DoxyCompactList}\small\item\em Write the header record as the first LI record in the file. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_l_i_buffer_a2e1614b75536f5ff631f5f9905b7e7e7}{write\+Record}} (const \doxymbox{\hyperlink{struct_zip_code_record}{Zip\+Code\+Record}} \&record)
+\begin{DoxyCompactList}\small\item\em Serialise and append one \doxylink{struct_zip_code_record}{Zip\+Code\+Record} to the file. \end{DoxyCompactList}\item 
+std::\+streamoff \doxymbox{\hyperlink{class_l_i_buffer_a91f7c9ae6ba7f6fba6a8f6e89dbeda3b}{get\+Current\+Offset}} () const
+\begin{DoxyCompactList}\small\item\em Return the byte offset of the current read position. \end{DoxyCompactList}\item 
+long \doxymbox{\hyperlink{class_l_i_buffer_af7c38e5ad9a4f31c61fdb99a54ff1e60}{get\+Record\+Count}} () const
+\begin{DoxyCompactList}\small\item\em Return the number of data records read or written so far. \end{DoxyCompactList}\item 
+std::\+string \doxymbox{\hyperlink{class_l_i_buffer_a373b9f9b5414b06756dd47cedbc550c5}{get\+Filename}} () const
+\begin{DoxyCompactList}\small\item\em Return the filename associated with this buffer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Buffered reader/\+writer for length-\/indicated ZIP code data files. 
+
+Write workflow:\+
+\begin{DoxyEnumerate}
+\item Construct with filename
+\item \doxylink{class_l_i_buffer_a48a62d766d11477b89a122ddcb9943af}{open\+For\+Write()}
+\item \doxylink{class_l_i_buffer_a4d5ddcbcceebf412f6e50a875b8b5160}{write\+Header()}
+\item \doxylink{class_l_i_buffer_a2e1614b75536f5ff631f5f9905b7e7e7}{write\+Record()} for each data record
+\item \doxylink{class_l_i_buffer_a373a0893ed41caa5b1a28578ba3867bd}{close()}
+\end{DoxyEnumerate}
+
+Read workflow:\+
+\begin{DoxyEnumerate}
+\item Construct with filename
+\item \doxylink{class_l_i_buffer_ab9f4bb893ade34f3185fd4d3cfc7811d}{open\+For\+Read()}
+\item \doxylink{class_l_i_buffer_a69f811c19569cc8d43e01ffdcca5a1c2}{read\+Header()}
+\item \doxylink{class_l_i_buffer_a93532b6a5950efe26da3addd17793e15}{get\+Next\+Record()} until false
+\item \doxylink{class_l_i_buffer_a373a0893ed41caa5b1a28578ba3867bd}{close()}
+\end{DoxyEnumerate}
+
+Indexed read workflow:\+
+\begin{DoxyEnumerate}
+\item \doxylink{class_l_i_buffer_ab9f4bb893ade34f3185fd4d3cfc7811d}{open\+For\+Read()}
+\item \doxylink{class_l_i_buffer_a69f811c19569cc8d43e01ffdcca5a1c2}{read\+Header()}
+\item read\+Record\+At(offset) for any record directly
+\end{DoxyEnumerate}
+
+\begin{DoxyPrecond}{Precondition}
+The file directory must be writable for write operations. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+After \doxylink{class_l_i_buffer_a373a0893ed41caa5b1a28578ba3867bd}{close()} the file is a valid LI ZIP code file. 
+\end{DoxyPostcond}
+
+
+\label{doc-constructors}
+\Hypertarget{class_l_i_buffer_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_l_i_buffer_ab5e7ebf6aa35aa4bca475c499957cffd}\index{LIBuffer@{LIBuffer}!LIBuffer@{LIBuffer}}
+\index{LIBuffer@{LIBuffer}!LIBuffer@{LIBuffer}}
+\doxysubsubsection{\texorpdfstring{LIBuffer()}{LIBuffer()}}
+{\footnotesize\ttfamily \label{class_l_i_buffer_ab5e7ebf6aa35aa4bca475c499957cffd} 
+LIBuffer::\+\+LIBuffer (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{filename}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Construct an \doxylink{class_l_i_buffer}{LIBuffer} associated with a filename. 
+
+Construct an \doxylink{class_l_i_buffer}{LIBuffer} for the given filename.
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Path to the .li binary data file. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+None. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Object initialised; no file opened yet.
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Path to the .li data file. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+None. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Object ready; no file opened. 
+\end{DoxyPostcond}
+\Hypertarget{class_l_i_buffer_a2a72da0f71584ff7728a918e2f0885f9}\index{LIBuffer@{LIBuffer}!````~LIBuffer@{\texorpdfstring{$\sim$}{\string~}LIBuffer}}
+\index{````~LIBuffer@{\texorpdfstring{$\sim$}{\string~}LIBuffer}!LIBuffer@{LIBuffer}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}LIBuffer()}{\string~LIBuffer()}}
+{\footnotesize\ttfamily \label{class_l_i_buffer_a2a72da0f71584ff7728a918e2f0885f9} 
+LIBuffer::\+\texorpdfstring{$\sim$}{\string~}\+LIBuffer (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Destructor — closes any open streams. 
+
+Destructor — delegates to \doxylink{class_l_i_buffer_a373a0893ed41caa5b1a28578ba3867bd}{close()}.
+
+\begin{DoxyPrecond}{Precondition}
+None. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+All open streams are flushed and closed.
+\end{DoxyPostcond}
+\begin{DoxyPrecond}{Precondition}
+None. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+All open streams closed. 
+\end{DoxyPostcond}
+
+
+\label{doc-func-members}
+\Hypertarget{class_l_i_buffer_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_l_i_buffer_a373a0893ed41caa5b1a28578ba3867bd}\index{LIBuffer@{LIBuffer}!close@{close}}
+\index{close@{close}!LIBuffer@{LIBuffer}}
+\doxysubsubsection{\texorpdfstring{close()}{close()}}
+{\footnotesize\ttfamily \label{class_l_i_buffer_a373a0893ed41caa5b1a28578ba3867bd} 
+void LIBuffer::\+close (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Close any open read or write streams. 
+
+Close any open streams.
+
+\begin{DoxyPrecond}{Precondition}
+None. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Both streams closed; internal flags reset.
+\end{DoxyPostcond}
+\begin{DoxyPrecond}{Precondition}
+None. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Both streams closed; flags reset. 
+\end{DoxyPostcond}
+\Hypertarget{class_l_i_buffer_a91f7c9ae6ba7f6fba6a8f6e89dbeda3b}\index{LIBuffer@{LIBuffer}!getCurrentOffset@{getCurrentOffset}}
+\index{getCurrentOffset@{getCurrentOffset}!LIBuffer@{LIBuffer}}
+\doxysubsubsection{\texorpdfstring{getCurrentOffset()}{getCurrentOffset()}}
+{\footnotesize\ttfamily \label{class_l_i_buffer_a91f7c9ae6ba7f6fba6a8f6e89dbeda3b} 
+std::\+streamoff LIBuffer::\+get\+Current\+Offset (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return the byte offset of the current read position. 
+
+Return the current byte offset of the read stream.
+
+\begin{DoxyPrecond}{Precondition}
+\doxylink{class_l_i_buffer_ab9f4bb893ade34f3185fd4d3cfc7811d}{open\+For\+Read()} called. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+No state change. 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+Current byte offset; -\/1 if not open.
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+\doxylink{class_l_i_buffer_ab9f4bb893ade34f3185fd4d3cfc7811d}{open\+For\+Read()} called. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+No state change. 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+Byte offset; -\/1 if not open. 
+\end{DoxyReturn}
+\Hypertarget{class_l_i_buffer_a373b9f9b5414b06756dd47cedbc550c5}\index{LIBuffer@{LIBuffer}!getFilename@{getFilename}}
+\index{getFilename@{getFilename}!LIBuffer@{LIBuffer}}
+\doxysubsubsection{\texorpdfstring{getFilename()}{getFilename()}}
+{\footnotesize\ttfamily \label{class_l_i_buffer_a373b9f9b5414b06756dd47cedbc550c5} 
+std::\+string LIBuffer::\+get\+Filename (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return the filename associated with this buffer. 
+
+Return the filename.
+
+\begin{DoxyPrecond}{Precondition}
+None. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+No state change. 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+The filename string.
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+None. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+No state change. 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+filename string. 
+\end{DoxyReturn}
+\Hypertarget{class_l_i_buffer_a93532b6a5950efe26da3addd17793e15}\index{LIBuffer@{LIBuffer}!getNextRecord@{getNextRecord}}
+\index{getNextRecord@{getNextRecord}!LIBuffer@{LIBuffer}}
+\doxysubsubsection{\texorpdfstring{getNextRecord()}{getNextRecord()}}
+{\footnotesize\ttfamily \label{class_l_i_buffer_a93532b6a5950efe26da3addd17793e15} 
+bool LIBuffer::\+get\+Next\+Record (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_zip_code_record}{Zip\+Code\+Record}} \&}]{record}{}\end{DoxyParamCaption})}
+
+
+
+Read and unpack the next data record. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em record} & Output:\+ populated on success. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success; false at EOF or on error. 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+\doxylink{class_l_i_buffer_ab9f4bb893ade34f3185fd4d3cfc7811d}{open\+For\+Read()} and \doxylink{class_l_i_buffer_a69f811c19569cc8d43e01ffdcca5a1c2}{read\+Header()} called. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+record populated; record\+Count incremented; stream advances. 
+\end{DoxyPostcond}
+\Hypertarget{class_l_i_buffer_af7c38e5ad9a4f31c61fdb99a54ff1e60}\index{LIBuffer@{LIBuffer}!getRecordCount@{getRecordCount}}
+\index{getRecordCount@{getRecordCount}!LIBuffer@{LIBuffer}}
+\doxysubsubsection{\texorpdfstring{getRecordCount()}{getRecordCount()}}
+{\footnotesize\ttfamily \label{class_l_i_buffer_af7c38e5ad9a4f31c61fdb99a54ff1e60} 
+long LIBuffer::\+get\+Record\+Count (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return the number of data records read or written so far. 
+
+Return the cumulative data record count.
+
+\begin{DoxyPrecond}{Precondition}
+None. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+No state change. 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+Cumulative data record count.
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+None. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+No state change. 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+record\+Count. 
+\end{DoxyReturn}
+\Hypertarget{class_l_i_buffer_ab9f4bb893ade34f3185fd4d3cfc7811d}\index{LIBuffer@{LIBuffer}!openForRead@{openForRead}}
+\index{openForRead@{openForRead}!LIBuffer@{LIBuffer}}
+\doxysubsubsection{\texorpdfstring{openForRead()}{openForRead()}}
+{\footnotesize\ttfamily \label{class_l_i_buffer_ab9f4bb893ade34f3185fd4d3cfc7811d} 
+bool LIBuffer::\+open\+For\+Read (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Open the file for sequential reading. 
+
+\begin{DoxyReturn}{Returns}
+true on success; false if file cannot be opened. 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+File must exist and be a valid LI ZIP code file. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Stream positioned at byte 0; ready for \doxylink{class_l_i_buffer_a69f811c19569cc8d43e01ffdcca5a1c2}{read\+Header()}.
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+true on success; false if file cannot be opened. 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+None. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+in\+Stream open in binary mode at byte 0; read\+Open == true. 
+\end{DoxyPostcond}
+\Hypertarget{class_l_i_buffer_a48a62d766d11477b89a122ddcb9943af}\index{LIBuffer@{LIBuffer}!openForWrite@{openForWrite}}
+\index{openForWrite@{openForWrite}!LIBuffer@{LIBuffer}}
+\doxysubsubsection{\texorpdfstring{openForWrite()}{openForWrite()}}
+{\footnotesize\ttfamily \label{class_l_i_buffer_a48a62d766d11477b89a122ddcb9943af} 
+bool LIBuffer::\+open\+For\+Write (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Open (or create) the file for sequential writing. Truncates any existing content. 
+
+Open (or create) the file for sequential writing, truncating content.
+
+\begin{DoxyReturn}{Returns}
+true on success; false if file cannot be opened. 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+Directory must be writable. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Stream positioned at byte 0; ready for \doxylink{class_l_i_buffer_a4d5ddcbcceebf412f6e50a875b8b5160}{write\+Header()}.
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+true on success; false if file cannot be opened. 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+None. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+out\+Stream open in binary mode; write\+Open == true. 
+\end{DoxyPostcond}
+\Hypertarget{class_l_i_buffer_a69f811c19569cc8d43e01ffdcca5a1c2}\index{LIBuffer@{LIBuffer}!readHeader@{readHeader}}
+\index{readHeader@{readHeader}!LIBuffer@{LIBuffer}}
+\doxysubsubsection{\texorpdfstring{readHeader()}{readHeader()}}
+{\footnotesize\ttfamily \label{class_l_i_buffer_a69f811c19569cc8d43e01ffdcca5a1c2} 
+bool LIBuffer::\+read\+Header (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_data_file_header}{Data\+File\+Header}} \&}]{header}{}\end{DoxyParamCaption})}
+
+
+
+Read and unpack the header record from the file. 
+
+Read and unpack the header record.
+
+
+\begin{DoxyParams}{Parameters}
+{\em header} & Output:\+ populated with file metadata on success. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success; false on I/\+O or unpack error. 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+\doxylink{class_l_i_buffer_ab9f4bb893ade34f3185fd4d3cfc7811d}{open\+For\+Read()} returned true; stream at byte 0. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+header populated; stream advances past header record.
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em header} & Output:\+ populated with file metadata. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success; false on error. 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+\doxylink{class_l_i_buffer_ab9f4bb893ade34f3185fd4d3cfc7811d}{open\+For\+Read()} returned true; stream at byte 0. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+header populated; stream advances past header record. 
+\end{DoxyPostcond}
+\Hypertarget{class_l_i_buffer_a95c9eaffc3c9f0bc401cf6bfeb693035}\index{LIBuffer@{LIBuffer}!readRecordAt@{readRecordAt}}
+\index{readRecordAt@{readRecordAt}!LIBuffer@{LIBuffer}}
+\doxysubsubsection{\texorpdfstring{readRecordAt()}{readRecordAt()}}
+{\footnotesize\ttfamily \label{class_l_i_buffer_a95c9eaffc3c9f0bc401cf6bfeb693035} 
+bool LIBuffer::\+read\+Record\+At (\begin{DoxyParamCaption}\item[{std::\+streamoff}]{offset}{, }\item[{\doxymbox{\hyperlink{struct_zip_code_record}{Zip\+Code\+Record}} \&}]{record}{}\end{DoxyParamCaption})}
+
+
+
+Seek to a byte offset and read exactly one data record. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em offset} & Byte offset of the record\textquotesingle{}s 2-\/byte length prefix. \\
+\hline
+{\em record} & Output:\+ populated on success. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success; false on seek/\+read/\+unpack error. 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+\doxylink{class_l_i_buffer_ab9f4bb893ade34f3185fd4d3cfc7811d}{open\+For\+Read()} returned true. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+record populated; stream positioned after the record. 
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+Used by Index\+Loader for O(1) direct access.
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em offset} & Byte offset of the record\textquotesingle{}s 2-\/byte length prefix. \\
+\hline
+{\em record} & Output:\+ populated on success. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success; false on seek/\+read/\+unpack error. 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+\doxylink{class_l_i_buffer_ab9f4bb893ade34f3185fd4d3cfc7811d}{open\+For\+Read()} returned true. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+record populated; stream positioned after the record. 
+\end{DoxyPostcond}
+\Hypertarget{class_l_i_buffer_a4d5ddcbcceebf412f6e50a875b8b5160}\index{LIBuffer@{LIBuffer}!writeHeader@{writeHeader}}
+\index{writeHeader@{writeHeader}!LIBuffer@{LIBuffer}}
+\doxysubsubsection{\texorpdfstring{writeHeader()}{writeHeader()}}
+{\footnotesize\ttfamily \label{class_l_i_buffer_a4d5ddcbcceebf412f6e50a875b8b5160} 
+bool LIBuffer::\+write\+Header (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_data_file_header}{Data\+File\+Header}} \&}]{header}{}\end{DoxyParamCaption})}
+
+
+
+Write the header record as the first LI record in the file. 
+
+Write the header record as the first LI record.
+
+
+\begin{DoxyParams}{Parameters}
+{\em header} & The metadata to write. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success; false on I/\+O error. 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+\doxylink{class_l_i_buffer_a48a62d766d11477b89a122ddcb9943af}{open\+For\+Write()} returned true; must be the first write call. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Header occupies first bytes of file; stream advances.
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em header} & Metadata to write. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success; false on I/\+O error. 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+\doxylink{class_l_i_buffer_a48a62d766d11477b89a122ddcb9943af}{open\+For\+Write()} returned true; must be first write call. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Header written; stream advances. 
+\end{DoxyPostcond}
+\Hypertarget{class_l_i_buffer_a2e1614b75536f5ff631f5f9905b7e7e7}\index{LIBuffer@{LIBuffer}!writeRecord@{writeRecord}}
+\index{writeRecord@{writeRecord}!LIBuffer@{LIBuffer}}
+\doxysubsubsection{\texorpdfstring{writeRecord()}{writeRecord()}}
+{\footnotesize\ttfamily \label{class_l_i_buffer_a2e1614b75536f5ff631f5f9905b7e7e7} 
+bool LIBuffer::\+write\+Record (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_zip_code_record}{Zip\+Code\+Record}} \&}]{record}{}\end{DoxyParamCaption})}
+
+
+
+Serialise and append one \doxylink{struct_zip_code_record}{Zip\+Code\+Record} to the file. 
+
+Serialise and append one \doxylink{struct_zip_code_record}{Zip\+Code\+Record}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em record} & The ZIP code data to write. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success; false on I/\+O error. 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+\doxylink{class_l_i_buffer_a48a62d766d11477b89a122ddcb9943af}{open\+For\+Write()} and \doxylink{class_l_i_buffer_a4d5ddcbcceebf412f6e50a875b8b5160}{write\+Header()} called. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+One LI data record appended; record\+Count incremented.
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em record} & ZIP code data to write. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success; false on I/\+O error. 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+\doxylink{class_l_i_buffer_a48a62d766d11477b89a122ddcb9943af}{open\+For\+Write()} and \doxylink{class_l_i_buffer_a4d5ddcbcceebf412f6e50a875b8b5160}{write\+Header()} called. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+One LI data record appended; record\+Count incremented. 
+\end{DoxyPostcond}
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{_l_i_buffer_8h}{LIBuffer.\+h}}\item 
+\doxymbox{\hyperlink{_l_i_buffer_8cpp}{LIBuffer.\+cpp}}\end{DoxyCompactItemize}

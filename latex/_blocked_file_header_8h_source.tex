@@ -1,0 +1,68 @@
+\doxysection{Blocked\+File\+Header.\+h}
+\hypertarget{_blocked_file_header_8h_source}{}\label{_blocked_file_header_8h_source}\doxymbox{\hyperlink{_blocked_file_header_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#ifndef\ BLOCKEDFILEHEADER\_H}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#define\ BLOCKEDFILEHEADER\_H}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#include\ <iomanip>}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#include\ <cstring>}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_data_file_header_8h}{DataFileHeader.h}}"{}}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00047\ \textcolor{keyword}{class\ }BlockedFileHeader}
+\DoxyCodeLine{00048\ \{}
+\DoxyCodeLine{00049\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{comment}{//\ --\ General\ file\ metadata\ ---------------------------------------------}}
+\DoxyCodeLine{00051\ \ \ \ \ std::string\ \doxymbox{\hyperlink{class_blocked_file_header_a259ea296eea59ed7b04c9eb41abc0fcd}{fileStructureType}};\ \ \ \ \ \ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_blocked_file_header_a15205f1cbed46ee03c8fe2ecf6874855}{version}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_blocked_file_header_af16ebbc584079203e0f6c505832caf4f}{headerSize}};\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{comment}{//\ --\ Size\ format\ metadata\ ----------------------------------------------}}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_blocked_file_header_aad71e28ba85f600964824b2ef35b974d}{recordSizeIntegerBytes}};\ }
+\DoxyCodeLine{00057\ \ \ \ \ std::string\ \doxymbox{\hyperlink{class_blocked_file_header_a8c6b0f9506b1ced8aaf4520681458ec9}{sizeFormatType}};\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_blocked_file_header_ac341b440207870d3321b029984a641a5}{sizeOfSizes}};\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_blocked_file_header_aea23cc21871b95c68c401d72809195dc}{sizeInclusionFlag}};\ \ \ \ \ \ }
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{comment}{//\ --\ GP\ 3.0\ blocked-\/file\ metadata\ --------------------------------------}}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_blocked_file_header_a34aa8e4c00f4291eb4d537c9c15c1c29}{blockSize}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{double}\ \ \ \ \ \ \doxymbox{\hyperlink{class_blocked_file_header_ae19cd4caeba70b8bb935d29f695eae4f}{minBlockCapacity}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_blocked_file_header_adda8606f8252d96dd8662c84650aaf4c}{recordCount}};\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_blocked_file_header_aba7a2d3310eb403e15f66a9f7e373040}{blockCount}};\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_blocked_file_header_a7f8b271009726b9f25c1b3be658ad0a9}{activeListHead}};\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_blocked_file_header_a1d04943a3afed58db5aa5c88c1affdfb}{availListHead}};\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_blocked_file_header_a59f0e908fce85904f2412e30dc56729f}{staleFlag}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{comment}{//\ --\ Index\ metadata\ ----------------------------------------------------}}
+\DoxyCodeLine{00071\ \ \ \ \ std::string\ \doxymbox{\hyperlink{class_blocked_file_header_ad60c8728cb3b16ad25bfc2c597369425}{primaryKeyIndexFileName}};}
+\DoxyCodeLine{00072\ \ \ \ \ std::string\ \doxymbox{\hyperlink{class_blocked_file_header_a0069ac34cde7f24db60a196eae440e75}{indexFileStructureType}};\ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_blocked_file_header_a741919136e1a7a7094fca31679fa25f7}{primaryKeyFieldIndex}};\ \ \ }
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{comment}{//\ --\ Field\ metadata\ ----------------------------------------------------}}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{class_blocked_file_header_a9fac5fdfac2793b39c30ced325cfb0c5}{fieldCount}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00077\ \ \ \ \ std::vector<FieldDescriptor>\ \doxymbox{\hyperlink{class_blocked_file_header_aa7ec8e0c1861271f019df464c1f9d3f8}{fields}};}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{comment}{//\ --\ Constructors\ ------------------------------------------------------}}
+\DoxyCodeLine{00080\ \ \ \ \ BlockedFileHeader();}
+\DoxyCodeLine{00081\ \ \ \ \ BlockedFileHeader(\textcolor{keyword}{const}\ std::string\&\ structType,\ \textcolor{keywordtype}{int}\ ver);}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{comment}{//\ --\ Field\ management\ --------------------------------------------------}}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordtype}{void}\ addField(\textcolor{keyword}{const}\ std::string\&\ name,}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ typeSchema,}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ isPrimaryKey\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{comment}{//\ --\ Serialization\ -----------------------------------------------------}}
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ getPackedSize()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ pack(\textcolor{keywordtype}{char}*\ buffer)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ unpack(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ buffer);}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{comment}{//\ --\ Utility\ -----------------------------------------------------------}}
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keywordtype}{void}\ display()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00095\ \};}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ BLOCKEDFILEHEADER\_H}}
+
+\end{DoxyCode}

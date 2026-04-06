@@ -1,0 +1,35 @@
+\doxysection{Record\+Buffer.\+h File Reference}
+\hypertarget{_record_buffer_8h}{}\label{_record_buffer_8h}\index{RecordBuffer.h@{RecordBuffer.h}}
+
+
+Packs and unpacks one ZIP code record for blocked sequence-\/set storage.  
+
+
+{\ttfamily \+\#include $<$string$>$}\newline
+{\ttfamily \+\#include $<$vector$>$}\newline
+{\ttfamily \+\#include $<$cstddef$>$}\newline
+{\ttfamily \+\#include $<$cstdint$>$}\newline
+{\ttfamily \+\#include "{}Zip\+Code\+Record.\+h"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \doxymbox{\hyperlink{class_record_buffer}{Record\+Buffer}}
+\begin{DoxyCompactList}\small\item\em Converts \doxylink{struct_zip_code_record}{Zip\+Code\+Record} objects to/\+from raw bytes for block storage. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Packs and unpacks one ZIP code record for blocked sequence-\/set storage. 
+
+\begin{DoxyAuthor}{Author}
+CSCI 331 Team 2 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+04/\+01/\+2026
+\end{DoxyDate}
+This class is responsible for converting a \doxylink{struct_zip_code_record}{Zip\+Code\+Record} to and from a raw byte representation stored inside a block.
+
+GP 3.\+0 still expects the record fields to remain comma-\/separated in logical form, so this buffer stores each record as:\+
+
+\+[2-\/byte big-\/endian payload length]\+ \+[ASCII payload:\+ ZZZZZ,place,state,county,lat,lon]\+
+
+This allows records to remain variable-\/length while still being easy to pack into a fixed-\/size block. 

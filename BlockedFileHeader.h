@@ -47,18 +47,18 @@
 class BlockedFileHeader
 {
 public:
-    // ── General file metadata ─────────────────────────────────────────────
+    // -- General file metadata ---------------------------------------------
     std::string fileStructureType;      /**< e.g. "ZIPCODE_BSS_V1" */
     int         version;                /**< File format version   */
     int         headerSize;             /**< Packed header size    */
 
-    // ── Size format metadata ──────────────────────────────────────────────
+    // -- Size format metadata ----------------------------------------------
     int         recordSizeIntegerBytes; /**< Bytes used for LI size fields */
     std::string sizeFormatType;         /**< e.g. "binary" */
     int         sizeOfSizes;            /**< Size of size fields */
     bool        sizeInclusionFlag;      /**< Whether size includes itself */
 
-    // ── GP 3.0 blocked-file metadata ──────────────────────────────────────
+    // -- GP 3.0 blocked-file metadata --------------------------------------
     int         blockSize;              /**< Physical bytes per block */
     double      minBlockCapacity;       /**< Minimum occupancy ratio (0.50 default) */
     int         recordCount;            /**< Total active records in file */
@@ -67,30 +67,30 @@ public:
     int         availListHead;          /**< RBN of first avail block; -1 if none */
     bool        staleFlag;              /**< True if index is out-of-date */
 
-    // ── Index metadata ────────────────────────────────────────────────────
+    // -- Index metadata ----------------------------------------------------
     std::string primaryKeyIndexFileName;/**< Associated block-index filename */
     std::string indexFileStructureType; /**< e.g. "ZIPCODE_BLOCK_INDEX_V1" */
     int         primaryKeyFieldIndex;   /**< Which field is the PK */
 
-    // ── Field metadata ────────────────────────────────────────────────────
+    // -- Field metadata ----------------------------------------------------
     int fieldCount;                     /**< Number of fields in each record */
     std::vector<FieldDescriptor> fields;/**< Field descriptors */
 
-    // ── Constructors ──────────────────────────────────────────────────────
+    // -- Constructors ------------------------------------------------------
     BlockedFileHeader();
     BlockedFileHeader(const std::string& structType, int ver);
 
-    // ── Field management ──────────────────────────────────────────────────
+    // -- Field management --------------------------------------------------
     void addField(const std::string& name,
                   const std::string& typeSchema,
                   bool isPrimaryKey = false);
 
-    // ── Serialization ─────────────────────────────────────────────────────
+    // -- Serialization -----------------------------------------------------
     size_t getPackedSize() const;
     size_t pack(char* buffer) const;
     size_t unpack(const char* buffer);
 
-    // ── Utility ───────────────────────────────────────────────────────────
+    // -- Utility -----------------------------------------------------------
     void display() const;
 };
 

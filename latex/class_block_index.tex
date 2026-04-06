@@ -1,0 +1,183 @@
+\doxysection{Block\+Index Class Reference}
+\hypertarget{class_block_index}{}\label{class_block_index}\index{BlockIndex@{BlockIndex}}
+
+
+In-\/memory simple index for the blocked sequence-\/set file.  
+
+
+
+
+{\ttfamily \+\#include $<$Block\+Index.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_block_index_ae6a14c2628c50e41031d30f0c0709d97}{Block\+Index}} (const std::\+string \&index\+Filename)
+\begin{DoxyCompactList}\small\item\em Construct an index associated with a filename. \end{DoxyCompactList}\item 
+\Hypertarget{class_block_index_ac4c1ae8828398e39aaa5465d6e548332}\label{class_block_index_ac4c1ae8828398e39aaa5465d6e548332} 
+void {\bfseries clear} ()
+\begin{DoxyCompactList}\small\item\em Clear all in-\/memory entries. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_block_index_aa489b1c4ee31eb351d3ba8c6f1318647}{add\+Entry}} (int max\+Key, int rbn)
+\begin{DoxyCompactList}\small\item\em Add one entry to the in-\/memory index. \end{DoxyCompactList}\item 
+\Hypertarget{class_block_index_a62c9a0b7bee17589b61ce670e5747bc3}\label{class_block_index_a62c9a0b7bee17589b61ce670e5747bc3} 
+void {\bfseries sort\+Entries} ()
+\begin{DoxyCompactList}\small\item\em Sort entries by max\+Key ascending. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_block_index_a35ab62902270da048fbdc029308ae866}{write\+Index}} () const
+\begin{DoxyCompactList}\small\item\em Write index entries to the binary index file. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_block_index_a2e5de2df65d70aeb8ccc01251768db0a}{load\+Index}} ()
+\begin{DoxyCompactList}\small\item\em Load index entries from the binary index file. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_block_index_a0a5732dbc93fdd6aba028c5946fe4917}{find\+Candidate\+Block}} (int zip\+Code, int \&rbn) const
+\begin{DoxyCompactList}\small\item\em Find the candidate block for a target ZIP code. \end{DoxyCompactList}\item 
+size\+\_\+t \doxymbox{\hyperlink{class_block_index_aa27bcfd471dae0feaad3bc559a4a019f}{size}} () const
+\begin{DoxyCompactList}\small\item\em Return the number of entries in memory. \end{DoxyCompactList}\item 
+std::\+string \doxymbox{\hyperlink{class_block_index_a1bc432a3f49dc86350b5caf98efb1d75}{get\+Filename}} () const
+\begin{DoxyCompactList}\small\item\em Return the associated index filename. \end{DoxyCompactList}\item 
+const std::\+vector$<$ \doxymbox{\hyperlink{struct_block_index_entry}{Block\+Index\+Entry}} $>$ \& \doxymbox{\hyperlink{class_block_index_a767cac76a48969c86b8fbfb326910bf8}{get\+Entries}} () const
+\begin{DoxyCompactList}\small\item\em Return const reference to all entries. \end{DoxyCompactList}\item 
+\Hypertarget{class_block_index_a770398e335c930dda26664002e7d7f22}\label{class_block_index_a770398e335c930dda26664002e7d7f22} 
+void {\bfseries display} () const
+\begin{DoxyCompactList}\small\item\em Print the index in readable form. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+In-\/memory simple index for the blocked sequence-\/set file. 
+
+Responsibilities:\+
+\begin{DoxyItemize}
+\item store block index entries
+\item sort entries
+\item write/\+read binary index file
+\item find candidate block for a ZIP code via binary search 
+\end{DoxyItemize}
+
+\label{doc-constructors}
+\Hypertarget{class_block_index_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_block_index_ae6a14c2628c50e41031d30f0c0709d97}\index{BlockIndex@{BlockIndex}!BlockIndex@{BlockIndex}}
+\index{BlockIndex@{BlockIndex}!BlockIndex@{BlockIndex}}
+\doxysubsubsection{\texorpdfstring{BlockIndex()}{BlockIndex()}}
+{\footnotesize\ttfamily \label{class_block_index_ae6a14c2628c50e41031d30f0c0709d97} 
+Block\+Index::\+\+Block\+Index (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{index\+Filename}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Construct an index associated with a filename. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index\+Filename} & Path to binary block-\/index file. \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{class_block_index_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_block_index_aa489b1c4ee31eb351d3ba8c6f1318647}\index{BlockIndex@{BlockIndex}!addEntry@{addEntry}}
+\index{addEntry@{addEntry}!BlockIndex@{BlockIndex}}
+\doxysubsubsection{\texorpdfstring{addEntry()}{addEntry()}}
+{\footnotesize\ttfamily \label{class_block_index_aa489b1c4ee31eb351d3ba8c6f1318647} 
+void Block\+Index::\+add\+Entry (\begin{DoxyParamCaption}\item[{int}]{max\+Key}{, }\item[{int}]{rbn}{}\end{DoxyParamCaption})}
+
+
+
+Add one entry to the in-\/memory index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em max\+Key} & Highest ZIP in the block. \\
+\hline
+{\em rbn} & Relative block number. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_block_index_a0a5732dbc93fdd6aba028c5946fe4917}\index{BlockIndex@{BlockIndex}!findCandidateBlock@{findCandidateBlock}}
+\index{findCandidateBlock@{findCandidateBlock}!BlockIndex@{BlockIndex}}
+\doxysubsubsection{\texorpdfstring{findCandidateBlock()}{findCandidateBlock()}}
+{\footnotesize\ttfamily \label{class_block_index_a0a5732dbc93fdd6aba028c5946fe4917} 
+bool Block\+Index::\+find\+Candidate\+Block (\begin{DoxyParamCaption}\item[{int}]{zip\+Code}{, }\item[{int \&}]{rbn}{}\end{DoxyParamCaption}) const}
+
+
+
+Find the candidate block for a target ZIP code. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em zip\+Code} & ZIP code being searched. \\
+\hline
+{\em rbn} & Output candidate RBN. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if a candidate block exists; false otherwise.
+\end{DoxyReturn}
+Uses lower\+\_\+bound on max\+Key values to find the first block whose max\+Key \texorpdfstring{$>$}{>}= zip\+Code. \Hypertarget{class_block_index_a767cac76a48969c86b8fbfb326910bf8}\index{BlockIndex@{BlockIndex}!getEntries@{getEntries}}
+\index{getEntries@{getEntries}!BlockIndex@{BlockIndex}}
+\doxysubsubsection{\texorpdfstring{getEntries()}{getEntries()}}
+{\footnotesize\ttfamily \label{class_block_index_a767cac76a48969c86b8fbfb326910bf8} 
+const std::\+vector$<$ \doxymbox{\hyperlink{struct_block_index_entry}{Block\+Index\+Entry}} $>$ \& Block\+Index::\+get\+Entries (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return const reference to all entries. 
+
+\begin{DoxyReturn}{Returns}
+Const vector reference. 
+\end{DoxyReturn}
+\Hypertarget{class_block_index_a1bc432a3f49dc86350b5caf98efb1d75}\index{BlockIndex@{BlockIndex}!getFilename@{getFilename}}
+\index{getFilename@{getFilename}!BlockIndex@{BlockIndex}}
+\doxysubsubsection{\texorpdfstring{getFilename()}{getFilename()}}
+{\footnotesize\ttfamily \label{class_block_index_a1bc432a3f49dc86350b5caf98efb1d75} 
+std::\+string Block\+Index::\+get\+Filename (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return the associated index filename. 
+
+\begin{DoxyReturn}{Returns}
+Filename string. 
+\end{DoxyReturn}
+\Hypertarget{class_block_index_a2e5de2df65d70aeb8ccc01251768db0a}\index{BlockIndex@{BlockIndex}!loadIndex@{loadIndex}}
+\index{loadIndex@{loadIndex}!BlockIndex@{BlockIndex}}
+\doxysubsubsection{\texorpdfstring{loadIndex()}{loadIndex()}}
+{\footnotesize\ttfamily \label{class_block_index_a2e5de2df65d70aeb8ccc01251768db0a} 
+bool Block\+Index::\+load\+Index (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Load index entries from the binary index file. 
+
+\begin{DoxyReturn}{Returns}
+true on success; false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_block_index_aa27bcfd471dae0feaad3bc559a4a019f}\index{BlockIndex@{BlockIndex}!size@{size}}
+\index{size@{size}!BlockIndex@{BlockIndex}}
+\doxysubsubsection{\texorpdfstring{size()}{size()}}
+{\footnotesize\ttfamily \label{class_block_index_aa27bcfd471dae0feaad3bc559a4a019f} 
+size\+\_\+t Block\+Index::\+size (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return the number of entries in memory. 
+
+\begin{DoxyReturn}{Returns}
+entries.\+size() 
+\end{DoxyReturn}
+\Hypertarget{class_block_index_a35ab62902270da048fbdc029308ae866}\index{BlockIndex@{BlockIndex}!writeIndex@{writeIndex}}
+\index{writeIndex@{writeIndex}!BlockIndex@{BlockIndex}}
+\doxysubsubsection{\texorpdfstring{writeIndex()}{writeIndex()}}
+{\footnotesize\ttfamily \label{class_block_index_a35ab62902270da048fbdc029308ae866} 
+bool Block\+Index::\+write\+Index (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Write index entries to the binary index file. 
+
+\begin{DoxyReturn}{Returns}
+true on success; false otherwise. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{_block_index_8h}{Block\+Index.\+h}}\item 
+\doxymbox{\hyperlink{_block_index_8cpp}{Block\+Index.\+cpp}}\end{DoxyCompactItemize}

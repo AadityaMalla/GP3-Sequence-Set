@@ -1,0 +1,26 @@
+\doxysection{Zip\+Code\+Buffer.\+cpp File Reference}
+\hypertarget{_zip_code_buffer_8cpp}{}\label{_zip_code_buffer_8cpp}\index{ZipCodeBuffer.cpp@{ZipCodeBuffer.cpp}}
+
+
+Implementation of the Zip\+Code\+Buffer class.  
+
+
+{\ttfamily \+\#include "{}Zip\+Code\+Buffer.\+h"{}}\newline
+{\ttfamily \+\#include $<$sstream$>$}\newline
+{\ttfamily \+\#include $<$iostream$>$}\newline
+{\ttfamily \+\#include $<$algorithm$>$}\newline
+{\ttfamily \+\#include $<$cctype$>$}\newline
+
+
+\doxysubsection{Detailed Description}
+Implementation of the Zip\+Code\+Buffer class. 
+
+\begin{DoxyAuthor}{Author}
+CSCI 331 Team 2 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+03/\+13/\+2026
+\end{DoxyDate}
+Supports column re-\/ordering by reading the header row on first open and mapping column names to field indices. Data rows are then parsed using those indices regardless of column order.
+
+Supported header column names (case-\/insensitive):\+ zip, zip code, zipcode -\/\texorpdfstring{$>$}{>} zip\+Code place, place name -\/\texorpdfstring{$>$}{>} place\+Name state -\/\texorpdfstring{$>$}{>} state county -\/\texorpdfstring{$>$}{>} county lat, latitude -\/\texorpdfstring{$>$}{>} latitude long, longitude -\/\texorpdfstring{$>$}{>} longitude 

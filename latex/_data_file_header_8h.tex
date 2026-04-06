@@ -1,0 +1,33 @@
+\doxysection{Data\+File\+Header.\+h File Reference}
+\hypertarget{_data_file_header_8h}{}\label{_data_file_header_8h}\index{DataFileHeader.h@{DataFileHeader.h}}
+
+
+Data structure for the header record of a length-\/indicated ZIP code file.  
+
+
+{\ttfamily \+\#include $<$string$>$}\newline
+{\ttfamily \+\#include $<$vector$>$}\newline
+{\ttfamily \+\#include $<$iostream$>$}\newline
+{\ttfamily \+\#include $<$iomanip$>$}\newline
+{\ttfamily \+\#include $<$cstring$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{struct_field_descriptor}{Field\+Descriptor}}
+\begin{DoxyCompactList}\small\item\em Describes a single field in each data record. \end{DoxyCompactList}\item 
+class \doxymbox{\hyperlink{class_data_file_header}{Data\+File\+Header}}
+\begin{DoxyCompactList}\small\item\em Holds metadata about a length-\/indicated ZIP code data file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Data structure for the header record of a length-\/indicated ZIP code file. 
+
+\begin{DoxyAuthor}{Author}
+CSCI 331 Team 2 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+03/\+13/\+2026
+\end{DoxyDate}
+This struct holds all metadata about a .li data file. It knows how to pack/\+unpack itself into/\+from a raw byte buffer, but has NO file I/\+O — that responsibility belongs to \doxylink{class_header_buffer}{Header\+Buffer}.
+
+The header is always stored as the FIRST length-\/indicated record inside the .li file (byte 0), using the same 2-\/byte length prefix format as every other record. 

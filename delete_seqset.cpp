@@ -21,12 +21,12 @@
 #include "BlockIndex.h"
 #include "ZipCodeRecord.h"
 
-// ── File constants ────────────────────────────────────────────────────────────
+// -- File constants ------------------------------------------------------------
 static const std::string SEQ_FILE = "data/us_postal_codes_seqset.txt";
 static const std::string IDX_FILE = "data/us_postal_codes_block_idx.txt";
 static const std::string INPUT_DELETE_FILE = "data/delete_records.txt";
 
-// ── Forward declarations ──────────────────────────────────────────────────────
+// -- Forward declarations ------------------------------------------------------
 bool loadDeleteZips(const std::string& filename, std::vector<int>& zips);
 bool parseDeleteLine(const std::string& line, int& zipCode);
 bool rebuildBlockIndex(const std::string& seqFilename, const std::string& idxFilename);

@@ -1,0 +1,112 @@
+\doxysection{Field\+Descriptor Struct Reference}
+\hypertarget{struct_field_descriptor}{}\label{struct_field_descriptor}\index{FieldDescriptor@{FieldDescriptor}}
+
+
+Describes a single field in each data record.  
+
+
+
+
+{\ttfamily \+\#include $<$Data\+File\+Header.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{struct_field_descriptor_a255f449da9b1f433ea1b69ca0f6e29c1}{Field\+Descriptor}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor — is\+Primary\+Key defaults to false. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{struct_field_descriptor_ad2ce81bb40e4770a7ec186cd31e0c429}{Field\+Descriptor}} (const std::\+string \&n, const std::\+string \&t, bool pk)
+\begin{DoxyCompactList}\small\item\em Parameterised constructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std::\+string \doxymbox{\hyperlink{struct_field_descriptor_a2a32cf13a4446a86419934ea3a405133}{name}}
+\item 
+std::\+string \doxymbox{\hyperlink{struct_field_descriptor_af585606177343018da6883e616d7e03f}{type\+Schema}}
+\item 
+bool \doxymbox{\hyperlink{struct_field_descriptor_acf6eb857a5afcd3f84547d461c2760c0}{is\+Primary\+Key}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Describes a single field in each data record. 
+
+\begin{DoxyPrecond}{Precondition}
+name and type\+Schema must be non-\/empty strings. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Instances can be stored in a \doxylink{class_data_file_header}{Data\+File\+Header}\textquotesingle{}s fields vector. 
+\end{DoxyPostcond}
+
+
+\label{doc-constructors}
+\Hypertarget{struct_field_descriptor_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{struct_field_descriptor_a255f449da9b1f433ea1b69ca0f6e29c1}\index{FieldDescriptor@{FieldDescriptor}!FieldDescriptor@{FieldDescriptor}}
+\index{FieldDescriptor@{FieldDescriptor}!FieldDescriptor@{FieldDescriptor}}
+\doxysubsubsection{\texorpdfstring{FieldDescriptor()}{FieldDescriptor()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{struct_field_descriptor_a255f449da9b1f433ea1b69ca0f6e29c1} 
+Field\+Descriptor::\+\+Field\+Descriptor (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Default constructor — is\+Primary\+Key defaults to false. 
+
+\begin{DoxyPrecond}{Precondition}
+None. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+All fields initialised to empty/\+false. 
+\end{DoxyPostcond}
+\Hypertarget{struct_field_descriptor_ad2ce81bb40e4770a7ec186cd31e0c429}\index{FieldDescriptor@{FieldDescriptor}!FieldDescriptor@{FieldDescriptor}}
+\index{FieldDescriptor@{FieldDescriptor}!FieldDescriptor@{FieldDescriptor}}
+\doxysubsubsection{\texorpdfstring{FieldDescriptor()}{FieldDescriptor()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{struct_field_descriptor_ad2ce81bb40e4770a7ec186cd31e0c429} 
+Field\+Descriptor::\+\+Field\+Descriptor (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{n}{, }\item[{const std::\+string \&}]{t}{, }\item[{bool}]{pk}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Parameterised constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & Field name. \\
+\hline
+{\em t} & Type schema string. \\
+\hline
+{\em pk} & True if this is the primary key field. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+None. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+All members set to supplied values. 
+\end{DoxyPostcond}
+
+
+\label{doc-variable-members}
+\Hypertarget{struct_field_descriptor_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_field_descriptor_acf6eb857a5afcd3f84547d461c2760c0}\index{FieldDescriptor@{FieldDescriptor}!isPrimaryKey@{isPrimaryKey}}
+\index{isPrimaryKey@{isPrimaryKey}!FieldDescriptor@{FieldDescriptor}}
+\doxysubsubsection{\texorpdfstring{isPrimaryKey}{isPrimaryKey}}
+{\footnotesize\ttfamily \label{struct_field_descriptor_acf6eb857a5afcd3f84547d461c2760c0} 
+bool Field\+Descriptor::\+is\+Primary\+Key}
+
+True if this field is the primary key \Hypertarget{struct_field_descriptor_a2a32cf13a4446a86419934ea3a405133}\index{FieldDescriptor@{FieldDescriptor}!name@{name}}
+\index{name@{name}!FieldDescriptor@{FieldDescriptor}}
+\doxysubsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily \label{struct_field_descriptor_a2a32cf13a4446a86419934ea3a405133} 
+std::\+string Field\+Descriptor::\+name}
+
+Field name (e.\+g. "{}zip\+Code"{}, "{}place\+Name"{}) \Hypertarget{struct_field_descriptor_af585606177343018da6883e616d7e03f}\index{FieldDescriptor@{FieldDescriptor}!typeSchema@{typeSchema}}
+\index{typeSchema@{typeSchema}!FieldDescriptor@{FieldDescriptor}}
+\doxysubsubsection{\texorpdfstring{typeSchema}{typeSchema}}
+{\footnotesize\ttfamily \label{struct_field_descriptor_af585606177343018da6883e616d7e03f} 
+std::\+string Field\+Descriptor::\+type\+Schema}
+
+Field type (e.\+g. "{}int"{}, "{}string"{}, "{}double"{}) 
+
+The documentation for this struct was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{_data_file_header_8h}{Data\+File\+Header.\+h}}\end{DoxyCompactItemize}

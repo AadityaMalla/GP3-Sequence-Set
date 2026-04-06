@@ -1,0 +1,258 @@
+\doxysection{Block\+File\+Buffer Class Reference}
+\hypertarget{class_block_file_buffer}{}\label{class_block_file_buffer}\index{BlockFileBuffer@{BlockFileBuffer}}
+
+
+Provides physical file access for blocked sequence-\/set files.  
+
+
+
+
+{\ttfamily \+\#include $<$Block\+File\+Buffer.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_block_file_buffer_a69bb4b0cb188ff279b4cace9a2a1ff55}{Block\+File\+Buffer}} (const std::\+string \&filename)
+\begin{DoxyCompactList}\small\item\em Construct a \doxylink{class_block_file_buffer}{Block\+File\+Buffer} for a filename. \end{DoxyCompactList}\item 
+\Hypertarget{class_block_file_buffer_a39903398df404de0c5bdf2334fcd3684}\label{class_block_file_buffer_a39903398df404de0c5bdf2334fcd3684} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Block\+File\+Buffer} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_block_file_buffer_a658edcf764d9d833082ceac323ced903}{open\+For\+Read}} ()
+\begin{DoxyCompactList}\small\item\em Open file for reading. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_block_file_buffer_a24e1f1a6ddf758a6f1b063f386dd68a3}{open\+For\+Write}} ()
+\begin{DoxyCompactList}\small\item\em Open file for writing, truncating old contents. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_block_file_buffer_acaf014073a2afbb156c94496e4f2d63d}{open\+For\+Update}} ()
+\begin{DoxyCompactList}\small\item\em Open file for read/\+write update without truncating. \end{DoxyCompactList}\item 
+\Hypertarget{class_block_file_buffer_a1562ff679c71bb78b202e3bf1421f448}\label{class_block_file_buffer_a1562ff679c71bb78b202e3bf1421f448} 
+void {\bfseries close} ()
+\begin{DoxyCompactList}\small\item\em Close any open file streams. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_block_file_buffer_a332a5ffd10d9d4e06cd94dfcdea8acda}{write\+Header}} (\doxymbox{\hyperlink{class_blocked_file_header}{Blocked\+File\+Header}} \&header)
+\begin{DoxyCompactList}\small\item\em Write the blocked-\/file header at the start of the file. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_block_file_buffer_a03124c9915e115d1ad1c8f740fbaabbb}{read\+Header}} (\doxymbox{\hyperlink{class_blocked_file_header}{Blocked\+File\+Header}} \&header)
+\begin{DoxyCompactList}\small\item\em Read the blocked-\/file header from the start of the file. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_block_file_buffer_a964b7eccdba05a0c599aca610076a337}{write\+Block}} (int rbn, const \doxymbox{\hyperlink{class_block_buffer}{Block\+Buffer}} \&block)
+\begin{DoxyCompactList}\small\item\em Write one physical block by RBN. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_block_file_buffer_a674b41de1e9f66942deb72e40b25f1aa}{read\+Block}} (int rbn, \doxymbox{\hyperlink{class_block_buffer}{Block\+Buffer}} \&block)
+\begin{DoxyCompactList}\small\item\em Read one physical block by RBN. \end{DoxyCompactList}\item 
+std::\+streamoff \doxymbox{\hyperlink{class_block_file_buffer_ae6bad1b2219be9c17c499c9d629cdc66}{get\+Block\+Offset}} (int rbn, int block\+Size) const
+\begin{DoxyCompactList}\small\item\em Return the byte offset of a given block. \end{DoxyCompactList}\item 
+std::\+string \doxymbox{\hyperlink{class_block_file_buffer_a14a19c1a2ce45d7b8444407607b86afb}{get\+Filename}} () const
+\begin{DoxyCompactList}\small\item\em Return the filename associated with this object. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_block_file_buffer_ac514ade5e0ee88ec31a02282f7e20b4c}{is\+Read\+Open}} () const
+\begin{DoxyCompactList}\small\item\em Return true if file is currently open for reading. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_block_file_buffer_a9ef0be417bf5f1323967eb9e9c11fd13}{is\+Write\+Open}} () const
+\begin{DoxyCompactList}\small\item\em Return true if file is currently open for writing/\+updating. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Provides physical file access for blocked sequence-\/set files. 
+
+\label{doc-constructors}
+\Hypertarget{class_block_file_buffer_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_block_file_buffer_a69bb4b0cb188ff279b4cace9a2a1ff55}\index{BlockFileBuffer@{BlockFileBuffer}!BlockFileBuffer@{BlockFileBuffer}}
+\index{BlockFileBuffer@{BlockFileBuffer}!BlockFileBuffer@{BlockFileBuffer}}
+\doxysubsubsection{\texorpdfstring{BlockFileBuffer()}{BlockFileBuffer()}}
+{\footnotesize\ttfamily \label{class_block_file_buffer_a69bb4b0cb188ff279b4cace9a2a1ff55} 
+Block\+File\+Buffer::\+\+Block\+File\+Buffer (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{filename}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Construct a \doxylink{class_block_file_buffer}{Block\+File\+Buffer} for a filename. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Path to blocked data file. \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{class_block_file_buffer_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_block_file_buffer_ae6bad1b2219be9c17c499c9d629cdc66}\index{BlockFileBuffer@{BlockFileBuffer}!getBlockOffset@{getBlockOffset}}
+\index{getBlockOffset@{getBlockOffset}!BlockFileBuffer@{BlockFileBuffer}}
+\doxysubsubsection{\texorpdfstring{getBlockOffset()}{getBlockOffset()}}
+{\footnotesize\ttfamily \label{class_block_file_buffer_ae6bad1b2219be9c17c499c9d629cdc66} 
+std::\+streamoff Block\+File\+Buffer::\+get\+Block\+Offset (\begin{DoxyParamCaption}\item[{int}]{rbn}{, }\item[{int}]{block\+Size}{}\end{DoxyParamCaption}) const}
+
+
+
+Return the byte offset of a given block. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rbn} & Relative block number. \\
+\hline
+{\em block\+Size} & Size of each physical block in bytes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Absolute byte offset in the file. 
+\end{DoxyReturn}
+\Hypertarget{class_block_file_buffer_a14a19c1a2ce45d7b8444407607b86afb}\index{BlockFileBuffer@{BlockFileBuffer}!getFilename@{getFilename}}
+\index{getFilename@{getFilename}!BlockFileBuffer@{BlockFileBuffer}}
+\doxysubsubsection{\texorpdfstring{getFilename()}{getFilename()}}
+{\footnotesize\ttfamily \label{class_block_file_buffer_a14a19c1a2ce45d7b8444407607b86afb} 
+std::\+string Block\+File\+Buffer::\+get\+Filename (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return the filename associated with this object. 
+
+\begin{DoxyReturn}{Returns}
+Filename string. 
+\end{DoxyReturn}
+\Hypertarget{class_block_file_buffer_ac514ade5e0ee88ec31a02282f7e20b4c}\index{BlockFileBuffer@{BlockFileBuffer}!isReadOpen@{isReadOpen}}
+\index{isReadOpen@{isReadOpen}!BlockFileBuffer@{BlockFileBuffer}}
+\doxysubsubsection{\texorpdfstring{isReadOpen()}{isReadOpen()}}
+{\footnotesize\ttfamily \label{class_block_file_buffer_ac514ade5e0ee88ec31a02282f7e20b4c} 
+bool Block\+File\+Buffer::\+is\+Read\+Open (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return true if file is currently open for reading. 
+
+\begin{DoxyReturn}{Returns}
+true if readable stream is open. 
+\end{DoxyReturn}
+\Hypertarget{class_block_file_buffer_a9ef0be417bf5f1323967eb9e9c11fd13}\index{BlockFileBuffer@{BlockFileBuffer}!isWriteOpen@{isWriteOpen}}
+\index{isWriteOpen@{isWriteOpen}!BlockFileBuffer@{BlockFileBuffer}}
+\doxysubsubsection{\texorpdfstring{isWriteOpen()}{isWriteOpen()}}
+{\footnotesize\ttfamily \label{class_block_file_buffer_a9ef0be417bf5f1323967eb9e9c11fd13} 
+bool Block\+File\+Buffer::\+is\+Write\+Open (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return true if file is currently open for writing/\+updating. 
+
+\begin{DoxyReturn}{Returns}
+true if writable stream is open. 
+\end{DoxyReturn}
+\Hypertarget{class_block_file_buffer_a658edcf764d9d833082ceac323ced903}\index{BlockFileBuffer@{BlockFileBuffer}!openForRead@{openForRead}}
+\index{openForRead@{openForRead}!BlockFileBuffer@{BlockFileBuffer}}
+\doxysubsubsection{\texorpdfstring{openForRead()}{openForRead()}}
+{\footnotesize\ttfamily \label{class_block_file_buffer_a658edcf764d9d833082ceac323ced903} 
+bool Block\+File\+Buffer::\+open\+For\+Read (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Open file for reading. 
+
+\begin{DoxyReturn}{Returns}
+true on success; false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_block_file_buffer_acaf014073a2afbb156c94496e4f2d63d}\index{BlockFileBuffer@{BlockFileBuffer}!openForUpdate@{openForUpdate}}
+\index{openForUpdate@{openForUpdate}!BlockFileBuffer@{BlockFileBuffer}}
+\doxysubsubsection{\texorpdfstring{openForUpdate()}{openForUpdate()}}
+{\footnotesize\ttfamily \label{class_block_file_buffer_acaf014073a2afbb156c94496e4f2d63d} 
+bool Block\+File\+Buffer::\+open\+For\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Open file for read/\+write update without truncating. 
+
+\begin{DoxyReturn}{Returns}
+true on success; false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_block_file_buffer_a24e1f1a6ddf758a6f1b063f386dd68a3}\index{BlockFileBuffer@{BlockFileBuffer}!openForWrite@{openForWrite}}
+\index{openForWrite@{openForWrite}!BlockFileBuffer@{BlockFileBuffer}}
+\doxysubsubsection{\texorpdfstring{openForWrite()}{openForWrite()}}
+{\footnotesize\ttfamily \label{class_block_file_buffer_a24e1f1a6ddf758a6f1b063f386dd68a3} 
+bool Block\+File\+Buffer::\+open\+For\+Write (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Open file for writing, truncating old contents. 
+
+\begin{DoxyReturn}{Returns}
+true on success; false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_block_file_buffer_a674b41de1e9f66942deb72e40b25f1aa}\index{BlockFileBuffer@{BlockFileBuffer}!readBlock@{readBlock}}
+\index{readBlock@{readBlock}!BlockFileBuffer@{BlockFileBuffer}}
+\doxysubsubsection{\texorpdfstring{readBlock()}{readBlock()}}
+{\footnotesize\ttfamily \label{class_block_file_buffer_a674b41de1e9f66942deb72e40b25f1aa} 
+bool Block\+File\+Buffer::\+read\+Block (\begin{DoxyParamCaption}\item[{int}]{rbn}{, }\item[{\doxymbox{\hyperlink{class_block_buffer}{Block\+Buffer}} \&}]{block}{}\end{DoxyParamCaption})}
+
+
+
+Read one physical block by RBN. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rbn} & Relative block number (0-\/based). \\
+\hline
+{\em block} & Output block object. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success; false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_block_file_buffer_a03124c9915e115d1ad1c8f740fbaabbb}\index{BlockFileBuffer@{BlockFileBuffer}!readHeader@{readHeader}}
+\index{readHeader@{readHeader}!BlockFileBuffer@{BlockFileBuffer}}
+\doxysubsubsection{\texorpdfstring{readHeader()}{readHeader()}}
+{\footnotesize\ttfamily \label{class_block_file_buffer_a03124c9915e115d1ad1c8f740fbaabbb} 
+bool Block\+File\+Buffer::\+read\+Header (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_blocked_file_header}{Blocked\+File\+Header}} \&}]{header}{}\end{DoxyParamCaption})}
+
+
+
+Read the blocked-\/file header from the start of the file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em header} & Output header. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success; false otherwise.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+This stores the end-\/of-\/header byte position internally so that future block offsets can be calculated correctly. 
+\end{DoxyNote}
+\Hypertarget{class_block_file_buffer_a964b7eccdba05a0c599aca610076a337}\index{BlockFileBuffer@{BlockFileBuffer}!writeBlock@{writeBlock}}
+\index{writeBlock@{writeBlock}!BlockFileBuffer@{BlockFileBuffer}}
+\doxysubsubsection{\texorpdfstring{writeBlock()}{writeBlock()}}
+{\footnotesize\ttfamily \label{class_block_file_buffer_a964b7eccdba05a0c599aca610076a337} 
+bool Block\+File\+Buffer::\+write\+Block (\begin{DoxyParamCaption}\item[{int}]{rbn}{, }\item[{const \doxymbox{\hyperlink{class_block_buffer}{Block\+Buffer}} \&}]{block}{}\end{DoxyParamCaption})}
+
+
+
+Write one physical block by RBN. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rbn} & Relative block number (0-\/based). \\
+\hline
+{\em block} & Block to write. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success; false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_block_file_buffer_a332a5ffd10d9d4e06cd94dfcdea8acda}\index{BlockFileBuffer@{BlockFileBuffer}!writeHeader@{writeHeader}}
+\index{writeHeader@{writeHeader}!BlockFileBuffer@{BlockFileBuffer}}
+\doxysubsubsection{\texorpdfstring{writeHeader()}{writeHeader()}}
+{\footnotesize\ttfamily \label{class_block_file_buffer_a332a5ffd10d9d4e06cd94dfcdea8acda} 
+bool Block\+File\+Buffer::\+write\+Header (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_blocked_file_header}{Blocked\+File\+Header}} \&}]{header}{}\end{DoxyParamCaption})}
+
+
+
+Write the blocked-\/file header at the start of the file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em header} & Header to write. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success; false otherwise.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+This stores the end-\/of-\/header byte position internally so that future block offsets can be calculated correctly. 
+\end{DoxyNote}
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{_block_file_buffer_8h}{Block\+File\+Buffer.\+h}}\item 
+\doxymbox{\hyperlink{_block_file_buffer_8cpp}{Block\+File\+Buffer.\+cpp}}\end{DoxyCompactItemize}

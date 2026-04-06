@@ -1,0 +1,81 @@
+\doxysection{LIBuffer.\+h}
+\hypertarget{_l_i_buffer_8h_source}{}\label{_l_i_buffer_8h_source}\doxymbox{\hyperlink{_l_i_buffer_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#ifndef\ LIBUFFER\_H}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#define\ LIBUFFER\_H}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_zip_code_record_8h}{ZipCodeRecord.h}}"{}}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_data_file_header_8h}{DataFileHeader.h}}"{}}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_header_buffer_8h}{HeaderBuffer.h}}"{}}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00065\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_l_i_buffer_ab5e7ebf6aa35aa4bca475c499957cffd}{LIBuffer}}}
+\DoxyCodeLine{00066\ \{}
+\DoxyCodeLine{00067\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{comment}{//\ --\ Construction\ /\ Destruction\ ----------------------------------------}}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keyword}{explicit}\ \doxymbox{\hyperlink{class_l_i_buffer_ab5e7ebf6aa35aa4bca475c499957cffd}{LIBuffer}}(\textcolor{keyword}{const}\ std::string\&\ filename);}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00083\ \ \ \ \ \doxymbox{\hyperlink{class_l_i_buffer_a2a72da0f71584ff7728a918e2f0885f9}{\string~LIBuffer}}();}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{comment}{//\ --\ File\ lifecycle\ ----------------------------------------------------}}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_l_i_buffer_ab9f4bb893ade34f3185fd4d3cfc7811d}{openForRead}}();}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_l_i_buffer_a48a62d766d11477b89a122ddcb9943af}{openForWrite}}();}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_l_i_buffer_a373a0893ed41caa5b1a28578ba3867bd}{close}}();}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{comment}{//\ --\ Read\ interface\ ----------------------------------------------------}}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_l_i_buffer_a69f811c19569cc8d43e01ffdcca5a1c2}{readHeader}}(\doxymbox{\hyperlink{class_data_file_header}{DataFileHeader}}\&\ header);}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00129\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_l_i_buffer_a93532b6a5950efe26da3addd17793e15}{getNextRecord}}(\doxymbox{\hyperlink{struct_zip_code_record}{ZipCodeRecord}}\&\ record);}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00140\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_l_i_buffer_a95c9eaffc3c9f0bc401cf6bfeb693035}{readRecordAt}}(std::streamoff\ offset,\ \doxymbox{\hyperlink{struct_zip_code_record}{ZipCodeRecord}}\&\ record);}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{comment}{//\ --\ Write\ interface\ ---------------------------------------------------}}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00151\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_l_i_buffer_a4d5ddcbcceebf412f6e50a875b8b5160}{writeHeader}}(\doxymbox{\hyperlink{class_data_file_header}{DataFileHeader}}\&\ header);}
+\DoxyCodeLine{00152\ }
+\DoxyCodeLine{00160\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_l_i_buffer_a2e1614b75536f5ff631f5f9905b7e7e7}{writeRecord}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_zip_code_record}{ZipCodeRecord}}\&\ record);}
+\DoxyCodeLine{00161\ }
+\DoxyCodeLine{00162\ \ \ \ \ \textcolor{comment}{//\ --\ Accessors\ ---------------------------------------------------------}}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00170\ \ \ \ \ std::streamoff\ \doxymbox{\hyperlink{class_l_i_buffer_a91f7c9ae6ba7f6fba6a8f6e89dbeda3b}{getCurrentOffset}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00171\ }
+\DoxyCodeLine{00178\ \ \ \ \ \textcolor{keywordtype}{long}\ \doxymbox{\hyperlink{class_l_i_buffer_af7c38e5ad9a4f31c61fdb99a54ff1e60}{getRecordCount}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00179\ }
+\DoxyCodeLine{00186\ \ \ \ \ std::string\ \doxymbox{\hyperlink{class_l_i_buffer_a373b9f9b5414b06756dd47cedbc550c5}{getFilename}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00187\ }
+\DoxyCodeLine{00188\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00189\ \ \ \ \ \textcolor{comment}{//\ --\ Private\ helpers\ ---------------------------------------------------}}
+\DoxyCodeLine{00190\ }
+\DoxyCodeLine{00199\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ packRecord(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_zip_code_record}{ZipCodeRecord}}\&\ record,\ \textcolor{keywordtype}{char}*\ buffer)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00200\ }
+\DoxyCodeLine{00209\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ unpackRecord(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ buffer,\ \doxymbox{\hyperlink{struct_zip_code_record}{ZipCodeRecord}}\&\ record,\ \textcolor{keywordtype}{size\_t}\ len)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00210\ }
+\DoxyCodeLine{00218\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ getRecordPackedSize(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_zip_code_record}{ZipCodeRecord}}\&\ record)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00219\ }
+\DoxyCodeLine{00227\ \ \ \ \ \textcolor{keywordtype}{bool}\ readLength(uint16\_t\&\ length);}
+\DoxyCodeLine{00228\ }
+\DoxyCodeLine{00236\ \ \ \ \ \textcolor{keywordtype}{bool}\ writeLength(uint16\_t\ length);}
+\DoxyCodeLine{00237\ }
+\DoxyCodeLine{00238\ \ \ \ \ \textcolor{comment}{//\ --\ Member\ variables\ --------------------------------------------------}}
+\DoxyCodeLine{00239\ }
+\DoxyCodeLine{00240\ \ \ \ \ std::string\ \ \ filename;\ \ \ \ \ \ }
+\DoxyCodeLine{00241\ \ \ \ \ std::ifstream\ inStream;\ \ \ \ \ \ }
+\DoxyCodeLine{00242\ \ \ \ \ std::ofstream\ outStream;\ \ \ \ \ }
+\DoxyCodeLine{00243\ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ readOpen;\ \ \ \ \ \ }
+\DoxyCodeLine{00244\ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ writeOpen;\ \ \ \ \ }
+\DoxyCodeLine{00245\ \ \ \ \ \textcolor{keywordtype}{long}\ \ \ \ \ \ \ \ \ \ recordCount;\ \ \ }
+\DoxyCodeLine{00246\ \ \ \ \ \doxymbox{\hyperlink{class_header_buffer}{HeaderBuffer}}\ \ headerBuf;\ \ \ \ \ }
+\DoxyCodeLine{00247\ \};}
+\DoxyCodeLine{00248\ }
+\DoxyCodeLine{00249\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ LIBUFFER\_H}}
+
+\end{DoxyCode}

@@ -1,0 +1,215 @@
+\doxysection{Blocked\+File\+Header Class Reference}
+\hypertarget{class_blocked_file_header}{}\label{class_blocked_file_header}\index{BlockedFileHeader@{BlockedFileHeader}}
+
+
+Stores metadata for a blocked sequence-\/set file.  
+
+
+
+
+{\ttfamily \+\#include $<$Blocked\+File\+Header.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_blocked_file_header_a38331c91bafa40e0f669a29a889c0133}\label{class_blocked_file_header_a38331c91bafa40e0f669a29a889c0133} 
+{\bfseries Blocked\+File\+Header} (const std::\+string \&struct\+Type, int ver)
+\item 
+\Hypertarget{class_blocked_file_header_aeec818acae2d231ed2faf2bf79be503f}\label{class_blocked_file_header_aeec818acae2d231ed2faf2bf79be503f} 
+void {\bfseries add\+Field} (const std::\+string \&name, const std::\+string \&type\+Schema, bool is\+Primary\+Key=false)
+\item 
+\Hypertarget{class_blocked_file_header_ac60eaa461b800f068f09d48c7ff4d374}\label{class_blocked_file_header_ac60eaa461b800f068f09d48c7ff4d374} 
+size\+\_\+t {\bfseries get\+Packed\+Size} () const
+\item 
+\Hypertarget{class_blocked_file_header_a270c106bf68c6a243410a5f21fc5fb07}\label{class_blocked_file_header_a270c106bf68c6a243410a5f21fc5fb07} 
+size\+\_\+t {\bfseries pack} (char \texorpdfstring{$\ast$}{*}buffer) const
+\item 
+\Hypertarget{class_blocked_file_header_a6ef3ea1a68899c2b987adbde1f5631e8}\label{class_blocked_file_header_a6ef3ea1a68899c2b987adbde1f5631e8} 
+size\+\_\+t {\bfseries unpack} (const char \texorpdfstring{$\ast$}{*}buffer)
+\item 
+\Hypertarget{class_blocked_file_header_a5043c38dfde2b7807a68c3830319201e}\label{class_blocked_file_header_a5043c38dfde2b7807a68c3830319201e} 
+void {\bfseries display} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std::\+string \doxymbox{\hyperlink{class_blocked_file_header_a259ea296eea59ed7b04c9eb41abc0fcd}{file\+Structure\+Type}}
+\item 
+int \doxymbox{\hyperlink{class_blocked_file_header_a15205f1cbed46ee03c8fe2ecf6874855}{version}}
+\item 
+int \doxymbox{\hyperlink{class_blocked_file_header_af16ebbc584079203e0f6c505832caf4f}{header\+Size}}
+\item 
+int \doxymbox{\hyperlink{class_blocked_file_header_aad71e28ba85f600964824b2ef35b974d}{record\+Size\+Integer\+Bytes}}
+\item 
+std::\+string \doxymbox{\hyperlink{class_blocked_file_header_a8c6b0f9506b1ced8aaf4520681458ec9}{size\+Format\+Type}}
+\item 
+int \doxymbox{\hyperlink{class_blocked_file_header_ac341b440207870d3321b029984a641a5}{size\+Of\+Sizes}}
+\item 
+bool \doxymbox{\hyperlink{class_blocked_file_header_aea23cc21871b95c68c401d72809195dc}{size\+Inclusion\+Flag}}
+\item 
+int \doxymbox{\hyperlink{class_blocked_file_header_a34aa8e4c00f4291eb4d537c9c15c1c29}{block\+Size}}
+\item 
+double \doxymbox{\hyperlink{class_blocked_file_header_ae19cd4caeba70b8bb935d29f695eae4f}{min\+Block\+Capacity}}
+\item 
+int \doxymbox{\hyperlink{class_blocked_file_header_adda8606f8252d96dd8662c84650aaf4c}{record\+Count}}
+\item 
+int \doxymbox{\hyperlink{class_blocked_file_header_aba7a2d3310eb403e15f66a9f7e373040}{block\+Count}}
+\item 
+int \doxymbox{\hyperlink{class_blocked_file_header_a7f8b271009726b9f25c1b3be658ad0a9}{active\+List\+Head}}
+\item 
+int \doxymbox{\hyperlink{class_blocked_file_header_a1d04943a3afed58db5aa5c88c1affdfb}{avail\+List\+Head}}
+\item 
+bool \doxymbox{\hyperlink{class_blocked_file_header_a59f0e908fce85904f2412e30dc56729f}{stale\+Flag}}
+\item 
+std::\+string \doxymbox{\hyperlink{class_blocked_file_header_ad60c8728cb3b16ad25bfc2c597369425}{primary\+Key\+Index\+File\+Name}}
+\item 
+std::\+string \doxymbox{\hyperlink{class_blocked_file_header_a0069ac34cde7f24db60a196eae440e75}{index\+File\+Structure\+Type}}
+\item 
+int \doxymbox{\hyperlink{class_blocked_file_header_a741919136e1a7a7094fca31679fa25f7}{primary\+Key\+Field\+Index}}
+\item 
+int \doxymbox{\hyperlink{class_blocked_file_header_a9fac5fdfac2793b39c30ced325cfb0c5}{field\+Count}}
+\item 
+std::\+vector$<$ \doxymbox{\hyperlink{struct_field_descriptor}{Field\+Descriptor}} $>$ \doxymbox{\hyperlink{class_blocked_file_header_aa7ec8e0c1861271f019df464c1f9d3f8}{fields}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Stores metadata for a blocked sequence-\/set file. 
+
+Responsibilities:\+
+\begin{DoxyItemize}
+\item store file-\/level metadata
+\item store field descriptions
+\item pack/\+unpack itself into a raw buffer
+\item display itself for debugging
+\end{DoxyItemize}
+
+NOT responsible for:\+
+\begin{DoxyItemize}
+\item opening or closing files
+\item reading/\+writing streams directly 
+\end{DoxyItemize}
+
+\label{doc-variable-members}
+\Hypertarget{class_blocked_file_header_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_blocked_file_header_a7f8b271009726b9f25c1b3be658ad0a9}\index{BlockedFileHeader@{BlockedFileHeader}!activeListHead@{activeListHead}}
+\index{activeListHead@{activeListHead}!BlockedFileHeader@{BlockedFileHeader}}
+\doxysubsubsection{\texorpdfstring{activeListHead}{activeListHead}}
+{\footnotesize\ttfamily \label{class_blocked_file_header_a7f8b271009726b9f25c1b3be658ad0a9} 
+int Blocked\+File\+Header::\+active\+List\+Head}
+
+RBN of first active block; -\/1 if none \Hypertarget{class_blocked_file_header_a1d04943a3afed58db5aa5c88c1affdfb}\index{BlockedFileHeader@{BlockedFileHeader}!availListHead@{availListHead}}
+\index{availListHead@{availListHead}!BlockedFileHeader@{BlockedFileHeader}}
+\doxysubsubsection{\texorpdfstring{availListHead}{availListHead}}
+{\footnotesize\ttfamily \label{class_blocked_file_header_a1d04943a3afed58db5aa5c88c1affdfb} 
+int Blocked\+File\+Header::\+avail\+List\+Head}
+
+RBN of first avail block; -\/1 if none \Hypertarget{class_blocked_file_header_aba7a2d3310eb403e15f66a9f7e373040}\index{BlockedFileHeader@{BlockedFileHeader}!blockCount@{blockCount}}
+\index{blockCount@{blockCount}!BlockedFileHeader@{BlockedFileHeader}}
+\doxysubsubsection{\texorpdfstring{blockCount}{blockCount}}
+{\footnotesize\ttfamily \label{class_blocked_file_header_aba7a2d3310eb403e15f66a9f7e373040} 
+int Blocked\+File\+Header::\+block\+Count}
+
+Total physical blocks in file \Hypertarget{class_blocked_file_header_a34aa8e4c00f4291eb4d537c9c15c1c29}\index{BlockedFileHeader@{BlockedFileHeader}!blockSize@{blockSize}}
+\index{blockSize@{blockSize}!BlockedFileHeader@{BlockedFileHeader}}
+\doxysubsubsection{\texorpdfstring{blockSize}{blockSize}}
+{\footnotesize\ttfamily \label{class_blocked_file_header_a34aa8e4c00f4291eb4d537c9c15c1c29} 
+int Blocked\+File\+Header::\+block\+Size}
+
+Physical bytes per block \Hypertarget{class_blocked_file_header_a9fac5fdfac2793b39c30ced325cfb0c5}\index{BlockedFileHeader@{BlockedFileHeader}!fieldCount@{fieldCount}}
+\index{fieldCount@{fieldCount}!BlockedFileHeader@{BlockedFileHeader}}
+\doxysubsubsection{\texorpdfstring{fieldCount}{fieldCount}}
+{\footnotesize\ttfamily \label{class_blocked_file_header_a9fac5fdfac2793b39c30ced325cfb0c5} 
+int Blocked\+File\+Header::\+field\+Count}
+
+Number of fields in each record \Hypertarget{class_blocked_file_header_aa7ec8e0c1861271f019df464c1f9d3f8}\index{BlockedFileHeader@{BlockedFileHeader}!fields@{fields}}
+\index{fields@{fields}!BlockedFileHeader@{BlockedFileHeader}}
+\doxysubsubsection{\texorpdfstring{fields}{fields}}
+{\footnotesize\ttfamily \label{class_blocked_file_header_aa7ec8e0c1861271f019df464c1f9d3f8} 
+std::\+vector$<$\doxymbox{\hyperlink{struct_field_descriptor}{Field\+Descriptor}}$>$ Blocked\+File\+Header::\+fields}
+
+Field descriptors \Hypertarget{class_blocked_file_header_a259ea296eea59ed7b04c9eb41abc0fcd}\index{BlockedFileHeader@{BlockedFileHeader}!fileStructureType@{fileStructureType}}
+\index{fileStructureType@{fileStructureType}!BlockedFileHeader@{BlockedFileHeader}}
+\doxysubsubsection{\texorpdfstring{fileStructureType}{fileStructureType}}
+{\footnotesize\ttfamily \label{class_blocked_file_header_a259ea296eea59ed7b04c9eb41abc0fcd} 
+std::\+string Blocked\+File\+Header::\+file\+Structure\+Type}
+
+e.\+g. "{}\+ZIPCODE\+\_\+\+BSS\+\_\+\+V1"{} \Hypertarget{class_blocked_file_header_af16ebbc584079203e0f6c505832caf4f}\index{BlockedFileHeader@{BlockedFileHeader}!headerSize@{headerSize}}
+\index{headerSize@{headerSize}!BlockedFileHeader@{BlockedFileHeader}}
+\doxysubsubsection{\texorpdfstring{headerSize}{headerSize}}
+{\footnotesize\ttfamily \label{class_blocked_file_header_af16ebbc584079203e0f6c505832caf4f} 
+int Blocked\+File\+Header::\+header\+Size}
+
+Packed header size \Hypertarget{class_blocked_file_header_a0069ac34cde7f24db60a196eae440e75}\index{BlockedFileHeader@{BlockedFileHeader}!indexFileStructureType@{indexFileStructureType}}
+\index{indexFileStructureType@{indexFileStructureType}!BlockedFileHeader@{BlockedFileHeader}}
+\doxysubsubsection{\texorpdfstring{indexFileStructureType}{indexFileStructureType}}
+{\footnotesize\ttfamily \label{class_blocked_file_header_a0069ac34cde7f24db60a196eae440e75} 
+std::\+string Blocked\+File\+Header::\+index\+File\+Structure\+Type}
+
+e.\+g. "{}\+ZIPCODE\+\_\+\+BLOCK\+\_\+\+INDEX\+\_\+\+V1"{} \Hypertarget{class_blocked_file_header_ae19cd4caeba70b8bb935d29f695eae4f}\index{BlockedFileHeader@{BlockedFileHeader}!minBlockCapacity@{minBlockCapacity}}
+\index{minBlockCapacity@{minBlockCapacity}!BlockedFileHeader@{BlockedFileHeader}}
+\doxysubsubsection{\texorpdfstring{minBlockCapacity}{minBlockCapacity}}
+{\footnotesize\ttfamily \label{class_blocked_file_header_ae19cd4caeba70b8bb935d29f695eae4f} 
+double Blocked\+File\+Header::\+min\+Block\+Capacity}
+
+Minimum occupancy ratio (0.\+50 default) \Hypertarget{class_blocked_file_header_a741919136e1a7a7094fca31679fa25f7}\index{BlockedFileHeader@{BlockedFileHeader}!primaryKeyFieldIndex@{primaryKeyFieldIndex}}
+\index{primaryKeyFieldIndex@{primaryKeyFieldIndex}!BlockedFileHeader@{BlockedFileHeader}}
+\doxysubsubsection{\texorpdfstring{primaryKeyFieldIndex}{primaryKeyFieldIndex}}
+{\footnotesize\ttfamily \label{class_blocked_file_header_a741919136e1a7a7094fca31679fa25f7} 
+int Blocked\+File\+Header::\+primary\+Key\+Field\+Index}
+
+Which field is the PK \Hypertarget{class_blocked_file_header_ad60c8728cb3b16ad25bfc2c597369425}\index{BlockedFileHeader@{BlockedFileHeader}!primaryKeyIndexFileName@{primaryKeyIndexFileName}}
+\index{primaryKeyIndexFileName@{primaryKeyIndexFileName}!BlockedFileHeader@{BlockedFileHeader}}
+\doxysubsubsection{\texorpdfstring{primaryKeyIndexFileName}{primaryKeyIndexFileName}}
+{\footnotesize\ttfamily \label{class_blocked_file_header_ad60c8728cb3b16ad25bfc2c597369425} 
+std::\+string Blocked\+File\+Header::\+primary\+Key\+Index\+File\+Name}
+
+Associated block-\/index filename \Hypertarget{class_blocked_file_header_adda8606f8252d96dd8662c84650aaf4c}\index{BlockedFileHeader@{BlockedFileHeader}!recordCount@{recordCount}}
+\index{recordCount@{recordCount}!BlockedFileHeader@{BlockedFileHeader}}
+\doxysubsubsection{\texorpdfstring{recordCount}{recordCount}}
+{\footnotesize\ttfamily \label{class_blocked_file_header_adda8606f8252d96dd8662c84650aaf4c} 
+int Blocked\+File\+Header::\+record\+Count}
+
+Total active records in file \Hypertarget{class_blocked_file_header_aad71e28ba85f600964824b2ef35b974d}\index{BlockedFileHeader@{BlockedFileHeader}!recordSizeIntegerBytes@{recordSizeIntegerBytes}}
+\index{recordSizeIntegerBytes@{recordSizeIntegerBytes}!BlockedFileHeader@{BlockedFileHeader}}
+\doxysubsubsection{\texorpdfstring{recordSizeIntegerBytes}{recordSizeIntegerBytes}}
+{\footnotesize\ttfamily \label{class_blocked_file_header_aad71e28ba85f600964824b2ef35b974d} 
+int Blocked\+File\+Header::\+record\+Size\+Integer\+Bytes}
+
+Bytes used for LI size fields \Hypertarget{class_blocked_file_header_a8c6b0f9506b1ced8aaf4520681458ec9}\index{BlockedFileHeader@{BlockedFileHeader}!sizeFormatType@{sizeFormatType}}
+\index{sizeFormatType@{sizeFormatType}!BlockedFileHeader@{BlockedFileHeader}}
+\doxysubsubsection{\texorpdfstring{sizeFormatType}{sizeFormatType}}
+{\footnotesize\ttfamily \label{class_blocked_file_header_a8c6b0f9506b1ced8aaf4520681458ec9} 
+std::\+string Blocked\+File\+Header::\+size\+Format\+Type}
+
+e.\+g. "{}binary"{} \Hypertarget{class_blocked_file_header_aea23cc21871b95c68c401d72809195dc}\index{BlockedFileHeader@{BlockedFileHeader}!sizeInclusionFlag@{sizeInclusionFlag}}
+\index{sizeInclusionFlag@{sizeInclusionFlag}!BlockedFileHeader@{BlockedFileHeader}}
+\doxysubsubsection{\texorpdfstring{sizeInclusionFlag}{sizeInclusionFlag}}
+{\footnotesize\ttfamily \label{class_blocked_file_header_aea23cc21871b95c68c401d72809195dc} 
+bool Blocked\+File\+Header::\+size\+Inclusion\+Flag}
+
+Whether size includes itself \Hypertarget{class_blocked_file_header_ac341b440207870d3321b029984a641a5}\index{BlockedFileHeader@{BlockedFileHeader}!sizeOfSizes@{sizeOfSizes}}
+\index{sizeOfSizes@{sizeOfSizes}!BlockedFileHeader@{BlockedFileHeader}}
+\doxysubsubsection{\texorpdfstring{sizeOfSizes}{sizeOfSizes}}
+{\footnotesize\ttfamily \label{class_blocked_file_header_ac341b440207870d3321b029984a641a5} 
+int Blocked\+File\+Header::\+size\+Of\+Sizes}
+
+Size of size fields \Hypertarget{class_blocked_file_header_a59f0e908fce85904f2412e30dc56729f}\index{BlockedFileHeader@{BlockedFileHeader}!staleFlag@{staleFlag}}
+\index{staleFlag@{staleFlag}!BlockedFileHeader@{BlockedFileHeader}}
+\doxysubsubsection{\texorpdfstring{staleFlag}{staleFlag}}
+{\footnotesize\ttfamily \label{class_blocked_file_header_a59f0e908fce85904f2412e30dc56729f} 
+bool Blocked\+File\+Header::\+stale\+Flag}
+
+True if index is out-\/of-\/date \Hypertarget{class_blocked_file_header_a15205f1cbed46ee03c8fe2ecf6874855}\index{BlockedFileHeader@{BlockedFileHeader}!version@{version}}
+\index{version@{version}!BlockedFileHeader@{BlockedFileHeader}}
+\doxysubsubsection{\texorpdfstring{version}{version}}
+{\footnotesize\ttfamily \label{class_blocked_file_header_a15205f1cbed46ee03c8fe2ecf6874855} 
+int Blocked\+File\+Header::\+version}
+
+File format version 
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{_blocked_file_header_8h}{Blocked\+File\+Header.\+h}}\item 
+\doxymbox{\hyperlink{_blocked_file_header_8cpp}{Blocked\+File\+Header.\+cpp}}\end{DoxyCompactItemize}

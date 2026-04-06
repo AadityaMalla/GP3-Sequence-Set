@@ -13,11 +13,11 @@
 #include "BlockFileBuffer.h"
 #include "BlockIndex.h"
 
-// ── File constants ────────────────────────────────────────────────────────────
+// -- File constants ------------------------------------------------------------
 static const std::string INPUT_SEQ_FILE = "data/us_postal_codes_seqset.txt";
 static const std::string OUTPUT_IDX_FILE = "data/us_postal_codes_block_idx.txt";
 
-// ── Forward declarations ──────────────────────────────────────────────────────
+// -- Forward declarations ------------------------------------------------------
 bool buildBlockIndex(const std::string& seqFilename,
                      const std::string& idxFilename);
 
