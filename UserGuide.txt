@@ -1,0 +1,32 @@
+GP 3.0 – Sequence Set File System
+User Guide
+This project implements a blocked sequence-set file system for ZIP code records. It supports building,
+indexing, searching, insertion, and deletion of records.
+
+build_seqset
+Builds the sequence-set file from the LI input file.
+Command: ./build_seqset
+
+dump_seqset
+Displays all blocks and records in the sequence-set file.
+Command: ./dump_seqset
+
+build_block_index
+Creates a simple block index mapping max keys to block RBNs.
+Command: ./build_block_index
+
+search_seqset
+Searches for ZIP codes using the block index.
+Command: ./search_seqset -Z56301 -Z10001
+
+add_seqset
+Inserts new records into the sequence-set file (supports splitting).
+Command: ./add_seqset
+
+delete_seqset
+Deletes records from the sequence-set file (supports redistribution).
+Command: ./delete_seqset
+Notes: - The system maintains sorted order of ZIP codes. - Block index is rebuilt after insert/delete
+operations. - Splitting is supported during insertion. - Redistribution is supported during deletion. Merge logic is partially implemented.
+
+
